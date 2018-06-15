@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.umssdiplo.automationv01.CucumberRunner" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-06-09T00:28:06" hostname="DESKTOP-CBE0CB1" time="0.322">
+  <properties/>
+  <testcase name="feature[0](testing)" classname="org.umssdiplo.automationv01.CucumberRunner" time="0.322"/>
+  <system-out><![CDATA[Feature: testing
+=====================
+Testing cucumber java
+=====================
+
+  @bvt
+  Scenario: first scenario                         ?[90m# userFeatureFiles.feature:4?[0m
+    ?[32mGiven ?[0m?[32mfirst introduction to cucumber with java?[0m ?[90m# GeneralSteps.firstIntroductionToCucumberWithJava()?[0m
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.umssdiplo.automationv01.unittesting.UseTestNG" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-06-09T00:28:06" hostname="DESKTOP-CBE0CB1" time="0.771">
+  <properties/>
+  <testcase name="revisarMulti" classname="org.umssdiplo.automationv01.unittesting.UseTestNG" time="0.008"/>
+  <testcase name="revisarSuma" classname="org.umssdiplo.automationv01.unittesting.UseTestNG" time="0.002"/>
+  <testcase name="revisarResta" classname="org.umssdiplo.automationv01.unittesting.UseTestNG" time="0.001"/>
+  <system-out><![CDATA[metodo multiplicar
+metodo sumar
+metodo restar
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

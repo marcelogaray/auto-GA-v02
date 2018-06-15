@@ -1,0 +1,11 @@
+metodo multiplicar
+metodo sumar
+Feature: testing
+=====================
+Testing cucumber java
+=====================
+
+  @bvt
+Y  Scenario: first scenario                         [90m# userFeatureFiles.feature:4[0m
+ƒ    [32mGiven [0m[32mfirst introduction to cucumber with java[0m [90m# GeneralSteps.firstIntroductionToCucumberWithJava()[0m
+metodo restar

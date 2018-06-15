@@ -1,0 +1,91 @@
+import net.masterthought.cucumber.Configuration
+import net.masterthought.cucumber.ReportBuilder
+
+group 'org.umssdiplo.automationv01'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+buildscript{
+    repositories{
+        jcenter()
+        maven{ url "http://repo.bodar.com"}
+    }
+
+    dependencies{
+        classpath 'net.masterthought:cucumber-reporting:3.17.1'
+    }
+}
+
+dependencies {
+    // testng
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+
+    // selenium-java
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.12.0'
+
+    // cucumber-java
+    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+
+    // cucumber-testng
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+}
+
+task runFeatures(type: Test) {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+
+    options {
+        jvmArgs = ['-Dcucumber.options= ' +
+                           '--glue org.umssdiplo.automationv01 ' +
+                           '--plugin pretty ' +
+                           '--plugin json:build/cucumber/cucumber.json ' +
+                           '--plugin rerun:build/cucumber/rerun.txt ']
+        jvmArgs = ['-Dbrowser=' + browser]
+    }
+
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
+
+    // set JVM arguments for the test JVM(s)
+    scanForTestClasses = false
+
+    // Do not use the Gradle's HTML report:
+    reports.html.enabled = false
+
+    ignoreFailures = true
+
+    doLast {
+        generateReport('build/cucumber/cucumber.json', 'build/cucumber/reports')
+    }
+}
+
+def generateReport(String pathCucumber, String pathReport){
+    File reportOutputDirectory = new File(pathReport)
+    List<String> jsonFiles = new ArrayList<>()
+    jsonFiles.add(pathCucumber)
+
+    String buildNumber = "1"
+    String projectName = "UMSS Diplomado"
+    boolean runWithJenkins = false
+    boolean parallelTesting = false
+
+    Configuration configuration = new Configuration(reportOutputDirectory, projectName)
+// optional configuration
+    configuration.setParallelTesting(parallelTesting)
+    configuration.setRunWithJenkins(runWithJenkins)
+    configuration.setBuildNumber(buildNumber)
+// addidtional metadata presented on main page
+    configuration.addClassifications("Platform", "Windows")
+    configuration.addClassifications("Browser", "Firefox")
+    configuration.addClassifications("Branch", "release/1.0")
+
+    ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration)
+    reportBuilder.generateReports()
+}
