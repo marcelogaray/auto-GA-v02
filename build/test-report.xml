@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="3" time="9.221532">
-<testcase classname="Login" name="Home page is displayed once set credential in login page" time="9.203777">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="3" time="16.24898">
+<testcase classname="Login" name="Home page is displayed once set credential in login page" time="16.248369">
 <system-out><![CDATA[Given 'PHP travel' page is loaded...........................................passed
 And set my credentials on 'Login' page......................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="RedirectNewFile" name="Testing new path" time="0.000215">
+<testcase classname="RedirectNewFile" name="Testing new path" time="0.000316">
 <system-out><![CDATA[Given Tesitng path to generate filed........................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="testing" name="first scenario" time="0.01754">
+<testcase classname="testing" name="first scenario" time="0.000295">
 <system-out><![CDATA[Given first introduction to cucumber with java..............................passed
 ]]></system-out>
 </testcase>

@@ -34,14 +34,14 @@ formatter.match({
   "location": "StepsDefinitionPHPtravel.phpTravelPageIsLoaded()"
 });
 formatter.result({
-  "duration": 7650519598,
+  "duration": 14986525203,
   "status": "passed"
 });
 formatter.match({
   "location": "StepsDefinitionPHPtravel.setMyCredentialsOnLoginPage()"
 });
 formatter.result({
-  "duration": 1553257489,
+  "duration": 1261843821,
   "status": "passed"
 });
 formatter.uri("redirectFileStepDefintions.feature");
@@ -75,7 +75,7 @@ formatter.match({
   "location": "CommonStepdef.tesitngPathToGenerateFiled()"
 });
 formatter.result({
-  "duration": 215007,
+  "duration": 316480,
   "status": "passed"
 });
 formatter.uri("userFeatureFiles.feature");
@@ -109,7 +109,7 @@ formatter.match({
   "location": "GeneralSteps.firstIntroductionToCucumberWithJava()"
 });
 formatter.result({
-  "duration": 17539762,
+  "duration": 294744,
   "status": "passed"
 });
 });
