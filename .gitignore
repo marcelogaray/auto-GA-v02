@@ -4,7 +4,8 @@ out/
 .idea/
 chromedriver.exe
 geckodriver.exe
-
+build/
+.gradle/
 # Log file
 *.log
 
