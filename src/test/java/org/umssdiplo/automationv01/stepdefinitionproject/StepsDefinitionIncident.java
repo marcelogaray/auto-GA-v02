@@ -47,4 +47,14 @@ public class StepsDefinitionIncident {
     public void verifyIncidentWasAdded() throws Throwable {
         Assert.assertEquals(incident.countIncident(), incidents + 1);
     }
+
+    @When("^delete incident")
+    public void deleteIncident() throws Throwable {
+        incident.deleteIncident();
+    }
+
+    @Then("^verify that one incident was removed")
+    public void verifyIncidentWasRemoved() throws Throwable {
+        Assert.assertEquals(incident.countIncident(), (incidents - 1));
+    }
 }

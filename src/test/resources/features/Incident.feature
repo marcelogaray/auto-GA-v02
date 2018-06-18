@@ -16,3 +16,13 @@ Feature: Incident
       | other |
       | 08/06/2018 |
     Then verify that one incident is added
+
+  Scenario: IN-02 Verify that an incident is removed
+    Given 'SSI Application' page is loaded
+    And set "Admin" credentials on 'Login' page
+    When go to incident Page
+    And get list of incidents
+    And delete incident
+    And go to incident Page
+    Then verify that one incident was removed
+    
