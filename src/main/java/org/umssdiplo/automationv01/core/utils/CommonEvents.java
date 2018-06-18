@@ -34,6 +34,16 @@ public class CommonEvents {
     }
 
     /**
+     * This method perform a click action in a web element.
+     *
+     * @param webElements Is the web element that will be pressed.
+     */
+    public static int countElement(List<WebElement> webElements) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElements.get(0)));
+        return webElements.size();
+    }
+
+    /**
      * This method perform a click in a non visible element in the UI.
      *
      * @param webElement the WebElement non visible in the UI.
