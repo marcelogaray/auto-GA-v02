@@ -33,4 +33,8 @@ public class Accident extends BasePage {
         CommonEvents.clickButton(accidentEIncidentButton);
         CommonEvents.clickButton(accidentLink);
     }
+
+    public void deleteAccident() {
+        accidents.get(0).findElement(By.cssSelector(".deleteButton")).click();
+    }
 }

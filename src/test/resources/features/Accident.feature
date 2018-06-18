@@ -18,3 +18,12 @@ Feature: Accident
       | accident other employee |
       | 04/08/2017 |
     Then verify that one accident is added
+
+  Scenario: AC-02 Verify that an accident is removed
+    Given 'SSI Application' page is loaded
+    And set "Admin" credentials on 'Login' page
+    When go to accident Page
+    And get list of accidents
+    And delete accident
+    And go to accident Page
+    Then verify that one accident was removed

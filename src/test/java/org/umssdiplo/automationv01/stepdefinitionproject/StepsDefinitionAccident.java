@@ -52,4 +52,14 @@ public class StepsDefinitionAccident {
     public void verifyAccidentWasAdded() throws Throwable {
         Assert.assertEquals(accident.countAccident(), accidents + 1);
     }
+
+    @When("^delete accident")
+    public void deleteAccident() throws Throwable {
+        accident.deleteAccident();
+    }
+
+    @Then("^verify that one accident was removed")
+    public void verifyAccidentWasRemoved() throws Throwable {
+        Assert.assertEquals(accident.countAccident(), (accidents - 1));
+    }
 }
