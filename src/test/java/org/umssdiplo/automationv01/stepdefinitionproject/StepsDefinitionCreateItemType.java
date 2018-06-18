@@ -4,6 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.umssdiplo.automationv01.core.managepage.ItemType.CreateItemType;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -38,11 +39,18 @@ public class StepsDefinitionCreateItemType {
 
     @And("^I type an item name in \"([^\"]*)\" field$")
     public void iTypeAnItemNameInField(String arg0) throws Throwable {
-        createItemType.typeOnActiveMenuOption();
+        createItemType.typeOnActiveTypeName();
     }
+
+
+    @When("^I click on \"([^\"]*)\" button to save the Item type$")
+    public void iClickOnButtonToSaveTheItemType(String arg0) throws Throwable {
+       createItemType.clickOnSaveButton();
+    }
+
 
     @Then("^The Item should be added$")
     public void theItemShouldBeAdded() throws Throwable {
-        createItemType.clickOnSaveButton();
+
     }
 }

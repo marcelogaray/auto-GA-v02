@@ -28,7 +28,7 @@ public class CreateItemType extends BasePage {
         CommonEvents.clickButton(registerItemTypeMenu);
     }
 
-    public void typeOnActiveMenuOption(){
+    public void typeOnActiveTypeName(){
 
         CommonEvents.setInputField(itemTypeField, "Seguridad de manos");
 
