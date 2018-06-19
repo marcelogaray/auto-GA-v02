@@ -32,7 +32,7 @@ public class CreateIncident extends BasePage {
     private WebElement other;
 
     @FindBy(id = "dateInput")
-    private WebElement accidentDate;
+    private WebElement incidentDate;
 
     @FindBy(id = "saveButton")
     private WebElement saveButton;
@@ -65,7 +65,7 @@ public class CreateIncident extends BasePage {
     }
 
     public void setDate(String value) {
-        accidentDate.sendKeys(value);
+        incidentDate.sendKeys(value);
     }
 
     public void clickSaveButton() {
