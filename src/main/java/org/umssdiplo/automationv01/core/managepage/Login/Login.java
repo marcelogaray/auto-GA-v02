@@ -3,6 +3,7 @@ package org.umssdiplo.automationv01.core.managepage.Login;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
+import org.umssdiplo.automationv01.core.managepage.MainPage.MainPage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
@@ -33,11 +34,12 @@ public class Login extends BasePage {
         CommonEvents.clickButton(acceptButton);
     }
 
-    public void setCredentials() {
+    public MainPage setCredentials() {
         CommonEvents.clickButton(loginButton);
         enterUsernameFromSystem();
         CommonEvents.customWait(2000);
         enterPasswordFromSystem();
         clickAcceptButton();
+        return new MainPage();
     }
 }
