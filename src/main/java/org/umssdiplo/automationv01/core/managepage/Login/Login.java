@@ -17,15 +17,27 @@ public class Login extends BasePage {
     private WebElement loginButton;
 
     @FindBy(css = ".background-primary.text-floral-white.mat-button")
-    private WebElement loginAcceptButton;
+    private WebElement acceptButton;
 
-    public void setCredentials() {
+    public void enterUsernameFromSystem(){
         String username = PropertyAccessor.getInstance().getUser();
-        String password = PropertyAccessor.getInstance().getPassword();
-        CommonEvents.clickButton(loginButton);
         CommonEvents.setInputField(usernameInputField, username);
-        CommonEvents.setInputField(passwordInputField, password);
-        CommonEvents.clickButton(loginAcceptButton);
     }
 
+    public void enterPasswordFromSystem(){
+        String password = PropertyAccessor.getInstance().getPassword();
+        CommonEvents.setInputField(passwordInputField, password);
+    }
+
+    public void clickAcceptButton(){
+        CommonEvents.clickButton(acceptButton);
+    }
+
+    public void setCredentials() {
+        CommonEvents.clickButton(loginButton);
+        enterUsernameFromSystem();
+        CommonEvents.customWait(2000);
+        enterPasswordFromSystem();
+        clickAcceptButton();
+    }
 }
