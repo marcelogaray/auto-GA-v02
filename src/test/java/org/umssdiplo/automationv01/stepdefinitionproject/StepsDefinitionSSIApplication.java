@@ -13,8 +13,8 @@ public class StepsDefinitionSSIApplication {
         login = LoadPage.loginPage();
     }
 
-    @And("^set \"([^\"]*)\" credentials on 'Login' page$")
-    public void setCredentialsOnLoginPage(String arguments) throws Throwable {
+    @And("^set Admin credentials on 'Login' page$")
+    public void setCredentialsOnLoginPage() throws Throwable {
         login.setCredentials();
     }
 }
