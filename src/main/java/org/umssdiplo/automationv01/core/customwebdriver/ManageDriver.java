@@ -8,7 +8,7 @@ import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 import java.util.concurrent.TimeUnit;
 
 public class ManageDriver {
-    private static final String BASE_URL = "http://www.phptravels.net/admin";
+    private static final String BASE_URL = "http://localhost:4200/";
     private static final int IMPLICIT_TIME_WAIT = PropertyAccessor.getInstance().getImplicitTimeWait();
     private static final int EXPLICIT_TIME_WAIT = PropertyAccessor.getInstance().getExplicitTimeWait();
     private static ManageDriver instance;
