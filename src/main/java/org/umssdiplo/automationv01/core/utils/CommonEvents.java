@@ -116,4 +116,11 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+    public static void customWait(int forceWait){
+        try{
+            Thread.sleep(forceWait);
+        }catch (Exception e){
+            System.out.printf("" + e);
+        }
+    }
 }

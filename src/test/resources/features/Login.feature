@@ -1,6 +1,6 @@
-# Login feature review the behavior in thie feature
+# Login feature review the behavior in this feature
 Feature: Login
 
   Scenario: Home page is displayed once set credential in login page
-    Given 'PHP travel' page is loaded
-    And set my credentials on 'Login' page
+    Given 'SSI Application' page is loaded
+    And set Admin credentials on 'Login' page
