@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -116,11 +117,21 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
-    public static void customWait(int forceWait){
-        try{
+    public static void customWait(int forceWait) {
+        try {
             Thread.sleep(forceWait);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.printf("" + e);
         }
+    }
+
+    /**
+     * This method count all element into the list.
+     *
+     * @param webElements Is the web element list.
+     */
+    public static int countElement(List<WebElement> webElements) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElements.get(0)));
+        return webElements.size();
     }
 }
