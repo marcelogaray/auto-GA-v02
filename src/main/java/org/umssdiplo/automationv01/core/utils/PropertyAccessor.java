@@ -56,10 +56,10 @@ public class PropertyAccessor {
     }
 
     public String getUser() {
-        return "to.danielrp@gmail.com";
+        getDataProperty(USER_NAME);
     }
 
     public String getPassword() {
-        return " pass ";
+        return getDataProperty(PASSWORD);
     }
 }
