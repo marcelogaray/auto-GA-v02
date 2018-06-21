@@ -9,11 +9,12 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class NavigationBar extends BasePage {
     @FindBy(id = "menu-reports")
     private WebElement reportsMenu;
-    public NavigationBar(){
+
+    public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
     }
 
-    public OrganizationalStructureMenu clickOrganizationalStructure(){
+    public OrganizationalStructureMenu clickOrganizationalStructure() {
         return new OrganizationalStructureMenu();
     }
 }

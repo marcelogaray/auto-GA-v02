@@ -43,3 +43,4 @@ bin/
 gradle/
 gradlew
 gradlew.bat
+out/

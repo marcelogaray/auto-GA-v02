@@ -9,11 +9,16 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class OrganizationalStructureMenu extends BasePage {
     @FindBy(id = "sub-menu-list-position")
     private WebElement positionSubMenu;
-    public OrganizationalStructureMenu(){
+
+    @FindBy(id = "sub-menu-employees")
+    private WebElement employeeSubMenu;
+
+    public OrganizationalStructureMenu() {
         CommonEvents.isVisible(positionSubMenu);
     }
 
-    public EmployeesSubMenu clickEmployees(){
+    public EmployeesSubMenu clickEmployees() {
+        CommonEvents.clickButton(employeeSubMenu);
         return new EmployeesSubMenu();
     }
 }

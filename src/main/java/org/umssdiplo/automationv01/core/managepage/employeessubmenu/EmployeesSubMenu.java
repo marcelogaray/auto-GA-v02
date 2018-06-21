@@ -8,7 +8,8 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class EmployeesSubMenu extends BasePage {
     @FindBy(id = "add-employee-button")
     private WebElement addEmployeeButton;
-    public EmployeesSubMenu(){
+
+    public EmployeesSubMenu() {
         CommonEvents.isVisible(addEmployeeButton);
     }
 }
