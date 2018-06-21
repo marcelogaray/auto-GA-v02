@@ -1,9 +1,9 @@
-package org.umssdiplo.automationv01.core.managepage.Login;
+package org.umssdiplo.automationv01.core.managepage.login;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
-import org.umssdiplo.automationv01.core.managepage.MainPage.MainPage;
+import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
@@ -34,12 +34,12 @@ public class Login extends BasePage {
         CommonEvents.clickButton(acceptButton);
     }
 
-    public MainPage setCredentials() {
+    public NavigationBar setCredentials() {
         CommonEvents.clickButton(loginButton);
         enterUsernameFromSystem();
         CommonEvents.customWait(2000);
         enterPasswordFromSystem();
         clickAcceptButton();
-        return new MainPage();
+        return new NavigationBar();
     }
 }
