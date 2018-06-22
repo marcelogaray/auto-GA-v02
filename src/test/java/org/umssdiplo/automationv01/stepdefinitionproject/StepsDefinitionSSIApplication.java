@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -32,25 +31,31 @@ public class StepsDefinitionSSIApplication {
 
     @Given("^'SSI' page is loaded$")
     public void ssiPageIsLoaded() throws Throwable {
-        // Here should be an assertion
+        login = LoadPage.loginPage();
     }
 
-    @And("^Click on 'Estructura Organizacional' menu button$")
+
+    @And("^User is authenticated with administrator credentials$")
+    public void userIsAuthenticated() throws Throwable {
+        navigationBar = login.setCredentials();
+    }
+
+    @And("^Click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
     public void clickOnEstructuraOrganizacionalMenuButton() throws Throwable {
         organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
     }
 
-    @And("^Click on 'Cargos' option from list menu$")
+    @And("^Click 'Cargos' option from list menu on 'Estructura Organizacional' submenu$")
     public void clickOnCargosOptionFromListMenu() throws Throwable {
         positionsSubMenu = organizationalStructureMenu.clickPositions();
     }
 
-    @And("^Click on 'Agregar Nueva Position' Button in list position page$")
+    @And("^Click 'Agregar Nueva Position' button on 'Lista de Posiciones' page$")
     public void clickOnAgregarNuevaPositionButtonInListPositionPage() throws Throwable {
         registerPosition = positionsSubMenu.clickAddPosition();
     }
 
-    @When("^Click on 'Guardar' button without required fields filled$")
+    @When("^CClick 'Guardar' button without required fields filled on 'Registrar Posicion en la empresa' page$")
     public void clickOnGuardarButtonWithoutRequiredFieldsFilled() throws Throwable {
         registerPosition.clickSavePosition();
     }
