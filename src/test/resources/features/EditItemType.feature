@@ -1,7 +1,7 @@
 #Edit ItemType feature
 Feature: EditItemType
   Scenario: AA02-Verify that an Item Type can be edited
-    Given Open web browser and enter the url of the application
+    Given 'SSI Application' page is loaded
     And Click 'Login' button on Page Header
     And Enter Username
     And Enter Password

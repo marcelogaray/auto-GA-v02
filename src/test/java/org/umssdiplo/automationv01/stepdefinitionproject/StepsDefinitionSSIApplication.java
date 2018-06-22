@@ -6,31 +6,26 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.umssdiplo.automationv01.core.managepage.editItemTypePage.EditItemTypePage;
 import org.umssdiplo.automationv01.core.managepage.listaTipoItemPage.ListItemTypePage;
-import org.umssdiplo.automationv01.core.managepage.login.*;
+import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.menu.ActivosMenu;
 import org.umssdiplo.automationv01.core.managepage.menu.MainMenu;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
-public class StepsDefinitionPHPtravel {
+public class StepsDefinitionSSIApplication {
     private Login login;
     private MainMenu mainMenu;
     private ActivosMenu activosMenu;
     private ListItemTypePage listItemTypePage;
     private EditItemTypePage editItemTypePage;
 
-    @Given("^'PHP travel' page is loaded$")
-    public void phpTravelPageIsLoaded() throws Throwable {
+    @Given("^'SSI Application' page is loaded$")
+    public void ssiApplicationPageIsLoaded() throws Throwable {
         login = LoadPage.loginPage();
     }
 
-    @And("^set my credentials on 'Login' page$")
-    public void setMyCredentialsOnLoginPage() throws Throwable {
-        login.setCredentials();
-    }
-
-    @Given("^Open web browser and enter the url of the application$")
-    public void openWebBrowserAndEnterTheUrlOfTheApplication() throws Throwable {
-        login = LoadPage.loginPage();
+    @And("^set Admin credentials on 'Login' page$")
+    public void setCredentialsOnLoginPage() throws Throwable {
+        //navigationBar = login.setCredentials();
     }
 
     @And("^Click 'Login' button on Page Header$")
