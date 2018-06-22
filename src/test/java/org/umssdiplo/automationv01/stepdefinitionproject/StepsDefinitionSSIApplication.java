@@ -26,7 +26,7 @@ public class StepsDefinitionSSIApplication {
         navigationBar = login.setCredentials();
     }
 
-    @When("^go to incident Page$")
+    @When("^click on 'incident' menu on 'navigationBar' page$")
     public void goToIncidentPage() throws Throwable {
         incident = navigationBar.goToIncidentPage();
     }
