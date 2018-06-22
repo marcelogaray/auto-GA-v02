@@ -11,6 +11,7 @@ import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSub
 import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSIApplication {
@@ -63,6 +64,6 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^'Asignar' button should be disabled$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItem.isAssignButtonDisabled(), "'Asignar' button should be disabled");
+        Assert.assertTrue(assignEmployeeItem.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
     }
 }
