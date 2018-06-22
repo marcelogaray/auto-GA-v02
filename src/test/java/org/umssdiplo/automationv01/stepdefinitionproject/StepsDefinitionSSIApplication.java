@@ -25,7 +25,7 @@ public class StepsDefinitionSSIApplication {
 
     @And("^set Admin credentials on 'Login' page$")
     public void setCredentialsOnLoginPage() throws Throwable {
-        //navigationBar = login.setCredentials();
+        navigationBar = login.setCredentials();
     }
 
     @And("^Click 'Login' button on Page Header$")
