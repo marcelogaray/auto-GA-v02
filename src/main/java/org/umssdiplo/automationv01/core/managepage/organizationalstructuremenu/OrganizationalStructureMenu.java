@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSub
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class OrganizationalStructureMenu extends BasePage {
-    @FindBy(id = "sub-menu-list-position")
+    @FindBy(id = "sub-menu-positions")
     private WebElement positionSubMenu;
 
     @FindBy(id = "sub-menu-employees")
