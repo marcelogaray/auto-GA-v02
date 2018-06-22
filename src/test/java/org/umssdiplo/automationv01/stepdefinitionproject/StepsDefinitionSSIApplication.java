@@ -56,7 +56,7 @@ public class StepsDefinitionSSIApplication {
         employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
 
-    @When("^click 'Asignar' button on 'Employee Detail' page$")
+    @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
     public void clickAsignarActivoButton() throws Throwable {
         assignEmployeeItem = employeeDetail.clickAssignEmployeeItem();
     }
