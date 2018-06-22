@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -43,22 +42,22 @@ public class StepsDefinitionSSIApplication {
     }
 
     @And("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
-    public void clickOnEstructuraOrganizacionalMenuButton() throws Throwable {
+    public void clickEstructuraOrganizacionalMenuButton() throws Throwable {
         organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
     }
 
     @And("^click 'Empleados' option on 'Estructura Organizacional' submenu$")
-    public void clickOnEmpleadosOption() throws Throwable {
+    public void clickEmpleadosOption() throws Throwable {
         employeesSubMenu = organizationalStructureMenu.clickEmployees();
     }
 
     @And("^click 'Detail' button of an active employee in 'Employees List' page$")
-    public void clickOnDetailButtonOfAnActiveEmployee() throws Throwable {
+    public void clickDetailButtonOfAnActiveEmployee() throws Throwable {
         employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
 
     @When("^click 'Asignar' button on 'Employee Detail' page$")
-    public void clickOnAsignarActivoButton() throws Throwable {
+    public void clickAsignarActivoButton() throws Throwable {
         assignEmployeeItem = employeeDetail.clickAssignEmployeeItem();
     }
 
