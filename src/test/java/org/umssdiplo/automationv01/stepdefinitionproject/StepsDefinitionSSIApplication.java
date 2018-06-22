@@ -63,6 +63,6 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^'Asignar' button should be disabled$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItem.isAssignButtonDisabled());
+        Assert.assertTrue(assignEmployeeItem.isAssignButtonDisabled(), "'Asignar' button should be disabled");
     }
 }
