@@ -5,14 +5,14 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
-public class AssignEmployeeItem extends BasePage {
+public class AssignEmployeeItemModal extends BasePage {
     @FindBy(id = "cancel-assign-item-btn")
     private WebElement cancelAssignButton;
 
     @FindBy(id = "assign-item-btn")
     private WebElement assignButton;
 
-    public AssignEmployeeItem() {
+    public AssignEmployeeItemModal() {
         CommonEvents.isPresent(cancelAssignButton);
     }
 

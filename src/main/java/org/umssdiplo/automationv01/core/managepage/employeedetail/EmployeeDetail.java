@@ -3,7 +3,7 @@ package org.umssdiplo.automationv01.core.managepage.employeedetail;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
-import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItem;
+import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class EmployeeDetail extends BasePage {
@@ -17,8 +17,8 @@ public class EmployeeDetail extends BasePage {
         CommonEvents.isVisible(asssignedActiveTitle);
     }
 
-    public AssignEmployeeItem clickAssignEmployeeItem() {
+    public AssignEmployeeItemModal clickAssignEmployeeItem() {
         CommonEvents.clickButton(assignItemButton);
-        return new AssignEmployeeItem();
+        return new AssignEmployeeItemModal();
     }
 }
