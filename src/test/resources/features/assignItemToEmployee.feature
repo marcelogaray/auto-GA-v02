@@ -1,6 +1,6 @@
 Feature: AssignItemToEmployee
 
-  Scenario: AA-13 Verify that an item cannot be assigned to an employee if the required fields are not filled
+  Scenario: AA-13 Verify that assign button is disabled if required parameters are not filled
     Given 'SSI' page is loaded
     And User is authenticated with administrator credentials
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu
