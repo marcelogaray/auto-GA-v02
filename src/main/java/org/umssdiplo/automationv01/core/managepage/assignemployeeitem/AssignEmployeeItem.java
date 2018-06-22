@@ -16,10 +16,6 @@ public class AssignEmployeeItem extends BasePage {
         CommonEvents.isPresent(cancelAssignButton);
     }
 
-    public void clickAssignButton() {
-        CommonEvents.isPresent(assignButton);
-    }
-
     public boolean isAssignButtonDisabled() {
         return assignButton.isDisplayed();
     }
