@@ -44,6 +44,15 @@ public class CommonEvents {
     }
 
     /**
+     * This method perform a scroll down until that an element is visible in the UI.
+     *
+     * @param webElement the WebElement non visible in the UI.
+     */
+    public static void jsScrollDown(WebElement webElement) {
+        ((JavascriptExecutor) ManageDriver.getInstance().getWebDriver()).executeScript("arguments[0].scrollIntoView();", webElement);
+    }
+
+    /**
      * This method verifies if a web element is visible.
      *
      * @param webElement is the web element.
@@ -116,10 +125,10 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
-    public static void customWait(int forceWait){
-        try{
+    public static void customWait(int forceWait) {
+        try {
             Thread.sleep(forceWait);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.printf("" + e);
         }
     }
