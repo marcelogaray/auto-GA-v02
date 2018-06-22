@@ -11,12 +11,22 @@ import org.umssdiplo.automationv01.core.managepage.menu.ActivosMenu;
 import org.umssdiplo.automationv01.core.managepage.menu.MainMenu;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
-public class StepsDefinitionSSIApplication {
+public class StepsDefinitionPHPtravel {
     private Login login;
     private MainMenu mainMenu;
     private ActivosMenu activosMenu;
     private ListItemTypePage listItemTypePage;
     private EditItemTypePage editItemTypePage;
+
+    @Given("^'PHP travel' page is loaded$")
+    public void phpTravelPageIsLoaded() throws Throwable {
+        login = LoadPage.loginPage();
+    }
+
+    @And("^set my credentials on 'Login' page$")
+    public void setMyCredentialsOnLoginPage() throws Throwable {
+        login.setCredentials();
+    }
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -25,7 +35,7 @@ public class StepsDefinitionSSIApplication {
 
     @And("^set Admin credentials on 'Login' page$")
     public void setCredentialsOnLoginPage() throws Throwable {
-        navigationBar = login.setCredentials();
+        //navigationBar = login.setCredentials();
     }
 
     @And("^Click 'Login' button on Page Header$")
