@@ -5,7 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItem;
+import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.employeedetail.EmployeeDetail;
 import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSubMenu;
 import org.umssdiplo.automationv01.core.managepage.login.Login;
@@ -20,7 +20,7 @@ public class StepsDefinitionSSIApplication {
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
-    private AssignEmployeeItem assignEmployeeItem;
+    private AssignEmployeeItemModal assignEmployeeItemModal;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -59,11 +59,11 @@ public class StepsDefinitionSSIApplication {
 
     @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
     public void clickAsignarActivoButton() throws Throwable {
-        assignEmployeeItem = employeeDetail.clickAssignEmployeeItem();
+        assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
     }
 
     @Then("^'Asignar' button should be disabled$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItem.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
+        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
     }
 }
