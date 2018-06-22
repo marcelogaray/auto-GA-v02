@@ -27,4 +27,8 @@ public class Accident extends BasePage {
     public int countAccidents() {
         return CommonEvents.countElement(accidents);
     }
+
+    public String getDescription(int position) {
+        return CommonEvents.getTextContent(accidents.get(position).findElement(By.cssSelector(".description-column")));
+    }
 }

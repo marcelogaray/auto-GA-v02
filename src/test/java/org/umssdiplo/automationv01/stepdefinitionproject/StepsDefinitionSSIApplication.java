@@ -14,6 +14,7 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 import java.util.Map;
 
 public class StepsDefinitionSSIApplication {
+    private static final int position = 1;
     private Login login;
     private NavigationBar navigationBar;
     private Accident accident;
@@ -30,18 +31,18 @@ public class StepsDefinitionSSIApplication {
         navigationBar = login.setCredentials();
     }
 
-    @When("^go to accident Page$")
+    @When("^click 'Accident' submenu on 'NavigationBar' page$")
     public void goToAccidentPage() throws Throwable {
         accident = navigationBar.goToAccidentPage();
     }
 
-    @When("^go to create accident page$")
+    @When("^click 'Create Accident' button on 'Acciden' page$")
     public void createAccident() throws Throwable {
         totalAccidents = accident.countAccidents();
         createAccident = accident.createAccident();
     }
 
-    @When("^create an accident$")
+    @When("^fill 'Accident' form on 'Register' page$")
     public void enterDescription$(Map<String, String> data) throws Throwable {
         accident = createAccident.createAccident(data);
     }
@@ -49,5 +50,10 @@ public class StepsDefinitionSSIApplication {
     @Then("^verify that new accident is added (\\d+) in the list$")
     public void verifyAccidentWasAdded(int newAccident) throws Throwable {
         Assert.assertEquals(accident.countAccidents(), totalAccidents + newAccident);
+    }
+
+    @Then("^verify (.*?) description for new accident$")
+    public void verifyNewAccidentDescription(String description) throws Throwable {
+        Assert.assertEquals(accident.getDescription(totalAccidents - position), description);
     }
 }
