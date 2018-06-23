@@ -14,11 +14,15 @@ public class EditItemType extends BasePage {
     @FindBy(id = "save-item-type-button")
     private WebElement saveItemTypeBtn;
 
+    public EditItemType() {
+        CommonEvents.waitUntilByXPath("//mat-card/form/mat-card-actions/button[2]");
+    }
+
     public void enterNewItemTypeName(String newName) {
         CommonEvents.setInputField(itemTypeNameText, newName);
     }
 
-    public ListItemType clickOnSaveItemTypeBtn() {
+    public ListItemType clickSaveItemTypeBtn() {
         CommonEvents.clickButton(saveItemTypeBtn);
         return new ListItemType();
     }
