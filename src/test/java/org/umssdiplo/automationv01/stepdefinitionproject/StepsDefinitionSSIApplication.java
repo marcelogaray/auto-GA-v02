@@ -159,4 +159,14 @@ public class StepsDefinitionSSIApplication {
         String actualTitle = listItemType.getPageTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
     }
+
+    @And("^Click 'Edit' button of \"([^\"]*)\" row$")
+    public void clickEditButtonOfRow(String itemTypeName) throws Throwable {
+        editItemType = listItemType.clickEditBtnByItemTypeName(itemTypeName);
+    }
+
+    @When("^Click 'Cancel' button in Edit Item Type page$")
+    public void clickCancelButtonInEditItemTypePage() throws Throwable {
+        listItemType = editItemType.clickCancelEditItemTypeBtn();
+    }
 }

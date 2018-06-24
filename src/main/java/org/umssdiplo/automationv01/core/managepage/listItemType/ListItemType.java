@@ -105,4 +105,12 @@ public class ListItemType extends BasePage {
 
         return title;
     }
+
+    public EditItemType clickEditBtnByItemTypeName(String name) {
+        int index = getIndexOfItemTypeName(name);
+        WebElement editBtn = getBtnByIndexAndXPath(index, EDIT_BTN_XPATH);
+        CommonEvents.clickButton(editBtn);
+
+        return new EditItemType();
+    }
 }

@@ -14,6 +14,9 @@ public class EditItemType extends BasePage {
     @FindBy(id = "save-item-type-button")
     private WebElement saveItemTypeBtn;
 
+    @FindBy(xpath = "//mat-card/form/mat-card-actions/button[2]")
+    private WebElement cancelEditItemTypeBtn;
+
     public EditItemType() {
         CommonEvents.waitUntilByXPath("//mat-card/form/mat-card-actions/button[2]");
     }
@@ -24,6 +27,11 @@ public class EditItemType extends BasePage {
 
     public ListItemType clickSaveItemTypeBtn() {
         CommonEvents.clickButton(saveItemTypeBtn);
+        return new ListItemType();
+    }
+
+    public ListItemType clickCancelEditItemTypeBtn() {
+        CommonEvents.clickButton(cancelEditItemTypeBtn);
         return new ListItemType();
     }
 }
