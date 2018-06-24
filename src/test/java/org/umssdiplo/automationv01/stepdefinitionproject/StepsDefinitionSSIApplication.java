@@ -153,4 +153,10 @@ public class StepsDefinitionSSIApplication {
         boolean actualResult = listItemType.existItemTypeByName(itemTypeName);
         Assert.assertEquals(actualResult, false);
     }
+
+    @Then("^Verify that \"([^\"]*)\" is the title of the loaded page$")
+    public void verifyThatIsTheTitleOfTheLoadedPage(String expectedTitle) throws Throwable {
+        String actualTitle = listItemType.getPageTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
 }
