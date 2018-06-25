@@ -5,4 +5,4 @@ Feature: DeleteStorage
     And User is authenticated with administrator credentials
     And Click 'Almacenes' menu button on 'Navigation Bar' top menu
     When Click 'Eliminar' button
-    Then The page the list of Storages ya no containing the Storage Eliminado
+    Then The page the list of Storages ya no containing the Storage removed

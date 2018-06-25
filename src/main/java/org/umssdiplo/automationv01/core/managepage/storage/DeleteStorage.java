@@ -6,4 +6,7 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class DeleteStorage extends BasePage {
+
+    public DeleteStorage() {
+    }
 }

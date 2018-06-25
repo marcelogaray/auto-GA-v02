@@ -126,8 +126,8 @@ public class StepsDefinitionSSIApplication {
         deleteStorage = storageList.clickDeleteStorage();
     }
 
-    @Then("^The page the list of Storages ya no containing the Storage Eliminado$")
-    public void thePageTheListOfStoragesYaNoContainingTheStorageEliminado() throws Throwable {
+    @Then("^The page the list of Storages ya no containing the Storage removed")
+    public void thePageTheListOfStoragesYaNoContainingTheStorageRemoved() throws Throwable {
         Assert.assertFalse(storageList.isNotExist());
     }
 }
