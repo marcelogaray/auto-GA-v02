@@ -1,4 +1,4 @@
-Feature: EditStorage
+Feature: StorageEdit
 
   Scenario: S-02 Verify that a store can be edited
     Given 'SSI' page is loaded

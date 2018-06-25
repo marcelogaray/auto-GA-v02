@@ -18,7 +18,7 @@ public class StorageList extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Name Storage')]")
     private WebElement storageNew;
 
-    @FindBy(xpath = "//*[contains(text(),'Name Name Storage')]")
+    @FindBy(xpath = "//*[contains(text(),'New Name Storage')]")
     private WebElement storageNewName;
 
     @FindBy(xpath = "//*[contains(text(),'Name Storage')]")
@@ -46,7 +46,7 @@ public class StorageList extends BasePage {
         return editStorageButton.isDisplayed();
     }
 
-    public boolean isNewNameStorageVisible() {
+    public boolean isNewNameStorageEditVisible() {
         return storageNewName.isDisplayed();
     }
 

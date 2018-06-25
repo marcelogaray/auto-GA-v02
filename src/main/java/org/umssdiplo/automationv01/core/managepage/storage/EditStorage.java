@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class EditStorage extends BasePage {
     @FindBy(id = "editNameStorage")
-    private WebElement editNameStorage;
+    private WebElement inputNameStorage;
 
     @FindBy(id = "editSaveButton")
     private WebElement editSaveButton;
@@ -17,7 +17,7 @@ public class EditStorage extends BasePage {
     }
 
     public void inputNewNameStorage() {
-        CommonEvents.setInputField(editNameStorage, "New Name Storage");
+        CommonEvents.setInputField(inputNameStorage, "New Name Storage");
     }
 
     public void clickSave() {

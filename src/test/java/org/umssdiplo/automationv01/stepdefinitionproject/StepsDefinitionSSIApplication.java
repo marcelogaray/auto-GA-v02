@@ -118,7 +118,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^The page should redirect to the list of Storages containing the new Storage Edited$")
     public void thePageShouldRedirectToTheListOfStoragesContainingTheNewStorageEdited() throws Throwable {
-        Assert.assertTrue(storageList.isNewNameStorageVisible());
+        Assert.assertTrue(storageList.isNewNameStorageEditVisible());
     }
 
     @When("^Click 'Eliminar' button$")
