@@ -128,6 +128,6 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^The page the list of Storages ya no containing the Storage removed")
     public void thePageTheListOfStoragesYaNoContainingTheStorageRemoved() throws Throwable {
-        Assert.assertFalse(storageList.isNotExist());
+        Assert.assertTrue(storageList.isNotExist());
     }
 }
