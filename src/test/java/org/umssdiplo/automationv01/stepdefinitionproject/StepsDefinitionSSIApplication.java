@@ -13,6 +13,7 @@ import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
 import org.umssdiplo.automationv01.core.managepage.storage.AddStorage;
+import org.umssdiplo.automationv01.core.managepage.storage.EditStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.StorageList;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -26,6 +27,7 @@ public class StepsDefinitionSSIApplication {
     private AssignEmployeeItemModal assignEmployeeItemModal;
     private StorageList storageList;
     private AddStorage addStorage;
+    private EditStorage editStorage;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -95,5 +97,25 @@ public class StepsDefinitionSSIApplication {
     @Then("^The page should redirect to the list of Storages containing the new Storage$")
     public void thePageShouldRedirectToTheListOfStoragesContainingTheNewStorage() throws Throwable {
         Assert.assertTrue(storageList.isStorageVisible());
+    }
+
+    @And("^Click 'Editar' button$")
+    public void clickEditarButton() throws Throwable {
+        editStorage = storageList.clickEditStorage();
+    }
+
+    @And("^Enter a store new name in the \"([^\"]*)\" field$")
+    public void enterAStoreNewNameInTheField(String arg0) throws Throwable {
+        editStorage.inputNewNameStorage();
+    }
+
+    @When("^Click in 'Guardar' button$")
+    public void clickInGuardarButton() throws Throwable {
+        editStorage.clickSave();
+    }
+
+    @Then("^The page should redirect to the list of Storages containing the new Storage Edited$")
+    public void thePageShouldRedirectToTheListOfStoragesContainingTheNewStorageEdited() throws Throwable {
+        Assert.assertTrue(storageList.isEditStorageVisible());
     }
 }

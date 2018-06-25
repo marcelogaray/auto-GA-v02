@@ -17,6 +17,9 @@ public class NavigationBar extends BasePage {
     @FindBy(id = "storageMenu")
     private WebElement storageMenu;
 
+    @FindBy(xpath = "//mat-row[10]/mat-cell[1]")
+    private WebElement nombrealmacen;
+
     public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
     }
