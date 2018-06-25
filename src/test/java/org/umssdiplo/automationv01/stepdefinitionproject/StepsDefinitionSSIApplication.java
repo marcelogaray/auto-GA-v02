@@ -13,6 +13,7 @@ import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
 import org.umssdiplo.automationv01.core.managepage.storage.AddStorage;
+import org.umssdiplo.automationv01.core.managepage.storage.DeleteStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.EditStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.StorageList;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
@@ -28,6 +29,7 @@ public class StepsDefinitionSSIApplication {
     private StorageList storageList;
     private AddStorage addStorage;
     private EditStorage editStorage;
+    private DeleteStorage deleteStorage;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -116,6 +118,16 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^The page should redirect to the list of Storages containing the new Storage Edited$")
     public void thePageShouldRedirectToTheListOfStoragesContainingTheNewStorageEdited() throws Throwable {
-        Assert.assertTrue(storageList.isEditStorageVisible());
+        Assert.assertTrue(storageList.isNewNameStorageVisible());
+    }
+
+    @When("^Click 'Eliminar' button$")
+    public void clickEliminarButton() throws Throwable {
+        deleteStorage = storageList.clickDeleteStorage();
+    }
+
+    @Then("^The page the list of Storages ya no containing the Storage Eliminado$")
+    public void thePageTheListOfStoragesYaNoContainingTheStorageEliminado() throws Throwable {
+        Assert.assertFalse(storageList.isNotExist());
     }
 }

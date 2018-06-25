@@ -1,6 +1,6 @@
 Feature: EditStorage
 
-  Scenario: S-01 Verify that a store can be edited
+  Scenario: S-02 Verify that a store can be edited
     Given 'SSI' page is loaded
     And User is authenticated with administrator credentials
     And Click 'Almacenes' menu button on 'Navigation Bar' top menu

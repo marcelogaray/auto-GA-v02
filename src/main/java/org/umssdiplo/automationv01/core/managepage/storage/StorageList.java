@@ -12,11 +12,17 @@ public class StorageList extends BasePage {
     @FindBy(id = "editStorage")
     private WebElement editStorageButton;
 
+    @FindBy(id = "deleteStorageButton")
+    private WebElement deleteStorageButton;
+
     @FindBy(xpath = "//*[contains(text(),'Name Storage')]")
     private WebElement storageNew;
 
     @FindBy(xpath = "//*[contains(text(),'Name Name Storage')]")
     private WebElement storageNewName;
+
+    @FindBy(xpath = "//*[contains(text(),'Name Storage')]")
+    private WebElement deleteStorage;
 
     public StorageList() {
         CommonEvents.isVisible(addStorageButton);
@@ -42,5 +48,14 @@ public class StorageList extends BasePage {
 
     public boolean isNewNameStorageVisible() {
         return storageNewName.isDisplayed();
+    }
+
+    public boolean isNotExist() {
+        return deleteStorage.isDisplayed();
+    }
+
+    public DeleteStorage clickDeleteStorage() {
+        CommonEvents.clickButton(deleteStorageButton);
+        return new DeleteStorage();
     }
 }
