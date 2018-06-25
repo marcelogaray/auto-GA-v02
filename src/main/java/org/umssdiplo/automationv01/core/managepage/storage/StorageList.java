@@ -9,6 +9,12 @@ public class StorageList extends BasePage {
     @FindBy(id = "addStorageButton")
     private WebElement addStorageButton;
 
+    @FindBy(id = "editStorage")
+    private WebElement editStorageButton;
+
+    @FindBy(xpath = "//*[contains(text(),'Name Storage')]")
+    private WebElement storageNew;
+
     public StorageList() {
         CommonEvents.isVisible(addStorageButton);
     }
@@ -19,6 +25,15 @@ public class StorageList extends BasePage {
     }
 
     public boolean isStorageVisible() {
-        return addStorageButton.isDisplayed();
+        return storageNew.isDisplayed();
+    }
+
+    public EditStorage clickEditStorage() {
+        CommonEvents.clickButton(editStorageButton);
+        return new EditStorage();
+    }
+
+    public boolean isEditStorageVisible() {
+        return editStorageButton.isDisplayed();
     }
 }
