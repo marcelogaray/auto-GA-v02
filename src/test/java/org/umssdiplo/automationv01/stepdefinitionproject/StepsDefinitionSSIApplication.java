@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.addItemType.AddItemType;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.editItemType.EditItemType;
 import org.umssdiplo.automationv01.core.managepage.employeedetail.EmployeeDetail;
@@ -28,6 +29,7 @@ public class StepsDefinitionSSIApplication {
     private ActivosMenu activosMenu;
     private ListItemType listItemType;
     private EditItemType editItemType;
+    private AddItemType addItemType;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -168,5 +170,16 @@ public class StepsDefinitionSSIApplication {
     @When("^Click 'Cancel' button in Edit Item Type page$")
     public void clickCancelButtonInEditItemTypePage() throws Throwable {
         listItemType = editItemType.clickCancelEditItemTypeBtn();
+    }
+
+    @When("^Click 'Anadir Tipo' submenu option$")
+    public void clickAnadirTipoSubmenuOption() throws Throwable {
+        addItemType = activosMenu.clickAnadirTypeSubmenu();
+    }
+
+    @Then("^Verify 'Save' button status is \"([^\"]*)\"$")
+    public void verifySaveButtonStatusIs(String expecedBtnStatus) throws Throwable {
+        String actualStatus = addItemType.getSaveBtnStatus();
+        Assert.assertEquals(actualStatus, expecedBtnStatus);
     }
 }
