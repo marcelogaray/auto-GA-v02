@@ -15,55 +15,46 @@ import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSIApplication {
-    private Login login;
-    private NavigationBar navigationBar;
+    private static Login login;
+    private static NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
     private AssignEmployeeItemModal assignEmployeeItemModal;
 
-    @Given("^'SSI Application' page is loaded$")
-    public void ssiApplicationPageIsLoaded() throws Throwable {
-        login = LoadPage.loginPage();
-    }
-
-    @And("^set Admin credentials on 'Login' page$")
-    public void setCredentialsOnLoginPage() throws Throwable {
-        navigationBar = login.setCredentials();
-    }
-
     @Given("^'SSI' page is loaded$")
     public void ssiPageIsLoaded() throws Throwable {
         login = LoadPage.loginPage();
     }
-
-    @And("^User is authenticated with administrator credentials$")
+    @And("^user is authenticated with administrator credentials$")
     public void userIsAuthenticatedWithAdministratorCredentials() throws Throwable {
-        navigationBar = login.setCredentials();
+        if(navigationBar == null){
+            navigationBar = login.setCredentials();
+        }
     }
-
     @And("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
     public void clickEstructuraOrganizacionalMenuButton() throws Throwable {
         organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
     }
-
     @And("^click 'Empleados' option on 'Estructura Organizacional' submenu$")
     public void clickEmpleadosOption() throws Throwable {
         employeesSubMenu = organizationalStructureMenu.clickEmployees();
     }
-
     @And("^click 'Detail' button of an active employee in 'Employees List' page$")
     public void clickDetailButtonOfAnActiveEmployee() throws Throwable {
         employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
-
     @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
     public void clickAsignarActivoButton() throws Throwable {
         assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
     }
-
-    @Then("^'Asignar' button should be disabled$")
+    @Then("^'Asignar' button should be disabled in the modal displayed$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
+        Assert.assertFalse(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISABLE, "Asignar"));
+    }
+
+    @Then("^modal title should be \"([^\"]*)\"$")
+    public void modalTitleShouldBe(String expected) throws Throwable {
+        Assert.assertEquals(assignEmployeeItemModal.getTitle(), expected, String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_MODAL_TITLE, assignEmployeeItemModal.getTitle()));
     }
 }
