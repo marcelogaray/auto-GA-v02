@@ -16,3 +16,11 @@ Feature: Plan de Contingencias
       | date         | 05/17/2018                                                                     |
     Then verify that new Contingency plan is added in the list
     And verify irritacion en la vista accident name for new Contingency Plan
+
+  Scenario: PC-02 Verificar que un plan de contingencia es eliminado
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
+    And delete Contingency plan from position 1
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
+    Then verify that Contingency Plan was removed in the list
