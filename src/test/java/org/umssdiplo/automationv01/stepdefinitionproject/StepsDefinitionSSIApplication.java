@@ -5,6 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.EmployeeRegister;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.employeedetail.EmployeeDetail;
 import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSubMenu;
@@ -15,12 +16,12 @@ import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSIApplication {
+    int id = 6;
     private Login login;
     private NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
-    private AssignEmployeeItemModal assignEmployeeItemModal;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -52,18 +53,14 @@ public class StepsDefinitionSSIApplication {
         employeesSubMenu = organizationalStructureMenu.clickEmployees();
     }
 
-    @And("^click 'Detail' button of an active employee in 'Employees List' page$")
-    public void clickDetailButtonOfAnActiveEmployee() throws Throwable {
+
+    @When("^an 'Employee' is selected to be deleted on 'Employee List' page$")
+    public void anEmployeeIsSelectedToBeDeletedOnEmployeeListPage() throws Throwable {
         employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
 
-    @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
-    public void clickAsignarActivoButton() throws Throwable {
-        assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
-    }
-
-    @Then("^'Asignar' button should be disabled$")
-    public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
+    @Then("^'delete employee' button should be clicked$")
+    public void deleteEmployeeButtonShouldBeClicked() throws Throwable {
+        employeeDetail.clickDropEmployee();
     }
 }

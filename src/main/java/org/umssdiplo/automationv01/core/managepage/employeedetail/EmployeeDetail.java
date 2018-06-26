@@ -3,22 +3,16 @@ package org.umssdiplo.automationv01.core.managepage.employeedetail;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
-import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
-import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class EmployeeDetail extends BasePage {
-    @FindBy(id = "assigned-items-title")
-    private WebElement asssignedActiveTitle;
+    private final String ele = "employee-delete"+2;
 
-    @FindBy(id = "assign-active")
-    private WebElement assignItemButton;
+    @FindBy(id = ele)
+    private WebElement dropEmployee;
 
-    public EmployeeDetail() {
-        CommonEvents.isVisible(asssignedActiveTitle);
-    }
+    public EmployeeDetail() { }
 
-    public AssignEmployeeItemModal clickAssignEmployeeItem() {
-        CommonEvents.clickButton(assignItemButton);
-        return new AssignEmployeeItemModal();
+    public void clickDropEmployee() {
+        dropEmployee.click();
     }
 }
