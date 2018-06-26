@@ -1,9 +1,6 @@
 package org.umssdiplo.automationv01.core.utils;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
@@ -132,4 +129,20 @@ public class CommonEvents {
             System.out.printf("" + e);
         }
     }
+
+
+    /**
+     * This method count all element into the list.
+     *
+     * @param webElements Is the web element list.
+     */
+    public static int countElement(List<WebElement> webElements) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElements.get(0)));
+        return webElements.size();
+    }
+
+    public static WebElement getWebElementByClassName(WebElement element, String className) {
+        return element.findElement(By.cssSelector("." + className));
+    }
+
 }

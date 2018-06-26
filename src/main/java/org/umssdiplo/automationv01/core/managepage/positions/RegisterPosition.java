@@ -20,7 +20,7 @@ public class RegisterPosition extends BasePage {
         return addPositionTitle.getText();
     }
 
-    public void clickSavePosition(){
+    public void clickSavePosition() {
         CommonEvents.clickButton(savePositionButton);
     }
 }

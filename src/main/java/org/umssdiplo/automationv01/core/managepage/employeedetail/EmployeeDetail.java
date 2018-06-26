@@ -13,6 +13,13 @@ public class EmployeeDetail extends BasePage {
     @FindBy(id = "assign-active")
     private WebElement assignItemButton;
 
+    @FindBy(className = "return-item-btn")
+    private WebElement returnButtons;
+
+    @FindBy(id = "assigned-items-title")
+    private WebElement assignItemTitle;
+
+
     public EmployeeDetail() {
         CommonEvents.isVisible(asssignedActiveTitle);
     }
@@ -20,5 +27,13 @@ public class EmployeeDetail extends BasePage {
     public AssignEmployeeItemModal clickAssignEmployeeItem() {
         CommonEvents.clickButton(assignItemButton);
         return new AssignEmployeeItemModal();
+    }
+
+    public boolean existReturnButton() {
+        return CommonEvents.isPresent(returnButtons);
+    }
+
+    public boolean existAssignItemTitleSection() {
+        return CommonEvents.isPresent(assignItemTitle);
     }
 }
