@@ -50,3 +50,9 @@ Feature: Plan de Contingencias
     And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
     And click 'Crear Plan de continegcia' button on 'Plan de Contigencia' page
     Then verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page
+
+  Scenario: PC-05 verificar que el boton modificar esta abilitado por defecto
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
+    And edit contigency plan from position 1
+    Then verify that 'mofificar' button is enabled by default on 'modificar plan de contingencia' page
