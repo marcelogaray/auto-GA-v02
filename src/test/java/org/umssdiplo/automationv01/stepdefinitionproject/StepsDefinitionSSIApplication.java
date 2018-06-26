@@ -12,10 +12,7 @@ import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSub
 import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
-import org.umssdiplo.automationv01.core.managepage.storage.AddStorage;
-import org.umssdiplo.automationv01.core.managepage.storage.DeleteStorage;
-import org.umssdiplo.automationv01.core.managepage.storage.EditStorage;
-import org.umssdiplo.automationv01.core.managepage.storage.StorageList;
+import org.umssdiplo.automationv01.core.managepage.storage.*;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -30,6 +27,7 @@ public class StepsDefinitionSSIApplication {
     private AddStorage addStorage;
     private EditStorage editStorage;
     private DeleteStorage deleteStorage;
+    private ListItems listItems;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -129,5 +127,15 @@ public class StepsDefinitionSSIApplication {
     @Then("^The page the list of Storages ya no containing the Storage Eliminado$")
     public void thePageTheListOfStoragesYaNoContainingTheStorageEliminado() throws Throwable {
         Assert.assertFalse(storageList.isNotExist());
+    }
+
+    @When("^Click 'Ver activos' button of storage selected$")
+    public void clickVerActivosButtonOfStorageSelected() throws Throwable {
+        listItems = storageList.clickSeeAssets();
+    }
+
+    @Then("^'SSI/storage-list/id' page is loaded$")
+    public void ssiStorageListIdPageIsLoaded() throws Throwable {
+        Assert.assertTrue(listItems.assetsDisplayed());
     }
 }

@@ -24,6 +24,9 @@ public class StorageList extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Name Storage')]")
     private WebElement deleteStorage;
 
+    @FindBy(id = "seeAssets")
+    private WebElement seeAssets;
+
     public StorageList() {
         CommonEvents.isVisible(addStorageButton);
     }
@@ -57,5 +60,10 @@ public class StorageList extends BasePage {
     public DeleteStorage clickDeleteStorage() {
         CommonEvents.clickButton(deleteStorageButton);
         return new DeleteStorage();
+    }
+
+    public ListItems clickSeeAssets() {
+        CommonEvents.clickButton(seeAssets);
+        return new ListItems();
     }
 }
