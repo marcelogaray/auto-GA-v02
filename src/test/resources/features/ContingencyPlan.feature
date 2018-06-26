@@ -44,3 +44,9 @@ Feature: Plan de Contingencias
     And set 2 semana suspendidio del trabajo search filter value on 'Plan de Contingencia' page
     And click on search button on 'Plan de Contingencia' page
     Then verify that Contingency plans are filter by 2 semana suspendidio del trabajo penalties
+
+  Scenario: PC-04 verificar que el boton 'guardar' esta desabilitado por defecto en la vista crear plan de contingencia
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
+    And click 'Crear Plan de continegcia' button on 'Plan de Contigencia' page
+    Then verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page
