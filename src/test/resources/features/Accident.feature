@@ -58,3 +58,9 @@ Feature: Accident
     And set bajo search filter value on 'Accidente' page
     And click on search button on 'Accidente' page
     Then verify that accident are filer by bajo severity
+
+  Scenario: AC-04 verificar que el boton 'guardar' esta desabilitado por defecto en la vista crear accidente
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Accidente' option on 'Accidente e Incidentes' menu
+    And click 'Create Accident' button on 'Accidente' page
+    Then verify that 'guardar' button is disabled by default on 'Register Accidente' page
