@@ -156,4 +156,14 @@ public class CommonEvents {
     public static WebElement getWebElementByClassName(WebElement element, String className) {
         return element.findElement(By.cssSelector("." + className));
     }
+
+    /**
+     * This method clear the set input field
+     *
+     * @param webElement Is web element.
+     */
+    public static void clearInputField(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.clear();
+    }
 }

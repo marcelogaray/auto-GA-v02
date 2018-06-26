@@ -1,12 +1,12 @@
 # Accident feature review the behavior in this feature
 Feature: Accident
 
-  Scenario: AC-01 Verify that an accident is created with required fields
+  Scenario: AC-01 Verificar que un accidente es creado
     Given 'SSI Application' page is loaded
     And set Admin credentials on 'Login' page
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Accidente' option on 'Accidente e Incidentes' menu
-    And click 'Create Accident' button on 'Acciden' page
+    And click 'Create Accident' button on 'Accidente' page
     And fill 'Accident' form on 'Registro Accidente' page
       | enployee    | Reagan Hatfield         |
       | deparment   | Direccion de obra       |

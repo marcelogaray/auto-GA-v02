@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 import java.util.Map;
 
-public class CreateAccident extends BasePage {
+public class ModificarAccident extends BasePage {
     @FindBy(id = "employee-select")
     private WebElement employeeSelect;
 
@@ -20,33 +20,27 @@ public class CreateAccident extends BasePage {
     @FindBy(id = "severity-input")
     private WebElement severity;
 
-    @FindBy(id = "state-input")
-    private WebElement state;
-
     @FindBy(id = "material-input")
     private WebElement material;
 
-    @FindBy(id = "seniority-input")
-    private WebElement senority;
+    @FindBy(id = "state-input")
+    private WebElement state;
 
     @FindBy(id = "personal-input")
     private WebElement other;
 
+    @FindBy(id = "seniority-input")
+    private WebElement senority;
+
     @FindBy(id = "date-input")
     private WebElement accidentDate;
 
-    @FindBy(id = "save-accident-button")
-    private WebElement saveButton;
-
-    @FindBy(id = "back-accident-button")
-    private WebElement backButton;
+    @FindBy(id = "edit-accident-button")
+    private WebElement editButton;
 
     @FindBy(id = "severity-required-message")
     private WebElement severityErrorMessage;
 
-    public CreateAccident() {
-        CommonEvents.isVisible(saveButton);
-    }
 
     public void selectEmployeeByValue(String textValue) {
         CommonEvents.selectElementByText(employeeSelect, textValue);
@@ -64,16 +58,8 @@ public class CreateAccident extends BasePage {
         CommonEvents.setInputField(severity, value);
     }
 
-    public void setState(String value) {
-        CommonEvents.setInputField(state, value);
-    }
-
     public void setMaterial(String value) {
         CommonEvents.setInputField(material, value);
-    }
-
-    public void setSenority(String value) {
-        CommonEvents.setInputField(senority, value);
     }
 
     public void setOther(String value) {
@@ -84,31 +70,39 @@ public class CreateAccident extends BasePage {
         accidentDate.sendKeys(value);
     }
 
-    public Accident clickSaveButton() {
-        CommonEvents.clickButton(saveButton);
+    public void setState(String value) {
+        CommonEvents.setInputField(state, value);
+    }
+
+    public void setSenority(String value) {
+        CommonEvents.setInputField(senority, value);
+    }
+
+    public Accident clickEditButton() {
+        CommonEvents.clickButton(editButton);
         return new Accident();
     }
 
-    public Accident createAccident(Map<String, String> data) {
+    public Accident editAccident(Map<String, String> data) {
         selectEmployeeByValue(data.get("enployee").toString());
         selectDepartmentByValue(data.get("deparment").toString());
         setDescription(data.get("description"));
         setSeverity(data.get("severity"));
         setMaterial(data.get("material"));
         setState(data.get("state"));
-        setOther("other");
         setSenority(data.get("senority"));
+        setOther(data.get("other"));
         setDate(data.get("date"));
-        clickSaveButton();
+        clickEditButton();
         return new Accident();
     }
 
-    public boolean isSaveButtonEnabled() {
-        return CommonEvents.isPresent(saveButton);
+    public boolean isEditButtonEnabled() {
+        return CommonEvents.isPresent(editButton);
     }
 
-    public void clickSeverityInput() {
-        CommonEvents.clickButton(severity);
+    public void clearSeverityInput() {
+        CommonEvents.clearInputField(severity);
     }
 
     public void clickStateInput() {
@@ -117,9 +111,5 @@ public class CreateAccident extends BasePage {
 
     public String getSeverityErrorMessage() {
         return CommonEvents.getTextContent(severityErrorMessage);
-    }
-
-    public void clickBackButton() {
-        CommonEvents.clickButton(backButton);
     }
 }
