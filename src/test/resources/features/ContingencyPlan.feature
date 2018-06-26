@@ -36,3 +36,11 @@ Feature: Plan de Contingencias
       | penalties    | 2 semanas updated          |
       | description  | uso de mallas updated      |
     Then verify that Contingency at position 1 is modified
+
+  Scenario: PC-13 verificar que plan de contingencia puede ser buscado por su penalidad
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
+    And select Penalidad search filter option on 'Plan de Contingencia' page
+    And set 2 semana suspendidio del trabajo search filter value on 'Plan de Contingencia' page
+    And click on search button on 'Plan de Contingencia' page
+    Then verify that Contingency plans are filter by 2 semana suspendidio del trabajo penalties
