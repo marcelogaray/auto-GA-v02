@@ -64,3 +64,9 @@ Feature: Accident
     And click 'Accidente' option on 'Accidente e Incidentes' menu
     And click 'Create Accident' button on 'Accidente' page
     Then verify that 'guardar' button is disabled by default on 'Register Accidente' page
+
+  Scenario: AC-05 verificar que el boton 'modificar' esta abilitado por defecto en la pagina modificar accidente
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Accidente' option on 'Accidente e Incidentes' menu
+    And edit accident from position 1
+    Then verify that 'mofificar' button is enabled by default on 'modificar Accidente' page
