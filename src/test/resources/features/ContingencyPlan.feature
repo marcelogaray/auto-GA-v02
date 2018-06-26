@@ -24,3 +24,15 @@ Feature: Plan de Contingencias
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
     Then verify that Contingency Plan was removed in the list
+
+  Scenario: PC-03 verificar que un plan de contingencia es modificado
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
+    And edit contigency plan from position 1
+    And edit 'Contingency Plan' form values on 'Modificar plan de contingencia' page
+      | accident     | irritacion en la vista     |
+      | standartName | Direccion de obras updated |
+      | material     | gafas updated              |
+      | penalties    | 2 semanas updated          |
+      | description  | uso de mallas updated      |
+    Then verify that Contingency at position 1 is modified
