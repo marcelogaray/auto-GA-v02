@@ -66,18 +66,18 @@ public class StepsDefinitionSSIApplication {
         Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
     }
 
-    @And("^click 'agregar empleado' button in 'Employees List' page$")
-    public void clickAgregarEmpleadoButtonInEmployeesListPage() throws Throwable {
+    @And("^click 'editar empleado' button in 'Employees List' page$")
+    public void clickEditarEmpleadoButtonInEmployeesListPage() throws Throwable {
         employeeRegister = employeesSubMenu.clickEmployeeRegister();
     }
 
-    @When("^'Employee Form' page is fill with new employee data$")
-    public void employeeFormPageIsFillWithNewEmployeeData() throws Throwable {
+    @When("^'Employee Form' page is edited with new employee data$")
+    public void employeeFormPageIsEditedWithNewEmployeeData() throws Throwable {
         employeeRegister.fillForm();
     }
 
-    @Then("^'Registrar' button should be clicked$")
-    public void registrarButtonShouldBeClicked() throws Throwable {
+    @Then("^'Actualizar' button should be clicked$")
+    public void actualizarButtonShouldBeClicked() throws Throwable {
         employeeRegister.clickAddEmployeeButton();
     }
 }
