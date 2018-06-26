@@ -12,6 +12,8 @@ import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSub
 import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.managepage.reportsmenu.ReportsMenu;
+import org.umssdiplo.automationv01.core.managepage.reportstorage.ReportStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.*;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -28,6 +30,8 @@ public class StepsDefinitionSSIApplication {
     private EditStorage editStorage;
     private DeleteStorage deleteStorage;
     private ListAssets listAssets;
+    private ReportsMenu reportsMenu;
+    private ReportStorage reportStorage;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -147,5 +151,20 @@ public class StepsDefinitionSSIApplication {
     @Then("^The 'SSI' page with the storage list should be loaded$")
     public void theSSIPageWithTheStorageListShouldBeLoaded() throws Throwable {
         storageList = navigationBar.clickStorages();
+    }
+
+    @And("^Click 'Reportes' menu button on 'Navigation Bar' top menu$")
+    public void clickReportesMenuButtonOnNavigationBarTopMenu() throws Throwable {
+        reportsMenu = navigationBar.clickReportMenu();
+    }
+
+    @When("^Click 'Reporte de almacenes' option on 'Reportes' submenu$")
+    public void clickReporteDeAlmacenesOptionOnReportesSubmenu() throws Throwable {
+        reportStorage = reportsMenu.clickReportStorages();
+    }
+
+    @Then("^'Storage Item Details' page is loaded$")
+    public void storageItemDetailsPageIsLoaded() throws Throwable {
+        Assert.assertTrue(reportStorage.isBackStorageButtonDisabled());
     }
 }
