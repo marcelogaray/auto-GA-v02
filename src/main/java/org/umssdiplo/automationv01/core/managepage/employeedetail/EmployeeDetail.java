@@ -7,18 +7,16 @@ import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmpl
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class EmployeeDetail extends BasePage {
-    @FindBy(id = "assigned-items-title")
+    @FindBy(id = "titulo-lista")
     private WebElement asssignedActiveTitle;
 
-    @FindBy(id = "assign-active")
-    private WebElement assignItemButton;
+    private boolean titulo;
 
     public EmployeeDetail() {
-        CommonEvents.isVisible(asssignedActiveTitle);
+        titulo = CommonEvents.isVisible(asssignedActiveTitle);
     }
 
-    public AssignEmployeeItemModal clickAssignEmployeeItem() {
-        CommonEvents.clickButton(assignItemButton);
-        return new AssignEmployeeItemModal();
+    public boolean isListofEmployeesShowing() {
+        return titulo;
     }
 }

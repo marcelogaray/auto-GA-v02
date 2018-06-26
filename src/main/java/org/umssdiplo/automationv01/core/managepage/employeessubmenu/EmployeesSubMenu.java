@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.EmployeeRegister;
+import org.umssdiplo.automationv01.core.managepage.employeedetail.EmployeeDetail;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class EmployeesSubMenu extends BasePage {
@@ -14,8 +15,8 @@ public class EmployeesSubMenu extends BasePage {
         CommonEvents.isVisible(addEmployeeButton);
     }
 
-    public EmployeeRegister clickEmployeeRegister() {
+    public EmployeeDetail clickEmployeeRegister() {
         CommonEvents.clickButton(addEmployeeButton);
-        return new EmployeeRegister();
+        return new EmployeeDetail();
     }
 }
