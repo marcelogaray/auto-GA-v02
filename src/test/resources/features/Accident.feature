@@ -50,3 +50,11 @@ Feature: Accident
       | other       | other edit             |
       | date        | 04/09/2017             |
     Then verify that 1 Accident is modified
+
+  Scenario: AC-14 verificar que un accidente puede ser buscado por su severidad
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Accidente' option on 'Accidente e Incidentes' menu
+    And select severity search filter option on 'Accidente' page
+    And set bajo search filter value on 'Accidente' page
+    And click on search button on 'Accidente' page
+    Then verify that accident are filer by bajo severity
