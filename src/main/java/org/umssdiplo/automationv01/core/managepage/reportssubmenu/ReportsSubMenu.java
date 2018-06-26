@@ -32,5 +32,4 @@ public class ReportsSubMenu extends BasePage {
         CommonEvents.clickButton(refundedItemsReport);
         return new RefundedItemsReport();
     }
-
 }

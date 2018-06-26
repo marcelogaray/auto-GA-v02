@@ -144,5 +144,4 @@ public class CommonEvents {
     public static WebElement getWebElementByClassName(WebElement element, String className) {
         return element.findElement(By.cssSelector("." + className));
     }
-
 }

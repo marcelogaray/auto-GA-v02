@@ -17,18 +17,14 @@ public class EditPosition extends BasePage {
     private WebElement saveUpdatePositionTitle;
 
     public EditPosition() {
-
         CommonEvents.isVisible(backUpdatePositionButton);
     }
 
     public String getTitle() {
-
         return saveUpdatePositionTitle.getText();
     }
 
     public String getSaveButtonName() {
         return saveUpdatePositionButton.getText();
     }
-
-
 }
