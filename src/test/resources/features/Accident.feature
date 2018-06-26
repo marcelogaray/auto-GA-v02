@@ -34,4 +34,19 @@ Feature: Accident
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Accidente' option on 'Accidente e Incidentes' menu
     Then verify that one Accident was removed in the list
-    
+
+  Scenario: AC-03 verificar que un accidente es modificado
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Accidente' option on 'Accidente e Incidentes' menu
+    And edit accident from position 1
+    And edit 'Accident' form on 'Modificar Accidente' page
+      | enployee    | Reagan Hatfield        |
+      | deparment   | Direccion de obra      |
+      | description | accident desc edit     |
+      | severity    | accident sev edit      |
+      | material    | accident used edit     |
+      | state       | accident state ediy    |
+      | senority    | accident employee edit |
+      | other       | other edit             |
+      | date        | 04/09/2017             |
+    Then verify that 1 Accident is modified
