@@ -15,31 +15,23 @@ import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSIApplication {
-    private Login login;
-    private NavigationBar navigationBar;
+    private static Login login;
+    private static NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
     private AssignEmployeeItemModal assignEmployeeItemModal;
-
-    @Given("^'SSI Application' page is loaded$")
-    public void ssiApplicationPageIsLoaded() throws Throwable {
-        login = LoadPage.loginPage();
-    }
-
-    @And("^set Admin credentials on 'Login' page$")
-    public void setCredentialsOnLoginPage() throws Throwable {
-        navigationBar = login.setCredentials();
-    }
 
     @Given("^'SSI' page is loaded$")
     public void ssiPageIsLoaded() throws Throwable {
         login = LoadPage.loginPage();
     }
 
-    @And("^User is authenticated with administrator credentials$")
+    @And("^user is authenticated with administrator credentials$")
     public void userIsAuthenticatedWithAdministratorCredentials() throws Throwable {
-        navigationBar = login.setCredentials();
+        if (navigationBar == null) {
+            navigationBar = login.setCredentials();
+        }
     }
 
     @And("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
@@ -62,8 +54,33 @@ public class StepsDefinitionSSIApplication {
         assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
     }
 
-    @Then("^'Asignar' button should be disabled$")
+    @Then("^'Asignar' button should be disabled in the modal displayed$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
+        Assert.assertFalse(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISABLE, "Asignar"));
+    }
+
+    @And("^click 'Estado del activo' dropdown in assign item modal$")
+    public void clickEstadoDelActivoDropdownInAssignItemModal() throws Throwable {
+        assignEmployeeItemModal.clickStateItemDropdown();
+    }
+
+    @And("^select any state$")
+    public void selectAnyState() throws Throwable {
+        assignEmployeeItemModal.selectStateItemDropdown();
+    }
+
+    @And("^click 'Activo' dropdown in assign item modal$")
+    public void clickActivoDropdownInAssignItemModal() throws Throwable {
+        assignEmployeeItemModal.clickItemDropdown();
+    }
+
+    @When("^select any item$")
+    public void selectAnyItem() throws Throwable {
+        assignEmployeeItemModal.selectItem();
+    }
+
+    @Then("^'Asignar' button should be enabled in the modal displayed$")
+    public void asignarButtonShouldBeEnabledInTheModalDisplayed() throws Throwable {
+        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_ENABLE, "Asignar"));
     }
 }
