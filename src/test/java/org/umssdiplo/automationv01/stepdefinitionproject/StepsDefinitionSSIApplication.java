@@ -26,28 +26,34 @@ public class StepsDefinitionSSIApplication {
     public void ssiPageIsLoaded() throws Throwable {
         login = LoadPage.loginPage();
     }
+
     @And("^user is authenticated with administrator credentials$")
     public void userIsAuthenticatedWithAdministratorCredentials() throws Throwable {
-        if(navigationBar == null){
+        if (navigationBar == null) {
             navigationBar = login.setCredentials();
         }
     }
+
     @And("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
     public void clickEstructuraOrganizacionalMenuButton() throws Throwable {
         organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
     }
+
     @And("^click 'Empleados' option on 'Estructura Organizacional' submenu$")
     public void clickEmpleadosOption() throws Throwable {
         employeesSubMenu = organizationalStructureMenu.clickEmployees();
     }
+
     @And("^click 'Detail' button of an active employee in 'Employees List' page$")
     public void clickDetailButtonOfAnActiveEmployee() throws Throwable {
         employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
+
     @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
     public void clickAsignarActivoButton() throws Throwable {
         assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
     }
+
     @Then("^'Asignar' button should be disabled in the modal displayed$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
         Assert.assertFalse(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISABLE, "Asignar"));
