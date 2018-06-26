@@ -17,6 +17,8 @@ public class ContractRegister extends BasePage {
     @FindBy(id = "cdesc")
     private WebElement contractDesc;
 
+    @FindBy(id = "sub-menu-contracts")
+    private WebElement btnContracts;
 
     public boolean contractButtonIsEnabled(){
         return addContractBtn.isEnabled();
@@ -26,4 +28,9 @@ public class ContractRegister extends BasePage {
         contractName.sendKeys(NAME);
         contractDesc.sendKeys(DESCRIPTION);
     }
+
+    public void clickContracts(){
+        btnContracts.click();
+    }
+
 }

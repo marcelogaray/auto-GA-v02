@@ -80,7 +80,7 @@ public class StepsDefinitionSSIApplication {
     @And("^click 'Contratos' option on 'Estructura Organizacional' submenu$")
     public void clickContratosOptionOnEstructuraOrganizacionalSubmenu() throws Throwable {
         contractRegister = new ContractRegister();
-
+        contractRegister.clickContracts();
     }
 
     @When("^'Contracts Form' page is fill with some employee data$")
