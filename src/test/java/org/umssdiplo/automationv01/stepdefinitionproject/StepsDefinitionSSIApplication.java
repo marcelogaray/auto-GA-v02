@@ -1,10 +1,13 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.ContractRegister;
+import org.umssdiplo.automationv01.core.managepage.EmployeeRegister;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.employeedetail.EmployeeDetail;
 import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSubMenu;
@@ -19,7 +22,8 @@ public class StepsDefinitionSSIApplication {
     private NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
-    private EmployeeDetail employeeDetail;
+    private ContractRegister contractRegister;
+    private EmployeeRegister employeeRegister;
     private AssignEmployeeItemModal assignEmployeeItemModal;
 
     @Given("^'SSI Application' page is loaded$")
@@ -52,18 +56,40 @@ public class StepsDefinitionSSIApplication {
         employeesSubMenu = organizationalStructureMenu.clickEmployees();
     }
 
-    @And("^click 'Detail' button of an active employee in 'Employees List' page$")
-    public void clickDetailButtonOfAnActiveEmployee() throws Throwable {
-        employeeDetail = employeesSubMenu.clickEmployeeDetail();
-    }
-
-    @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
-    public void clickAsignarActivoButton() throws Throwable {
-        assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
-    }
 
     @Then("^'Asignar' button should be disabled$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
         Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
+    }
+
+    @And("^click 'agregar empleado' button in 'Employees List' page$")
+    public void clickAgregarEmpleadoButtonInEmployeesListPage() throws Throwable {
+        employeeRegister = employeesSubMenu.clickEmployeeRegister();
+    }
+
+    @When("^'Employee Form' page is fill with new employee data$")
+    public void employeeFormPageIsFillWithNewEmployeeData() throws Throwable {
+        employeeRegister.fillForm();
+    }
+
+    @Then("^'Registrar' button should be clicked$")
+    public void registrarButtonShouldBeClicked() throws Throwable {
+        employeeRegister.clickAddEmployeeButton();
+    }
+
+    @And("^click 'Contratos' option on 'Estructura Organizacional' submenu$")
+    public void clickContratosOptionOnEstructuraOrganizacionalSubmenu() throws Throwable {
+        contractRegister = new ContractRegister();
+
+    }
+
+    @When("^'Contracts Form' page is fill with new employee data$")
+    public void contractsFormPageIsFillWithNewEmployeeData() throws Throwable {
+        contractRegister.fillForm();
+    }
+
+    @Then("^'Registrar' button should be clicked on 'Contracts form' page$")
+    public void registrarButtonShouldBeClickedOnContractsFormPage() throws Throwable {
+        contractRegister.clickAddContractButton();
     }
 }
