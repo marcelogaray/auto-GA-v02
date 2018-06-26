@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -136,5 +137,15 @@ public class StepsDefinitionSSIApplication {
     @Then("^'SSI' page with storage assets is loaded$")
     public void ssiStorageListIdPageIsLoaded() throws Throwable {
         Assert.assertTrue(listAssets.assetsDisplayed());
+    }
+
+    @When("^Click 'Cancelar' button$")
+    public void clickCancelarButton() throws Throwable {
+        addStorage.clickCancel();
+    }
+
+    @Then("^The 'SSI' page with the storage list should be loaded$")
+    public void theSSIPageWithTheStorageListShouldBeLoaded() throws Throwable {
+        storageList = navigationBar.clickStorages();
     }
 }
