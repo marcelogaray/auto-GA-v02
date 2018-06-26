@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.addItem.AddItem;
 import org.umssdiplo.automationv01.core.managepage.addItemType.AddItemType;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.editItemType.EditItemType;
@@ -30,6 +31,7 @@ public class StepsDefinitionSSIApplication {
     private ListItemType listItemType;
     private EditItemType editItemType;
     private AddItemType addItemType;
+    private AddItem addItem;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -181,5 +183,16 @@ public class StepsDefinitionSSIApplication {
     public void verifySaveButtonStatusIs(String expecedBtnStatus) throws Throwable {
         String actualStatus = addItemType.getSaveBtnStatus();
         Assert.assertEquals(actualStatus, expecedBtnStatus);
+    }
+
+    @When("^Click 'Anadir Item' submenu option$")
+    public void clickAnadirItemSubmenuOption() throws Throwable {
+        addItem = activosMenu.clickAnadirItemSubmenu();
+    }
+
+    @Then("^Verify \"([^\"]*)\" is the title of the Page$")
+    public void verifyIsTheTitleOfThePage(String expectedTitle) throws Throwable {
+        String actualPageTitle = addItem.getPageMainTitle();
+        Assert.assertEquals(actualPageTitle, expectedTitle);
     }
 }
