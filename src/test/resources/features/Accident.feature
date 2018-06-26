@@ -26,3 +26,12 @@ Feature: Accident
     And click 'Create Accident' button on 'Accidente' page
     And click on 'atras' button on 'registrar accidente' page
     Then verify that accident is not added in the list
+
+  Scenario: AC-02 Verificar que un accidente es eliminado
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Accidente' option on 'Accidente e Incidentes' menu
+    And delete accident from position 1
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Accidente' option on 'Accidente e Incidentes' menu
+    Then verify that one Accident was removed in the list
+    
