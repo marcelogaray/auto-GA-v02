@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -17,13 +16,12 @@ import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSIApplication {
+    int id = 6;
     private Login login;
     private NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
-    private EmployeeRegister employeeRegister;
-    private AssignEmployeeItemModal assignEmployeeItemModal;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -56,28 +54,13 @@ public class StepsDefinitionSSIApplication {
     }
 
 
-    @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
-    public void clickAsignarActivoButton() throws Throwable {
-        assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
+    @When("^an 'Employee' is selected to be deleted on 'Employee List' page$")
+    public void anEmployeeIsSelectedToBeDeletedOnEmployeeListPage() throws Throwable {
+        employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
 
-    @Then("^'Asignar' button should be disabled$")
-    public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
-    }
-
-    @And("^click 'agregar empleado' button in 'Employees List' page$")
-    public void clickAgregarEmpleadoButtonInEmployeesListPage() throws Throwable {
-        employeeRegister = employeesSubMenu.clickEmployeeRegister();
-    }
-
-    @When("^'Employee Form' page is fill with new employee data$")
-    public void employeeFormPageIsFillWithNewEmployeeData() throws Throwable {
-        employeeRegister.fillForm();
-    }
-
-    @Then("^'Registrar' button should be clicked$")
-    public void registrarButtonShouldBeClicked() throws Throwable {
-        employeeRegister.clickAddEmployeeButton();
+    @Then("^'delete employee' button should be clicked$")
+    public void deleteEmployeeButtonShouldBeClicked() throws Throwable {
+        employeeDetail.clickDropEmployee();
     }
 }
