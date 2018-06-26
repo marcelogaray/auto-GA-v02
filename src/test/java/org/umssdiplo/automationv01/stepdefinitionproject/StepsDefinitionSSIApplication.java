@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -27,7 +26,7 @@ public class StepsDefinitionSSIApplication {
     private AddStorage addStorage;
     private EditStorage editStorage;
     private DeleteStorage deleteStorage;
-    private ListItems listItems;
+    private ListAssets listAssets;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -131,11 +130,11 @@ public class StepsDefinitionSSIApplication {
 
     @When("^Click 'Ver activos' button of storage selected$")
     public void clickVerActivosButtonOfStorageSelected() throws Throwable {
-        listItems = storageList.clickSeeAssets();
+        listAssets = storageList.clickSeeAssets();
     }
 
-    @Then("^'SSI/storage-list/id' page is loaded$")
+    @Then("^'SSI' page with storage assets is loaded$")
     public void ssiStorageListIdPageIsLoaded() throws Throwable {
-        Assert.assertTrue(listItems.assetsDisplayed());
+        Assert.assertTrue(listAssets.assetsDisplayed());
     }
 }

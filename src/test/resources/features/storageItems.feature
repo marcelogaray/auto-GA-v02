@@ -5,4 +5,4 @@ Feature: ItemsOfStorage
     And User is authenticated with administrator credentials
     And Click 'Almacenes' menu button on 'Navigation Bar' top menu
     When Click 'Ver activos' button of storage selected
-    Then 'SSI/storage-list/id' page is loaded
+    Then 'SSI' page with storage assets is loaded

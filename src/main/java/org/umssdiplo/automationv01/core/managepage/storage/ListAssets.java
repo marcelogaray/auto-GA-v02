@@ -5,15 +5,15 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
-public class ListItems extends BasePage {
+public class ListAssets extends BasePage {
     @FindBy(id = "backStorageButton")
-    private WebElement backStorageButton;
+    private WebElement listStorageButton;
 
-    public ListItems() {
-        CommonEvents.isVisible(backStorageButton);
+    public ListAssets() {
+        CommonEvents.isVisible(listStorageButton);
     }
 
     public boolean assetsDisplayed(){
-        return CommonEvents.isVisible(backStorageButton);
+        return CommonEvents.isVisible(listStorageButton);
     }
 }

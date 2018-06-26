@@ -62,8 +62,8 @@ public class StorageList extends BasePage {
         return new DeleteStorage();
     }
 
-    public ListItems clickSeeAssets() {
+    public ListAssets clickSeeAssets() {
         CommonEvents.clickButton(seeAssets);
-        return new ListItems();
+        return new ListAssets();
     }
 }
