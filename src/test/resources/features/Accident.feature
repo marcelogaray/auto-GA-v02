@@ -70,3 +70,12 @@ Feature: Accident
     And click 'Accidente' option on 'Accidente e Incidentes' menu
     And edit accident from position 1
     Then verify that 'mofificar' button is enabled by default on 'modificar Accidente' page
+
+  Scenario: AC-09 verificar que un mensaje es mostrado cuando el campo severidad esta vacio
+    When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
+    And click 'Accidente' option on 'Accidente e Incidentes' menu
+    And click 'Create Accident' button on 'Accidente' page
+    And click severity field into 'accident' form on 'registro accidente' page
+    And click state field into 'accident' form on 'registro accidente' page
+    Then verify that 'severity' error message is displayed
+
