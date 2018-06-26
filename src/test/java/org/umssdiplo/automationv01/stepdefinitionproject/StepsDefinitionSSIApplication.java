@@ -83,13 +83,13 @@ public class StepsDefinitionSSIApplication {
 
     }
 
-    @When("^'Contracts Form' page is fill with new employee data$")
+    @When("^'Contracts Form' page is fill with some employee data$")
     public void contractsFormPageIsFillWithNewEmployeeData() throws Throwable {
         contractRegister.fillForm();
     }
 
-    @Then("^'Registrar' button should be clicked on 'Contracts form' page$")
+    @Then("^'Registrar' button should be HIDE on 'Contracts form' page$")
     public void registrarButtonShouldBeClickedOnContractsFormPage() throws Throwable {
-        contractRegister.clickAddContractButton();
+        Assert.assertFalse(contractRegister.contractButtonIsEnabled());
     }
 }
