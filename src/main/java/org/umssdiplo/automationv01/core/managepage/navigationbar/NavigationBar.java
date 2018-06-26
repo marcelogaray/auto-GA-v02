@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.managepage.reportsmenu.ReportsMenu;
+import org.umssdiplo.automationv01.core.managepage.reportstorage.ReportStorage;
+import org.umssdiplo.automationv01.core.managepage.storage.StorageList;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class NavigationBar extends BasePage {
@@ -13,6 +16,15 @@ public class NavigationBar extends BasePage {
     @FindBy(id = "menu-organizational")
     private WebElement organizationalMenu;
 
+    @FindBy(id = "storageMenu")
+    private WebElement storageMenu;
+
+    @FindBy(xpath = "//mat-row[10]/mat-cell[1]")
+    private WebElement nombrealmacen;
+
+    @FindBy(id = "reportsMenu")
+    private WebElement menuReports;
+
     public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
     }
@@ -20,5 +32,15 @@ public class NavigationBar extends BasePage {
     public OrganizationalStructureMenu clickOrganizationalStructure() {
         CommonEvents.clickButton(organizationalMenu);
         return new OrganizationalStructureMenu();
+    }
+
+    public StorageList clickStorages() {
+        CommonEvents.clickButton(storageMenu);
+        return new StorageList();
+    }
+
+    public ReportsMenu clickReportMenu(){
+        CommonEvents.clickButton(menuReports);
+        return new ReportsMenu();
     }
 }

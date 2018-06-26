@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,6 +12,9 @@ import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSub
 import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.managepage.reportsmenu.ReportsMenu;
+import org.umssdiplo.automationv01.core.managepage.reportstorage.ReportStorage;
+import org.umssdiplo.automationv01.core.managepage.storage.*;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -21,6 +25,13 @@ public class StepsDefinitionSSIApplication {
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
     private AssignEmployeeItemModal assignEmployeeItemModal;
+    private StorageList storageList;
+    private AddStorage addStorage;
+    private EditStorage editStorage;
+    private DeleteStorage deleteStorage;
+    private ListAssets listAssets;
+    private ReportsMenu reportsMenu;
+    private ReportStorage reportStorage;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -65,5 +76,95 @@ public class StepsDefinitionSSIApplication {
     @Then("^'Asignar' button should be disabled$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
         Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
+    }
+
+    @And("^Click 'Almacenes' menu button on 'Navigation Bar' top menu$")
+    public void clickAlmacenesMenuButtonOnNavigationBarTopMenu() throws Throwable {
+        storageList = navigationBar.clickStorages();
+    }
+
+    @And("^Click 'Agregar Nuevo Almacen' button$")
+    public void clickAgregarNuevoAlmacenButton() throws Throwable {
+        addStorage = storageList.clickAddStorage();
+    }
+
+    @And("^Enter a store name in the \"([^\"]*)\" field$")
+    public void enterAStoreNameInTheField(String arg0) throws Throwable {
+        addStorage.inputNameStorage();
+    }
+
+    @When("^Click 'Guardar' button$")
+    public void clickGuardarButton() throws Throwable {
+        addStorage.clickSave();
+    }
+
+    @Then("^The page should redirect to the list of Storages containing the new Storage$")
+    public void thePageShouldRedirectToTheListOfStoragesContainingTheNewStorage() throws Throwable {
+        Assert.assertTrue(storageList.isStorageVisible());
+    }
+
+    @And("^Click 'Editar' button$")
+    public void clickEditarButton() throws Throwable {
+        editStorage = storageList.clickEditStorage();
+    }
+
+    @And("^Enter a store new name in the \"([^\"]*)\" field$")
+    public void enterAStoreNewNameInTheField(String arg0) throws Throwable {
+        editStorage.inputNewNameStorage();
+    }
+
+    @When("^Click in 'Guardar' button$")
+    public void clickInGuardarButton() throws Throwable {
+        editStorage.clickSave();
+    }
+
+    @Then("^The page should redirect to the list of Storages containing the new Storage Edited$")
+    public void thePageShouldRedirectToTheListOfStoragesContainingTheNewStorageEdited() throws Throwable {
+        Assert.assertTrue(storageList.isNewNameStorageVisible());
+    }
+
+    @When("^Click 'Eliminar' button$")
+    public void clickEliminarButton() throws Throwable {
+        deleteStorage = storageList.clickDeleteStorage();
+    }
+
+    @Then("^The page the list of Storages ya no containing the Storage Eliminado$")
+    public void thePageTheListOfStoragesYaNoContainingTheStorageEliminado() throws Throwable {
+        Assert.assertFalse(storageList.isNotExist());
+    }
+
+    @When("^Click 'Ver activos' button of storage selected$")
+    public void clickVerActivosButtonOfStorageSelected() throws Throwable {
+        listAssets = storageList.clickSeeAssets();
+    }
+
+    @Then("^'SSI' page with storage assets is loaded$")
+    public void ssiStorageListIdPageIsLoaded() throws Throwable {
+        Assert.assertTrue(listAssets.assetsDisplayed());
+    }
+
+    @When("^Click 'Cancelar' button$")
+    public void clickCancelarButton() throws Throwable {
+        addStorage.clickCancel();
+    }
+
+    @Then("^The 'SSI' page with the storage list should be loaded$")
+    public void theSSIPageWithTheStorageListShouldBeLoaded() throws Throwable {
+        storageList = navigationBar.clickStorages();
+    }
+
+    @And("^Click 'Reportes' menu button on 'Navigation Bar' top menu$")
+    public void clickReportesMenuButtonOnNavigationBarTopMenu() throws Throwable {
+        reportsMenu = navigationBar.clickReportMenu();
+    }
+
+    @When("^Click 'Reporte de almacenes' option on 'Reportes' submenu$")
+    public void clickReporteDeAlmacenesOptionOnReportesSubmenu() throws Throwable {
+        reportStorage = reportsMenu.clickReportStorages();
+    }
+
+    @Then("^'Storage Item Details' page is loaded$")
+    public void storageItemDetailsPageIsLoaded() throws Throwable {
+        Assert.assertTrue(reportStorage.isBackStorageButtonDisabled());
     }
 }
