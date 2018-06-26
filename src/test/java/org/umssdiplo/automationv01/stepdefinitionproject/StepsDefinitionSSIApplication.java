@@ -3,8 +3,8 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.EmployeeRegister;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.employeedetail.EmployeeDetail;
 import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSubMenu;
@@ -20,6 +20,7 @@ public class StepsDefinitionSSIApplication {
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
+    private EmployeeRegister employeeRegister;
     private AssignEmployeeItemModal assignEmployeeItemModal;
 
     @Given("^'SSI Application' page is loaded$")
@@ -52,18 +53,9 @@ public class StepsDefinitionSSIApplication {
         employeesSubMenu = organizationalStructureMenu.clickEmployees();
     }
 
-    @And("^click 'Detail' button of an active employee in 'Employees List' page$")
-    public void clickDetailButtonOfAnActiveEmployee() throws Throwable {
-        employeeDetail = employeesSubMenu.clickEmployeeDetail();
-    }
-
-    @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
-    public void clickAsignarActivoButton() throws Throwable {
-        assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
-    }
-
-    @Then("^'Asignar' button should be disabled$")
-    public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonDisabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Asignar"));
+    @Then("^'Lista de Empleados' Title should be showed on 'Employee List' page$")
+    public void listaDeEmpleadosTitleShouldBeShowedOnEmployeeListPage() throws Throwable {
+        employeeDetail = new EmployeeDetail();
+        Assert.assertTrue(employeeDetail.isListofEmployeesShowing(), String.format(ErrorMessage.ERROR_MESSAGE_EMPLOYEE_LIST_NOT_SHOWING, "Employee"));
     }
 }
