@@ -26,8 +26,11 @@ public class EmployeeRegister extends BasePage {
     }
 
     public void fillForm(){
+        employeeName.clear();
         employeeName.sendKeys(NAME);
+        employeeLastName.clear();
         employeeLastName.sendKeys(LASTNAME);
+        employeeAddress.clear();
         employeeAddress.sendKeys(ADDRESS);
     }
 }

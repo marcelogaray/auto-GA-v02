@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.managepage.EmployeeRegister;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class EmployeesSubMenu extends BasePage {
-    @FindBy(id = "add-employee-button")
+    @FindBy(id = "employee-update"+17)
     private WebElement addEmployeeButton;
 
     public EmployeesSubMenu() {
