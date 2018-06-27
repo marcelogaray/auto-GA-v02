@@ -1,7 +1,7 @@
 #Edit ItemType feature
 Feature: Cancel Edit Item Type
 
-  Scenario: AA02-Verify that Cancel edit Item Item Type does not change Item Type name
+  Scenario: RON004 TC - Ronald Tucuman - 04 - Verify that Cancel edit Item Item Type does not change Item Type name
     Given 'SSI Application' page is loaded
     And Click 'Login' button on Page Header
     And Enter Username

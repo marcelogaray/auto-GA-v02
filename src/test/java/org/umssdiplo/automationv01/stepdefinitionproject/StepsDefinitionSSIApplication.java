@@ -21,8 +21,8 @@ import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSIApplication {
-    private Login login;
-    private NavigationBar navigationBar;
+    private static Login login;
+    private static NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
@@ -35,7 +35,9 @@ public class StepsDefinitionSSIApplication {
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
-        login = LoadPage.loginPage();
+        if (login == null) {
+            login = LoadPage.loginPage();
+        }
     }
 
     @And("^set Admin credentials on 'Login' page$")
@@ -50,7 +52,9 @@ public class StepsDefinitionSSIApplication {
 
     @And("^User is authenticated with administrator credentials$")
     public void userIsAuthenticatedWithAdministratorCredentials() throws Throwable {
-        navigationBar = login.setCredentials();
+        if(navigationBar == null){
+            navigationBar = login.setCredentials();
+        }
     }
 
     @And("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
@@ -80,22 +84,30 @@ public class StepsDefinitionSSIApplication {
 
     @And("^Click 'Login' button on Page Header$")
     public void clickLoginButtonOnPageHeader() throws Throwable {
-        login.clickLoginButton();
+        if (navigationBar == null) {
+            login.clickLoginButton();
+        }
     }
 
     @And("^Enter Username$")
     public void enterUsername() throws Throwable {
-        login.enterUsername();
+        if (navigationBar == null) {
+            login.enterUsername();
+        }
     }
 
     @And("^Enter Password$")
     public void enterPassword() throws Throwable {
-        login.enterPassword();
+        if (navigationBar == null) {
+            login.enterPassword();
+        }
     }
 
     @And("^Click 'Login' button to accept credentials$")
     public void clickLoginButtonToAcceptCredentials() throws Throwable {
-        navigationBar = login.clickLoginAcceptButton();
+        if (navigationBar == null) {
+            navigationBar = login.clickLoginAcceptButton();
+        }
     }
 
     @And("^Click 'Activos' menu in Navigation bar$")
@@ -194,5 +206,10 @@ public class StepsDefinitionSSIApplication {
     public void verifyIsTheTitleOfThePage(String expectedTitle) throws Throwable {
         String actualPageTitle = addItem.getPageMainTitle();
         Assert.assertEquals(actualPageTitle, expectedTitle);
+    }
+
+    @And("^Click 'Delete' button of \"([^\"]*)\" name$")
+    public void clickDeleteButtonOfName(String itemTypeName) throws Throwable {
+        listItemType = listItemType.clickDeleteBtnByItemTypeName(itemTypeName);
     }
 }

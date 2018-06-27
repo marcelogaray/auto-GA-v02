@@ -1,7 +1,7 @@
 #Edit ItemType feature
 Feature: EditItemType
 
-  Scenario: AA02-Verify that an Item Type can be deleted
+  Scenario: RON003 TC - Ronald Tucuman - 03 - Verify that an Item Type List page can be  reached
     Given 'SSI Application' page is loaded
     And Click 'Login' button on Page Header
     And Enter Username

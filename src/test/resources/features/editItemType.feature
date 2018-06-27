@@ -1,7 +1,7 @@
 #Edit ItemType feature
 Feature: EditItemType
 
-  Scenario: AA02-Verify that an Item Type can be edited
+  Scenario: RON001 TC - Ronald Tucuman - 01 - Verify that an Item Type can be edited
     Given 'SSI Application' page is loaded
     And Click 'Login' button on Page Header
     And Enter Username
