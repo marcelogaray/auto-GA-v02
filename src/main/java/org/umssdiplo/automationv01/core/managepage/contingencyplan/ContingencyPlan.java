@@ -116,7 +116,7 @@ public class ContingencyPlan extends BasePage {
         boolean penaltiesFilter = true;
         int totalContingencyPlans = countContingencies();
         for (int i = 0; i < totalContingencyPlans; ++i) {
-            if (getPenaltiesColumnAt(1).equals(penalties)) {
+            if (getPenaltiesColumnAt(i).equals(penalties)) {
                 penaltiesFilter = true;
             } else {
                 penaltiesFilter = false;
