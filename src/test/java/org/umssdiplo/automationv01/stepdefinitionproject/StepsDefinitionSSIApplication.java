@@ -80,16 +80,17 @@ public class StepsDefinitionSSIApplication {
     @And("^click 'Contratos' option on 'Estructura Organizacional' submenu$")
     public void clickContratosOptionOnEstructuraOrganizacionalSubmenu() throws Throwable {
         contractRegister = new ContractRegister();
-        contractRegister.clickContracts();
+        contractRegister.clickContractsMenu();
     }
 
-    @When("^'Contracts Form' page is fill with some employee data$")
+
+    @When("^'Contracts Form' page is fill with new employee data$")
     public void contractsFormPageIsFillWithNewEmployeeData() throws Throwable {
         contractRegister.fillForm();
     }
 
-    @Then("^'Registrar' button should be HIDE on 'Contracts form' page$")
+    @Then("^'Registrar' button should be clicked on 'Contracts form' page$")
     public void registrarButtonShouldBeClickedOnContractsFormPage() throws Throwable {
-        Assert.assertFalse(contractRegister.contractButtonIsEnabled());
+        contractRegister.clickContracts();
     }
 }
