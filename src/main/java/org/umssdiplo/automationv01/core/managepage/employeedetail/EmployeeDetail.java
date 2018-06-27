@@ -10,7 +10,7 @@ import java.util.List;
 
 public class EmployeeDetail extends BasePage {
     @FindBy(id = "assigned-items-title")
-    private WebElement asssignedActiveTitle;
+    private WebElement assignedActiveTitle;
 
     @FindBy(id = "assign-active")
     private WebElement assignItemButton;
@@ -22,7 +22,7 @@ public class EmployeeDetail extends BasePage {
     private List<WebElement> assignedItems;
 
     public EmployeeDetail() {
-        CommonEvents.isVisible(asssignedActiveTitle);
+        CommonEvents.isVisible(assignedActiveTitle);
     }
 
     public AssignEmployeeItemModal clickAssignEmployeeItem() {
