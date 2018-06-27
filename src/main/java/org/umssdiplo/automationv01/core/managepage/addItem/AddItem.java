@@ -3,7 +3,6 @@ package org.umssdiplo.automationv01.core.managepage.addItem;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
@@ -12,6 +11,7 @@ import java.util.List;
 public class AddItem extends BasePage {
 
     private final String CANCEL_BTN_XPATH = "//mat-card/mat-card-actions/button[2]";
+    private final String SAVE_BTN_XPATH = "//mat-card/mat-card-actions/button[1]";
 
     @FindBy(xpath = "//mat-card/mat-card-actions/button[2]")
     private WebElement cancelBtn;
@@ -21,6 +21,9 @@ public class AddItem extends BasePage {
 
     @FindBy(css = "mat-card-title.mat-card-title")
     private WebElement pageTitle;
+
+    @FindBy(xpath = "//mat-card/mat-card-actions/button[1]")
+    private WebElement saveBtn;
 
     public AddItem() {
         CommonEvents.waitUntilByXPath(CANCEL_BTN_XPATH);
@@ -56,5 +59,27 @@ public class AddItem extends BasePage {
 
     public String getPageMainTitle() {
         return this.pageTitle.getText();
+    }
+
+    public String getSaveBtnStatus() {
+        String isBtnEnabledDescr = getBtnStatusDescr(getBtnStatus(this.saveBtn));
+        return isBtnEnabledDescr;
+    }
+
+    private String getBtnStatusDescr(boolean isEnabled) {
+        String statusDescr = "";
+
+        if (isEnabled) {
+            statusDescr = "enabled";
+        }
+        else {
+            statusDescr = "disabled";
+        }
+
+        return statusDescr;
+    }
+
+    private boolean getBtnStatus(WebElement btn) {
+        return btn.isEnabled();
     }
 }

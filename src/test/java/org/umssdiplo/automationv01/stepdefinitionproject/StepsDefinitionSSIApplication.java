@@ -212,4 +212,10 @@ public class StepsDefinitionSSIApplication {
     public void clickDeleteButtonOfName(String itemTypeName) throws Throwable {
         listItemType = listItemType.clickDeleteBtnByItemTypeName(itemTypeName);
     }
+
+    @Then("^Verify 'Save' button status is \"([^\"]*)\" in 'Anadir Item' page$")
+    public void verifySaveButtonStatusIsInAnadirItemPage(String expectedStatus) throws Throwable {
+        String actualsStatus = addItem.getSaveBtnStatus();
+        Assert.assertEquals(actualsStatus, expectedStatus);
+    }
 }
