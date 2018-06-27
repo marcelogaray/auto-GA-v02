@@ -13,6 +13,9 @@ public class NavigationBar extends BasePage {
     @FindBy(id = "menu-organizational")
     private WebElement organizationalMenu;
 
+    @FindBy(id = "menu-active")
+    private WebElement activosMenu;
+
     public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
     }
@@ -20,5 +23,10 @@ public class NavigationBar extends BasePage {
     public OrganizationalStructureMenu clickOrganizationalStructure() {
         CommonEvents.clickButton(organizationalMenu);
         return new OrganizationalStructureMenu();
+    }
+
+    public ActivosMenu clickActivos() {
+        CommonEvents.clickButton(activosMenu);
+        return new ActivosMenu();
     }
 }

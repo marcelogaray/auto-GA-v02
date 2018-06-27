@@ -42,4 +42,23 @@ public class Login extends BasePage {
         clickAcceptButton();
         return new NavigationBar();
     }
+
+    public void clickLoginButton() {
+        CommonEvents.clickButton(loginButton);
+    }
+
+    public void enterUsername() {
+        String username = PropertyAccessor.getInstance().getUser();
+        CommonEvents.setInputField(usernameInputField, username);
+    }
+
+    public void enterPassword() {
+        String password = PropertyAccessor.getInstance().getPassword();
+        CommonEvents.setInputField(passwordInputField, password);
+    }
+
+    public NavigationBar clickLoginAcceptButton() {
+        CommonEvents.clickButton(acceptButton);
+        return new NavigationBar();
+    }
 }
