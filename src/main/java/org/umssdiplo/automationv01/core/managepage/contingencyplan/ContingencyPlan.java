@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class ContingencyPlan extends BasePage {
     private static final String ACCIDENT_COLUMN_CLASS = "accident-description-column";
-    private static final String STANDART_NAME_COLUMN_CLASS = "standar-name-column";
+    private static final String STANDARD_NAME_COLUMN_CLASS = "standar-name-column";
     private static final String MATERIAL_COLUMN_CLASS = "safety-material-column";
     private static final String PENALTIES_COLUMN_CLASS = "penalties-column";
     private static final String DESCRIPTION_COLUMN_CLASS = "description-column";
@@ -47,14 +47,13 @@ public class ContingencyPlan extends BasePage {
         return CommonEvents.countElement(contingencyList);
     }
 
-
     public String getAccidentColumnAt(int position) {
         WebElement webElement = CommonEvents.getWebElementByClassName(contingencyList.get(position), ACCIDENT_COLUMN_CLASS);
         return CommonEvents.getTextContent(webElement);
     }
 
     public String getStandartNameColumnAt(int position) {
-        WebElement webElement = CommonEvents.getWebElementByClassName(contingencyList.get(position), STANDART_NAME_COLUMN_CLASS);
+        WebElement webElement = CommonEvents.getWebElementByClassName(contingencyList.get(position), STANDARD_NAME_COLUMN_CLASS);
         return CommonEvents.getTextContent(webElement);
     }
 
@@ -81,7 +80,7 @@ public class ContingencyPlan extends BasePage {
     public Map<String, String> getContingencyPlan(int position) {
         Map<String, String> contingencyMap = new HashMap<String, String>();
         contingencyMap.put("accident", getAccidentColumnAt(position));
-        contingencyMap.put("standartName", getStandartNameColumnAt(position));
+        contingencyMap.put("standardName", getStandartNameColumnAt(position));
         contingencyMap.put("material", getMaterialColumnAt(position));
         contingencyMap.put("penalties", getPenaltiesColumnAt(position));
         contingencyMap.put("description", getDescriptionColumnAt(position));
@@ -115,7 +114,7 @@ public class ContingencyPlan extends BasePage {
         CommonEvents.customWait(3000);
         boolean penaltiesFilter = true;
         int totalContingencyPlans = countContingencies();
-        for (int i = 0; i < totalContingencyPlans; ++i) {
+        for (int i = 0; i < totalContingencyPlans; i++) {
             if (getPenaltiesColumnAt(i).equals(penalties)) {
                 penaltiesFilter = true;
             } else {

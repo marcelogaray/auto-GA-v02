@@ -180,7 +180,7 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(contingencyPlan.countContingencies(), totalContingencyPlans + NUMBER_ROW, String.format(ErrorMessage.ERROR_MESSAGE_CREATE_CONTINGENCY_PLAN, "contigency"));
     }
 
-    @Then("^verify (.*?) accident name for new Contingency Plan$")
+    @Then("^verify '(.*?)' accident name for new Contingency Plan$")
     public void verifyNewContingencyAccidentName(String standardName) throws Throwable {
         Assert.assertEquals(contingencyPlan.getAccidentColumnAt(totalContingencyPlans), standardName, String.format(ErrorMessage.ERROR_MESSAGE_CONTINGENCY_INFORMATION, "contigency"));
     }
@@ -212,23 +212,23 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(contingencyPlan.getContingencyPlan(position), contingencyMap, String.format(ErrorMessage.ERROR_MESSAGE_EDIT_CONTINGENCY_PLAN, "Contingency"));
     }
 
-    @When("^select (.*?) search filter option on 'Plan de Contingencia' page")
+    @When("^select '(.*?)' search filter option on 'Plan de Contingencia' page")
     public void selectSearchFilterOption(String option) throws Throwable {
         contingencyPlan.selectSearchContingencyOption(option);
 
     }
 
-    @When("^set (.*?) search filter value on 'Plan de Contingencia' page")
+    @When("^set '(.*?)' search filter value on 'Plan de Contingencia' page")
     public void setSearchFilterValue(String value) throws Throwable {
         contingencyPlan.setSearchContingencyInput(value);
     }
 
-    @When("^click on search button on 'Plan de Contingencia' page")
+    @When("^click on 'buscar' button on 'Plan de Contingencia' page")
     public void clickSearchButton() throws Throwable {
         contingencyPlan.clickSearchContingencyButton();
     }
 
-    @When("^verify that Contingency plans are filter by (.*?) penalties")
+    @When("^verify that Contingency plans are filter by '(.*?)' penalties")
     public void verifyThatContingencyIsFilterByPenalties(String penalties) throws Throwable {
         Assert.assertEquals(contingencyPlan.isPenaltyColumnsMatchWithFilter(penalties), true);
     }
@@ -243,18 +243,18 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(editContingencyPlan.isEditButtonEnabled(), true);
     }
 
-    @When("^click standart name field into 'contingency' form on 'registro plan de contingencia' page")
-    public void clickStandartNameInput() throws Throwable {
+    @When("^click standard name field into 'contingency' form on 'registro plan de contingencia' page")
+    public void clickStandardNameInput() throws Throwable {
         createContingencyPlan.clickStandartnameInput();
     }
 
-    @When("^click description field into 'contingency' form on 'registro plan de contingencia' page")
+    @When("^click 'descripcion' field into 'contingency' form on 'registro plan de contingencia' page")
     public void clickStateInput() throws Throwable {
         createContingencyPlan.clickDescriptinoInput();
     }
 
-    @When("^verify that 'standart name' error message is displayed")
-    public void verifystandartNameErrorMessage() throws Throwable {
+    @When("^verify that 'standard name' error message is displayed")
+    public void verifyStandardNameErrorMessage() throws Throwable {
         Assert.assertEquals(createContingencyPlan.getStandartnameErrorMessage(), String.format(ErrorMessage.ERROR_MESSAGE_REQUIRED_FIELD, "nombre plan de contingencia"));
     }
 }
