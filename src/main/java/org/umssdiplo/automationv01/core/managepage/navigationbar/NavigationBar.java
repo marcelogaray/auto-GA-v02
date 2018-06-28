@@ -15,7 +15,7 @@ public class NavigationBar extends BasePage {
     private WebElement organizationalMenu;
 
     @FindBy(id = "accident-incident-button")
-    private WebElement accidentEIncidentMenu;
+    private WebElement accidentIncidentMenu;
 
     public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
@@ -27,7 +27,7 @@ public class NavigationBar extends BasePage {
     }
 
     public AccidentEIncidentMenu clickAccidentEIncidentButton() {
-        CommonEvents.clickButton(accidentEIncidentMenu);
+        CommonEvents.clickButton(accidentIncidentMenu);
         return new AccidentEIncidentMenu();
     }
 }

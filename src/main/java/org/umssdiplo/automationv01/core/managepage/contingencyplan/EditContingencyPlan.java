@@ -12,7 +12,7 @@ public class EditContingencyPlan extends BasePage {
     private WebElement accidentSelect;
 
     @FindBy(id = "standart-name-input")
-    private WebElement standartNameInput;
+    private WebElement standardNameInput;
 
     @FindBy(id = "material-input")
     private WebElement materialInput;
@@ -33,7 +33,7 @@ public class EditContingencyPlan extends BasePage {
     private WebElement backContingencyButton;
 
     @FindBy(id = "standart-name-require-message")
-    private WebElement standartNameRequireMessage;
+    private WebElement standardNameRequireMessage;
 
     public EditContingencyPlan() {
         CommonEvents.isVisible(editContingencyButton);
@@ -43,8 +43,8 @@ public class EditContingencyPlan extends BasePage {
         CommonEvents.selectElementByText(accidentSelect, textValue);
     }
 
-    public void setStandartNameInput(String value) {
-        CommonEvents.setInputField(standartNameInput, value);
+    public void setStandardNameInput(String value) {
+        CommonEvents.setInputField(standardNameInput, value);
     }
 
     public void setMaterialInput(String value) {
@@ -70,7 +70,7 @@ public class EditContingencyPlan extends BasePage {
 
     public ContingencyPlan editContingencyPlan(Map<String, String> data) {
         selectAccidentByText(data.get("accident").toString());
-        setStandartNameInput(data.get("standartName"));
+        setStandardNameInput(data.get("standardName"));
         setMaterialInput(data.get("material"));
         setPenaltiesInput(data.get("penalties"));
         setDescription(data.get("description"));
