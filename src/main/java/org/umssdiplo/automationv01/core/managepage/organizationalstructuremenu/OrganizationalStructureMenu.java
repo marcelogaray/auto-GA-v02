@@ -7,18 +7,21 @@ import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSub
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class OrganizationalStructureMenu extends BasePage {
-    @FindBy(id = "sub-menu-list-position")
-    private WebElement positionSubMenu;
+    @FindBy(xpath = "//span[text() = 'Estructura Organizacional']")
+    private WebElement employeeMenu;
 
-    @FindBy(id = "sub-menu-employees")
+    @FindBy(xpath = "//span[text() = 'Empleados']")
     private WebElement employeeSubMenu;
 
     public OrganizationalStructureMenu() {
-        CommonEvents.isVisible(positionSubMenu);
+        CommonEvents.isVisible(employeeMenu);
     }
 
-    public EmployeesSubMenu clickEmployees() {
-        CommonEvents.clickButton(employeeSubMenu);
-        return new EmployeesSubMenu();
+    public EmployeeList clickEmployees() {
+        CommonEvents.clickButton(employeeMenu);
+
+        CommonEvents.jsClickElement(employeeSubMenu);
+        System.out.println("Return employee list");
+        return new EmployeeList();
     }
 }

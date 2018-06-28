@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
@@ -131,5 +132,11 @@ public class CommonEvents {
         } catch (Exception e) {
             System.out.printf("" + e);
         }
+    }
+
+    public static void mouseOver(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        Actions action = new Actions(ManageDriver.getInstance().getWebDriver());
+        action.moveToElement(webElement);
     }
 }
