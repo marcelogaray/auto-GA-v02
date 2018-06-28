@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -94,7 +93,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^'Asignar' button should be disabled in the modal displayed$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertFalse(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISABLE, "Asignar"));
+        Assert.assertFalse(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Asignar"));
     }
 
     @Then("^modal title should be \"([^\"]*)\"$")
@@ -144,7 +143,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^'Asignar' button should be enabled in the modal displayed$")
     public void asignarButtonShouldBeEnabledInTheModalDisplayed() throws Throwable {
-        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_ENABLE, "Asignar"));
+        Assert.assertTrue(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_ENABLE, "Asignar"));
     }
 
     @And("^click 'Asignar' button in assign item modal$")
@@ -202,7 +201,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^verify that Contingency Plan was removed in the list")
     public void verifyContingencyWasRemoved() throws Throwable {
-        Assert.assertEquals(contingencyPlan.countContingencies(), (totalContingencyPlans - NUMBER_ROW), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_CONTINGENCY_PLAN, "contigency"));
+        Assert.assertEquals(contingencyPlan.countContingencies(), (totalContingencyPlans - NUMBER_ROW), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_ROW, "contigency"));
     }
 
     @Then("^edit contigency plan from position (\\d+)")
@@ -287,23 +286,23 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(accident.countAccidents(), totalAccidents + ACCIDENT_ROW, String.format(ErrorMessage.ERROR_MESSAGE_CREATE_ACCIDENT, "Accident"));
     }
 
-    @Then("^verify (.*?) description for new accident$")
+    @Then("^verify '(.*?)' description for new accident$")
     public void verifyNewAccidentDescription(String description) throws Throwable {
-        Assert.assertEquals(accident.getDescription(totalAccidents), description, String.format(ErrorMessage.ERROR_MESSAGE_DESCRIPION_NEW_ACCIDENT, "Accident"));
+        Assert.assertEquals(accident.getDescription(totalAccidents), description, String.format(ErrorMessage.ERROR_MESSAGE_DESCRIPTION_NEW_ACCIDENT, "Accident"));
     }
 
-    @When("^delete accident from position (\\d+)")
+    @When("^delete accident from position '(\\d+)'")
     public void deleteAccidentAt(int position) throws Throwable {
         totalAccidents = accident.countAccidents();
         accident.deleteAccident(position);
     }
 
     @Then("^verify that one Accident was removed in the list")
-    public void verifyIncidentWasRemoved() throws Throwable {
-        Assert.assertEquals(accident.countAccidents(), (totalAccidents - ACCIDENT_ROW), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_BUTTON_DISSABLE, "Accident"));
+    public void verifyAccidentWasRemoved() throws Throwable {
+        Assert.assertEquals(accident.countAccidents(), (totalAccidents - ACCIDENT_ROW), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_ROW, "Accident"));
     }
 
-    @Then("^edit accident from position (\\d+)")
+    @Then("^edit accident from position '(\\d+)'")
     public void editAccidentAt(int position) throws Throwable {
         modificarAccident = accident.editAccident(position);
     }
@@ -314,53 +313,53 @@ public class StepsDefinitionSSIApplication {
         accident = modificarAccident.editAccident(data);
     }
 
-    @Then("^verify that (\\d+) Accident is modified")
+    @Then("^verify that '(\\d+)' Accident is modified")
     public void verifyAccidentIsModified(int position) throws Throwable {
         Assert.assertEquals(accident.getAccident(position), accidentMap, String.format(ErrorMessage.ERROR_MESSAGE_EDIT_ACCIDENT, "Accident"));
     }
 
-    @When("^select (.*?) search filter option on 'Accidente' page")
+    @When("^select '(.*?)' search filter option on 'Accidente' page")
     public void selectSearchFilterOption(String option) throws Throwable {
         accident.selectSearchOption(option);
 
     }
 
-    @When("^set (.*?) search filter value on 'Accidente' page")
+    @When("^set '(.*?)' search filter value on 'Accidente' page")
     public void setSearchFilterValue(String value) throws Throwable {
         accident.setSearchAccidentInput(value);
     }
 
-    @When("^click on search button on 'Accidente' page")
+    @When("^click on 'Buscar' button on 'Accidente' page")
     public void clickSearchAccidentButton() throws Throwable {
         accident.clickSearchButton();
     }
 
-    @When("^verify that accident are filer by (.*?) severity")
+    @When("^verify that accident are filter by '(.*?)' severity")
     public void verifyThatAccidenyIsFilterBySeverity(String severity) throws Throwable {
-        Assert.assertEquals(accident.isSevetiryColumnMatchWithFilter(severity), true);
+        Assert.assertTrue(accident.isSevetiryColumnMatchWithFilter(severity), String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_DOES_NOT_MATCH, "Severity"));
     }
 
     @When("^verify that 'guardar' button is disabled by default on 'Register Accidente' page")
     public void verifyThatSaveButtonIsDisabled() throws Throwable {
-        Assert.assertEquals(createAccident.isSaveButtonEnabled(), false);
+        Assert.assertFalse(createAccident.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
     }
 
     @When("^verify that 'mofificar' button is enabled by default on 'modificar Accidente' page")
     public void verifyThatEditButtonIsEnabled() throws Throwable {
-        Assert.assertEquals(modificarAccident.isEditButtonEnabled(), true);
+        Assert.assertTrue(modificarAccident.isEditButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_ENABLE, "Modificar"));
     }
 
-    @When("^set (.*?) severity field into 'accident' form on 'registro accidente' page")
+    @When("^set '(.*?)' severity field into 'accident' form on 'registro accidente' page")
     public void verifyThatEditButtonIsEnabled(String severity) throws Throwable {
         createAccident.setSeverity(severity);
     }
 
-    @When("^click severity field into 'accident' form on 'registro accidente' page")
+    @When("^click 'severidad' field into 'accident' form on 'registro accidente' page")
     public void clickSeverityInput() throws Throwable {
         createAccident.clickSeverityInput();
     }
 
-    @When("^click state field into 'accident' form on 'registro accidente' page")
+    @When("^click 'estado' field into 'accident' form on 'registro accidente' page")
     public void clickStateInput() throws Throwable {
         createAccident.clickStateInput();
     }
