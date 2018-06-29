@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.utils;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -130,7 +131,6 @@ public class CommonEvents {
         }
     }
 
-
     /**
      * This method count all element into the list.
      *
@@ -141,7 +141,29 @@ public class CommonEvents {
         return webElements.size();
     }
 
+    /**
+     * This method select an element by value.
+     *
+     * @param webElement is the WebElement.
+     * @param textvalue  is the value.
+     */
+    public static void selectElementByText(WebElement webElement, String textvalue) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        Select selectElement = new Select(webElement);
+        selectElement.selectByVisibleText(textvalue);
+    }
+
     public static WebElement getWebElementByClassName(WebElement element, String className) {
         return element.findElement(By.cssSelector("." + className));
+    }
+
+    /**
+     * This method clear the set input field
+     *
+     * @param webElement Is web element.
+     */
+    public static void clearInputField(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.clear();
     }
 }
