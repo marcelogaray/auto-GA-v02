@@ -13,7 +13,7 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 public class StepsDefinitionAssignItemToEmployee {
     private Login login;
     private AssignEmployeeItem assignEmployeeItem;
-
+// Space
     @Given("^'SSI' page is loaded$")
     public void ssiPageIsLoaded() throws Throwable {
 // Space
@@ -21,7 +21,7 @@ public class StepsDefinitionAssignItemToEmployee {
         assignEmployeeItem = new AssignEmployeeItem();
 // Space
     }
-
+// Space
     @And("^User is authenticated$")
     public void userIsAuthenticated() throws Throwable {
         login.setCredentials();
