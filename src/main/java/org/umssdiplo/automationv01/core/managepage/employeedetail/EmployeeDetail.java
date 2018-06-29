@@ -13,7 +13,7 @@ public class EmployeeDetail extends BasePage {
     private WebElement assignItemButton;
 
     @FindBy(className = "return-item-btn")
-    private WebElement returnButtons;
+    private WebElement returnButton;
 
     @FindBy(id = "assigned-items-title")
     private WebElement assignItemTitle;
@@ -34,7 +34,7 @@ public class EmployeeDetail extends BasePage {
     }
 
     public boolean existReturnButton() {
-        return CommonEvents.isPresent(returnButtons);
+        return CommonEvents.isPresent(returnButton);
     }
 
     public boolean existAssignItemTitleSection() {

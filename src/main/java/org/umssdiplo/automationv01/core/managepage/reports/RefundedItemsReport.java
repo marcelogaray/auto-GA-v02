@@ -8,48 +8,48 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class RefundedItemsReport extends BasePage {
     @FindBy(id = "first-column-header")
-    private WebElement firstColumnTitle;
+    private WebElement employeeNameColumnTitle;
 
     @FindBy(id = "second-column-header")
-    private WebElement secondColumnTitle;
+    private WebElement employeeLastNameColumnTitle;
 
     @FindBy(id = "third-column-header")
-    private WebElement thirdColumnTitle;
+    private WebElement itemCodeColumnTitle;
 
     @FindBy(id = "fourth-column-header")
-    private WebElement fourthColumnTitle;
+    private WebElement itemNameColumnTitle;
 
     @FindBy(id = "fifth-column-header")
-    private WebElement fifthColumnTitle;
+    private WebElement stateColumnTitle;
 
     @FindBy(id = "sixth-column-header")
-    private WebElement sixthColumnTitle;
+    private WebElement dateColumnTitle;
 
     public RefundedItemsReport() {
-        CommonEvents.isVisible(sixthColumnTitle);
+        CommonEvents.isVisible(dateColumnTitle);
     }
 
     public String getFirstHeaderTable() {
-        return firstColumnTitle.getText();
+        return employeeNameColumnTitle.getText();
     }
 
     public String getSecondHeaderTable() {
-        return secondColumnTitle.getText();
+        return employeeLastNameColumnTitle.getText();
     }
 
     public String getThirdHeaderTable() {
-        return thirdColumnTitle.getText();
+        return itemCodeColumnTitle.getText();
     }
 
     public String getFourthHeaderTable() {
-        return fourthColumnTitle.getText();
+        return itemNameColumnTitle.getText();
     }
 
     public String getFifthHeaderTable() {
-        return fifthColumnTitle.getText();
+        return stateColumnTitle.getText();
     }
 
     public String getSixthHeaderTable() {
-        return sixthColumnTitle.getText();
+        return dateColumnTitle.getText();
     }
 }

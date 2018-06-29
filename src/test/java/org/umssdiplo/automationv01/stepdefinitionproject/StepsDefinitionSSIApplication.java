@@ -38,6 +38,7 @@ public class StepsDefinitionSSIApplication {
     private int totalAssignedItems;
     private int totalAccidents;
     private int totalContingencyPlans;
+    private int totalPositions;
     private Map<String, String> contingencyMap;
     private Map<String, String> accidentMap;
     private static Login login;
@@ -48,7 +49,6 @@ public class StepsDefinitionSSIApplication {
     private AssignEmployeeItemModal assignEmployeeItemModal;
     private PositionsSubMenu positionsSubMenu;
     private RegisterPosition registerPosition;
-    private int totalPositions;
     private EditPosition updatePosition;
     private ReportsSubMenu reportsSubMenu;
     private AvailableItemsReport availableItemsReport;
@@ -475,17 +475,17 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^the header of the report should contain the \"([^\"]*)\" title$")
     public void theHeaderOfTheReportShouldContainTheTitle(String firstColumn) throws Throwable {
-        Assert.assertEquals(availableItemsReport.getFirstHeaderTable(), firstColumn, String.format(ErrorMessage.ERROR_MESSAGE_FIRST_COLUMN_TEXT, firstColumn));
+        Assert.assertEquals(availableItemsReport.getFirstHeaderTable(), firstColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, firstColumn));
     }
 
     @And("^the \"([^\"]*)\" title as second column$")
     public void theTitleAsSecondColumn(String secondColumn) throws Throwable {
-        Assert.assertEquals(availableItemsReport.getSecondHeaderTable(), secondColumn, String.format(ErrorMessage.ERROR_MESSAGE_SECOND_COLUMN_TEXT, secondColumn));
+        Assert.assertEquals(availableItemsReport.getSecondHeaderTable(), secondColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, secondColumn));
     }
 
     @And("^the \"([^\"]*)\" title as third column$")
     public void theTitleAsThirdColumn(String thirdColumn) throws Throwable {
-        Assert.assertEquals(availableItemsReport.getThirdTable(), thirdColumn, String.format(ErrorMessage.ERROR_MESSAGE_THIRD_COLUMN_TEXT, thirdColumn));
+        Assert.assertEquals(availableItemsReport.getThirdTable(), thirdColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, thirdColumn));
     }
 
     @When("^click 'Activos Devueltos' option on 'Reportes' submenu$")

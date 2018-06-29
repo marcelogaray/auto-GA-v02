@@ -9,27 +9,27 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class AvailableItemsReport extends BasePage {
 
     @FindBy(id = "first-column-header")
-    private WebElement firstColumnTitle;
+    private WebElement codeColumnTitle;
 
     @FindBy(id = "second-column-header")
-    private WebElement secondColumnTitle;
+    private WebElement materialNameColumnTitle;
 
     @FindBy(id = "third-column-header")
-    private WebElement thirdColumnTitle;
+    private WebElement statusColumnTitle;
 
     public AvailableItemsReport() {
-        CommonEvents.isVisible(thirdColumnTitle);
+        CommonEvents.isVisible(statusColumnTitle);
     }
 
     public String getFirstHeaderTable() {
-        return firstColumnTitle.getText();
+        return codeColumnTitle.getText();
     }
 
     public String getSecondHeaderTable() {
-        return secondColumnTitle.getText();
+        return materialNameColumnTitle.getText();
     }
 
     public String getThirdTable() {
-        return thirdColumnTitle.getText();
+        return statusColumnTitle.getText();
     }
 }
