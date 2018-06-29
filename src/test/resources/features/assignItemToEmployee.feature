@@ -26,7 +26,7 @@ Feature: AssignItemToEmployee
     And click 'Detail' button of an active employee in 'Employees List' page
     And click 'Asignar Activo' button on 'Employee Detail' page
     When click 'Cancelar' button on 'Assign Item' modal
-    Then the page title should be "Perfil de Empleado"
+    Then the current page title should be "Perfil de Empleado"
 
   Scenario: AA-14 TC-DiegoMaiz-04
     Given 'SSI' page is loaded
