@@ -16,8 +16,10 @@ public class StepsDefinitionAssignItemToEmployee {
 
     @Given("^'SSI' page is loaded$")
     public void ssiPageIsLoaded() throws Throwable {
+// Space
         login = LoadPage.loginPage();
         assignEmployeeItem = new AssignEmployeeItem();
+// Space
     }
 
     @And("^User is authenticated$")
