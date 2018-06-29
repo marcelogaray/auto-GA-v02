@@ -25,7 +25,9 @@ public class AssignEmployeeItem extends BasePage {
     private WebElement assignItemButton;
 
     public void clickOnEstructuraOrganizacionalMenuButton(){
+//Space Added
         CommonEvents.clickButton(menuOrganizationalButton);
+//Space Added
     }
 
     public void clickOnEmpleadosOption(){
