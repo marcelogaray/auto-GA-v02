@@ -15,6 +15,7 @@ public class StepsDefinitionAssignItemToEmployee {
     private AssignEmployeeItem assignEmployeeItem;
 // Space
     @Given("^'SSI' page is loaded$")
+// Space
     public void ssiPageIsLoaded() throws Throwable {
 // Space
         login = LoadPage.loginPage();
