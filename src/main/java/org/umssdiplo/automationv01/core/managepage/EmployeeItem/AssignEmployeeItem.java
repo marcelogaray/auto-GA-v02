@@ -9,6 +9,8 @@ public class AssignEmployeeItem extends BasePage {
     @FindBy(id = "menu-organizational")
     private WebElement menuOrganizationalButton;
 
+
+
     @FindBy(id = "sub-menu-employees")
     private WebElement employeesOption;
 
@@ -27,9 +29,14 @@ public class AssignEmployeeItem extends BasePage {
     @FindBy(id = "employee-detail-title")
     private WebElement employeeDetailTitle;
 
+
     public void clickOnEstructuraOrganizacionalMenuButton(){
+
+//Test
         CommonEvents.clickButton(menuOrganizationalButton);
+//Test
     }
+
 
     public void clickOnEmpleadosOption(){
         CommonEvents.clickButton(employeesOption);
@@ -43,13 +50,16 @@ public class AssignEmployeeItem extends BasePage {
         CommonEvents.clickButton(assignActiveButton);
     }
 
+
     public String getTitleText(){
         return assignItemTitle.getText();
     }
 
+
     public void clickOnCancelarButton(){
         CommonEvents.clickButton(cancelAssignItemButton);
     }
+
 
     public String getEmployeeDetailTitleText(){
         return employeeDetailTitle.getText();
