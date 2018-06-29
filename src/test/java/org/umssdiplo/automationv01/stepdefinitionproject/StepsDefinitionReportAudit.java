@@ -31,6 +31,7 @@ public class StepsDefinitionReportAudit {
 
     @And("^User is authenticated in portal$")
     public void userIsAuthenticated() throws Throwable {
+
         login.setCredentials();
     }
 
