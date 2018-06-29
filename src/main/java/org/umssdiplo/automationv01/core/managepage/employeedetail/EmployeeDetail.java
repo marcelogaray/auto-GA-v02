@@ -9,11 +9,14 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import java.util.List;
 
 public class EmployeeDetail extends BasePage {
-    @FindBy(id = "assigned-items-title")
-    private WebElement assignedActiveTitle;
-
     @FindBy(id = "assign-active")
     private WebElement assignItemButton;
+
+    @FindBy(className = "return-item-btn")
+    private WebElement returnButton;
+
+    @FindBy(id = "assigned-items-title")
+    private WebElement assignItemTitle;
 
     @FindBy(id = "employee-detail-title")
     private WebElement pageTitle;
@@ -22,12 +25,20 @@ public class EmployeeDetail extends BasePage {
     private List<WebElement> assignedItems;
 
     public EmployeeDetail() {
-        CommonEvents.isVisible(assignedActiveTitle);
+        CommonEvents.isVisible(assignItemTitle);
     }
 
     public AssignEmployeeItemModal clickAssignEmployeeItem() {
         CommonEvents.clickButton(assignItemButton);
         return new AssignEmployeeItemModal();
+    }
+
+    public boolean existReturnButton() {
+        return CommonEvents.isPresent(returnButton);
+    }
+
+    public boolean existAssignItemTitleSection() {
+        return CommonEvents.isPresent(assignItemTitle);
     }
 
     public int countAssignedItems() {

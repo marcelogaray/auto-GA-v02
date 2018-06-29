@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.accidenteincidentmenu.AccidentEIncidentMenu;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class NavigationBar extends BasePage {
@@ -24,6 +25,11 @@ public class NavigationBar extends BasePage {
     public OrganizationalStructureMenu clickOrganizationalStructure() {
         CommonEvents.clickButton(organizationalMenu);
         return new OrganizationalStructureMenu();
+    }
+
+    public ReportsSubMenu clickReports() {
+        CommonEvents.clickButton(reportsMenu);
+        return new ReportsSubMenu();
     }
 
     public AccidentEIncidentMenu clickAccidentEIncidentButton() {
