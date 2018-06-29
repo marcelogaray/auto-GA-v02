@@ -1,4 +1,4 @@
-Feature: updateDepartment
+Feature: updatePosition
 #Verificar que despues de seleccionar "Editar" una position la pagina de modificar es cargada
   Scenario: EO-13 TC - InesBaina - 04
     Given 'SSI' page is loaded
