@@ -17,7 +17,7 @@ import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.O
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
-public class StepsDefinitionSSIApplication {
+public class StepDef_EO_06 {
     private Login login;
     private NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
