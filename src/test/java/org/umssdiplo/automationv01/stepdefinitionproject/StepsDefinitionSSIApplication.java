@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,6 +16,9 @@ import org.umssdiplo.automationv01.core.managepage.accident.CreateAccident;
 import org.umssdiplo.automationv01.core.managepage.login.Login;
 import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.managepage.storage.CreateStorage;
+import org.umssdiplo.automationv01.core.managepage.storage.Storage;
+import org.umssdiplo.automationv01.core.managepage.storagemenu.StorageMenu;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -34,6 +38,11 @@ public class StepsDefinitionSSIApplication {
     private ModificarAccident modificarAccident;
     private int totalAccidents;
     private Map<String, String> accidentMap;
+    private StorageMenu storageMenu;
+    private int totalStorages;
+    private Storage storage;
+    private CreateStorage createStorage;
+    private static final int STORAGE_ROW = 1;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -208,5 +217,32 @@ public class StepsDefinitionSSIApplication {
     @Then("^verify that accident is not added in the list$")
     public void verifyAccidentWasNotAdded() throws Throwable {
         Assert.assertEquals(accident.countAccidents(), totalAccidents, String.format(ErrorMessage.ERROR_MESSAGE_CREATE_ACCIDENT, "Accident"));
+    }
+
+    @When("^Click 'Almacenes' menu on 'NavigationBar' top menu$")
+    public void clickAlmacenesMenuOnNavigationBarTopMenu() throws Throwable {
+        navigationBar = new NavigationBar();
+        storage = navigationBar.clickStorageButton();
+    }
+
+    @And("^Click 'Agregar Almacen' button on 'Storage' page$")
+    public void clickAgregarAlmacenButtonOnStoragePage() throws Throwable {
+        totalStorages = storage.countStorages();
+        createStorage = storage.createStorage();
+    }
+
+    @And("^Fill 'Storage' form on 'Registro Accidente' page$")
+    public void fillStorageFormOnRegistroAccidentePage(Map<String, String> data) throws Throwable {
+        storage = createStorage.createStorage(data);
+    }
+
+    @Then("^Verify that new storage is added in the list$")
+    public void verifyThatNewStorageIsAddedInTheList() throws Throwable {
+        Assert.assertEquals(storage.countStorages(), totalStorages + STORAGE_ROW, String.format(ErrorMessage.ERROR_MESSAGE_CREATE_STORAGE, "Storage"));
+    }
+
+    @And("^Verify name for new storage$")
+    public void verifyNameForNewStorage(String name) throws Throwable {
+        Assert.assertEquals(storage.getName(totalStorages), name, String.format(ErrorMessage.ERROR_MESSAGE_NAME_NEW_STORAGE, "Storage"));
     }
 }
