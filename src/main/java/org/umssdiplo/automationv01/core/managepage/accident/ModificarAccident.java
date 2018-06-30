@@ -41,7 +41,6 @@ public class ModificarAccident extends BasePage {
     @FindBy(id = "severity-required-message")
     private WebElement severityErrorMessage;
 
-
     public void selectEmployeeByValue(String textValue) {
         CommonEvents.selectElementByText(employeeSelect, textValue);
     }

@@ -7,6 +7,7 @@ import org.umssdiplo.automationv01.core.managepage.accidenteincidentmenu.Acciden
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
 import org.umssdiplo.automationv01.core.managepage.storage.Storage;
 import org.umssdiplo.automationv01.core.managepage.storagemenu.StorageMenu;
+import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class NavigationBar extends BasePage {
@@ -17,7 +18,7 @@ public class NavigationBar extends BasePage {
     private WebElement organizationalMenu;
 
     @FindBy(id = "accident-incident-button")
-    private WebElement accidentEIncidentMenu;
+    private WebElement accidentIncidentMenu;
 
     @FindBy(id = "storageMenu")
     private WebElement storageMenu;
@@ -31,8 +32,13 @@ public class NavigationBar extends BasePage {
         return new OrganizationalStructureMenu();
     }
 
+    public ReportsSubMenu clickReports() {
+        CommonEvents.clickButton(reportsMenu);
+        return new ReportsSubMenu();
+    }
+
     public AccidentEIncidentMenu clickAccidentEIncidentButton() {
-        CommonEvents.clickButton(accidentEIncidentMenu);
+        CommonEvents.clickButton(accidentIncidentMenu);
         return new AccidentEIncidentMenu();
     }
 

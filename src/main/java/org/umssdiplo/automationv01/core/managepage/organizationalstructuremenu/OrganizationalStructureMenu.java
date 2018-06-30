@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.employeessubmenu.EmployeesSubMenu;
+import org.umssdiplo.automationv01.core.managepage.positionssubmenu.PositionsSubMenu;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class OrganizationalStructureMenu extends BasePage {
@@ -20,5 +21,10 @@ public class OrganizationalStructureMenu extends BasePage {
     public EmployeesSubMenu clickEmployees() {
         CommonEvents.clickButton(employeeSubMenu);
         return new EmployeesSubMenu();
+    }
+
+    public PositionsSubMenu clickPositions() {
+        CommonEvents.clickButton(positionSubMenu);
+        return new PositionsSubMenu();
     }
 }

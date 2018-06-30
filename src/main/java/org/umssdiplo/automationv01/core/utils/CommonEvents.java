@@ -145,7 +145,7 @@ public class CommonEvents {
      * This method select an element by value.
      *
      * @param webElement is the WebElement.
-     * @param textvalue is the value.
+     * @param textvalue  is the value.
      */
     public static void selectElementByText(WebElement webElement, String textvalue) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
