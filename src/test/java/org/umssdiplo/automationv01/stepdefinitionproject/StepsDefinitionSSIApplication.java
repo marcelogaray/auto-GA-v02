@@ -31,7 +31,6 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 import java.util.Map;
 
 public class StepsDefinitionSSIApplication {
-    private static final int POSITION_REMOVED = 1;
     private static final int ACCIDENT_ROW = 1;
     private static final int NUMBER_ROW = 1;
     private static final int NEW_ITEM_ASSIGNED = 1;
@@ -430,15 +429,13 @@ public class StepsDefinitionSSIApplication {
         positionsSubMenu.deletePosition(element);
     }
 
-    @Then("^the page should not display the element removed on 'Lista de Posiciones' page$")
+    @Then("^after delete a position the same number of elements should be displayed$")
     public void thePageShouldNotDisplayTheElementOnListaDePosicionesPage() throws Throwable {
-        Assert.assertEquals(positionsSubMenu.countPositions(), (totalPositions - POSITION_REMOVED), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_POSITION, "Position"));
+        Assert.assertEquals(positionsSubMenu.countPositions(), (totalPositions), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_POSITION, "Position"));
     }
-
 
     @When("^click 'Editar' option from Position list on 'Lista de Posiciones' page of element (\\d+)$")
     public void clickEditarOptionFromPositionListOnListaDePosicionesPage(int element) throws Throwable {
-
         updatePosition = positionsSubMenu.editPosition(element);
     }
 
@@ -471,7 +468,6 @@ public class StepsDefinitionSSIApplication {
     public void clickActivosDisponiblesOptionOnReportesSubmenu() throws Throwable {
         availableItemsReport = reportsSubMenu.clickAvailableItemsReport();
     }
-
 
     @Then("^the header of the report should contain the \"([^\"]*)\" title$")
     public void theHeaderOfTheReportShouldContainTheTitle(String firstColumn) throws Throwable {
