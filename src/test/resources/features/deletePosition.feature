@@ -1,5 +1,5 @@
 Feature: deletePosition
-#Verificar que una Posicion al ser eliminada la 'Lisde posiciones' es mostrada
+#Verificar que una Posicion al ser eliminada la 'Lis de posiciones' es mostrada
   Scenario: EO-12 TC - InesBaina - 03
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
