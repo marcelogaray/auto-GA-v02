@@ -429,7 +429,7 @@ public class StepsDefinitionSSIApplication {
         positionsSubMenu.deletePosition(element);
     }
 
-    @Then("^the page should not remove the element deleted on 'Lista de Posiciones' page$")
+    @Then("^after delete a position the same number of elements should be displayed$")
     public void thePageShouldNotDisplayTheElementOnListaDePosicionesPage() throws Throwable {
         Assert.assertEquals(positionsSubMenu.countPositions(), (totalPositions), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_POSITION, "Position"));
     }

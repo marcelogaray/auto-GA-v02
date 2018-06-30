@@ -6,4 +6,4 @@ Feature: deletePosition
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu
     And click 'Cargos' option from list menu on 'Estructura Organizacional' submenu
     When click 'Eliminar' button on 'Lista de Posiciones' page of element 1
-    Then the page should not remove the element deleted on 'Lista de Posiciones' page
+    Then after delete a position the same number of elements should be displayed
