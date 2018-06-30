@@ -1,7 +1,7 @@
 package org.umssdiplo.automationv01.core.utils;
 
 public class ErrorMessage {
-    public static final String ERROR_MESSAGE_DELETE_POSITION = "%s should be deleted";
+    public static final String ERROR_MESSAGE_DELETE_POSITION = "%s should be displayed";
     public static final String ERROR_MESSAGE_ASSIGN_ITEM_TITLE = "%s should be displayed";
     public static final String ERROR_MESSAGE_COLUMN_TEXT = "%s column should be displayed";
     public static final String ERROR_MESSAGE_ITEM_ELEMENT_PRESENT = "%s should be present";

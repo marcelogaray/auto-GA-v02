@@ -430,9 +430,9 @@ public class StepsDefinitionSSIApplication {
         positionsSubMenu.deletePosition(element);
     }
 
-    @Then("^the page should not display the element removed on 'Lista de Posiciones' page$")
-    public void thePageShouldNotDisplayTheElementOnListaDePosicionesPage() throws Throwable {
-        Assert.assertEquals(positionsSubMenu.countPositions(), (totalPositions - POSITION_REMOVED), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_POSITION, "Position"));
+    @Then("^the page should display the same \"([^\"]*)\" page$")
+    public void thePageShouldNotDisplayTheElementOnListaDePosicionesPage(String title) throws Throwable {
+        Assert.assertEquals(positionsSubMenu.getTitle(),(title), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_POSITION, "Position"));
     }
 
 
