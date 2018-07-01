@@ -1,6 +1,6 @@
 Feature: updatePosition
 #Verificar que despues de seleccionar "Editar" una position la pagina de modificar es cargada
-  Scenario: EO-13 TC - InesBaina - 04
+  Scenario: EO-13 Verificar que despues de seleccionar "Editar" una position la pagina de modificar es cargada
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu

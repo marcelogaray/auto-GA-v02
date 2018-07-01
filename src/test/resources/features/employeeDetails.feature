@@ -1,6 +1,6 @@
 Feature: employeeDetails
 #Verificar que Employee Details page displays the "Activos Asignados" section
-  Scenario:  AA22 TC - InesBaina - 07
+  Scenario:  AA22 Verificar que Employee Details page displays the "Activos Asignados" section
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu

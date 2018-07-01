@@ -1,6 +1,6 @@
 Feature: registerPosition
 #Verificar que una posicion no puede ser creada si los campos requeridos no son llenados
-  Scenario: EO-10 TC - InesBaina - 01
+  Scenario: EO-10 Verificar que una posicion no puede ser creada si los campos requeridos no son llenados
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu
