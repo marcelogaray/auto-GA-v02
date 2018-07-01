@@ -21,4 +21,8 @@ public class ErrorMessage {
     public static final String ERROR_MESSAGE_BUTTON_SHOULD_EXIST_IN_PAGE = "%s button should exist in %s page";
     public static final String ERROR_MESSAGE_INCREASE_ASSIGNED_ITEMS = "the list of %s should increase in one";
     public static final String ERROR_MESSAGE_COLUMN_DOES_NOT_MATCH = "should be filtered by %s";
+    public static final String ERROR_MESSAGE_CREATE_STORAGE = "%s new row should be added";
+    public static final String ERROR_MESSAGE_NAME_NEW_STORAGE = "name does not match with new %s";
+    public static final String ERROR_MESSAGE_NAME_ELEMENT_PRESENT = "%s should be present";
+    public static final String ERROR_MESSAGE_EDIT_STORAGE = "%s should be modified";
 }
