@@ -36,8 +36,8 @@ public class Login extends BasePage {
 
     public NavigationBar setCredentials() {
         CommonEvents.clickButton(loginButton);
-        CommonEvents.customWait(2000);
         enterUsernameFromSystem();
+        CommonEvents.customWait(2000);
         enterPasswordFromSystem();
         clickAcceptButton();
         return new NavigationBar();
