@@ -1,7 +1,7 @@
 package org.umssdiplo.automationv01.core.utils;
 
 public class ErrorMessage {
-    public static final String ERROR_MESSAGE_DELETE_POSITION = "%s should be deleted";
+    public static final String ERROR_MESSAGE_DELETE_POSITION = "%s should not be deleted";
     public static final String ERROR_MESSAGE_ASSIGN_ITEM_TITLE = "%s should be displayed";
     public static final String ERROR_MESSAGE_COLUMN_TEXT = "%s column should be displayed";
     public static final String ERROR_MESSAGE_ITEM_ELEMENT_PRESENT = "%s should be present";
@@ -22,4 +22,8 @@ public class ErrorMessage {
     public static final String ERROR_MESSAGE_INCREASE_ASSIGNED_ITEMS = "the list of %s should increase in one";
     public static final String ERROR_MESSAGE_COLUMN_DOES_NOT_MATCH = "should be filtered by %s";
     public static final String ERROR_MESSAGE_NOT_CREATE_ACCIDENT = "%s new row should not be added";
+    public static final String ERROR_MESSAGE_CREATE_STORAGE = "%s new row should be added";
+    public static final String ERROR_MESSAGE_NAME_NEW_STORAGE = "name does not match with new %s";
+    public static final String ERROR_MESSAGE_NAME_ELEMENT_PRESENT = "%s should be present";
+    public static final String ERROR_MESSAGE_EDIT_STORAGE = "%s should be modified";
 }

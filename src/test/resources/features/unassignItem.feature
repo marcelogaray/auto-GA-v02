@@ -1,6 +1,6 @@
 Feature: unassignItem
 #Verificar que la opcion "Devolver" es mostrada en la lista de activos asignados
-  Scenario:  AA21 TC - InesBaina - 06
+  Scenario:  AA21 Verificar que la opcion "Devolver" es mostrada en la lista de activos asignados
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu

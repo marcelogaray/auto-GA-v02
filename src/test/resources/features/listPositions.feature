@@ -1,6 +1,6 @@
 Feature: listPosition
 #Verificar que la pagina de la lista de posiciones es mostrada
-  Scenario: EO-14 TC - InesBaina - 05
+  Scenario: EO-14 Verificar que la pagina de la lista de posiciones es mostrada
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu
