@@ -25,6 +25,9 @@ public class ListItemType extends BasePage {
     @FindBy(xpath = "//mat-card/mat-card-actions/button")
     private WebElement addItemTypeBtn;
 
+    @FindBy(xpath = "//mat-card/mat-card-title")
+    private WebElement pageTitle;
+
     /**
      * Waits until button at the botton of the page is loaded
      */
@@ -95,5 +98,11 @@ public class ListItemType extends BasePage {
     private WebElement getBtnByIndexAndXPath(int index, String xPath) {
         WebElement row = tableRows.get(index);
         return CommonEvents.getWebElementInTableRowByXPath(row, String.format(xPath, index + 1));
+    }
+
+    public String getPageTitle() {
+        String title = pageTitle.getText();
+
+        return title;
     }
 }
