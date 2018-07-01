@@ -697,4 +697,31 @@ public class StepsDefinitionSSIApplication {
         String actualItemTypeName = listItemType.getItemTypeNameInTableRow(index);
         Assert.assertEquals(actualItemTypeName, expectedItemTypeName);
     }
+
+    @And("^Click 'Anadir Tipo de Item' button$")
+    public void clickAnadirTipoDeItemButton() throws Throwable {
+        editItemType = listItemType.clickAddItemTypeBtn();
+    }
+
+    @And("^Enter \"([^\"]*)\" in Name input field$")
+    public void enterInNameInputField(String itemTypeName) throws Throwable {
+        editItemType.enterNewItemTypeName(itemTypeName);
+    }
+
+    @And("^Verify \"([^\"]*)\" is in the list$")
+    public void verifyIsInTheList(String expectedItemTypeName) throws Throwable {
+        boolean expectedResult = listItemType.existItemTypeByName(expectedItemTypeName);
+        Assert.assertTrue(expectedResult);
+    }
+
+    @When("^Click 'Delete' button of \"([^\"]*)\" row$")
+    public void clickDeleteButtonOfRow(String itemTypeName) throws Throwable {
+        listItemType = listItemType.clickDeleteBtnByItemTypeName(itemTypeName);
+    }
+
+    @Then("^Verify that \"([^\"]*)\" does not exist in the list$")
+    public void verifyThatDoesNotExistInTheList(String itemTypeName) throws Throwable {
+        boolean actualResult = listItemType.existItemTypeByName(itemTypeName);
+        Assert.assertEquals(actualResult, false);
+    }
 }
