@@ -4,24 +4,33 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.ListDepartmentPage;
+import org.umssdiplo.automationv01.core.managepage.accidenteincidentmenu.AccidentEIncidentMenu;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class NavigationBar extends BasePage {
     @FindBy(id = "menu-reports")
     private WebElement reportsMenu;
-
+  
     @FindBy(xpath = "//span[text() = 'Estructura Organizacional']")
     private WebElement activeMenu;
 
     @FindBy(xpath = "//span[contains(text(), 'Departamentos')]")
     private WebElement activeSubmenu;
 
+    @FindBy(id = "menu-organizational")
+    private WebElement organizationalMenu;
+
+    @FindBy(id = "accident-incident-button")
+    private WebElement accidentIncidentMenu;
+
     public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
     }
 
     public OrganizationalStructureMenu clickOrganizationalStructure() {
+        CommonEvents.clickButton(organizationalMenu);
         return new OrganizationalStructureMenu();
     }
 
@@ -34,5 +43,15 @@ public class NavigationBar extends BasePage {
         CommonEvents.isVisible(activeSubmenu);
         CommonEvents.jsClickElement(activeSubmenu);
         return new ListDepartmentPage();
+    }
+
+    public ReportsSubMenu clickReports() {
+        CommonEvents.clickButton(reportsMenu);
+        return new ReportsSubMenu();
+    }
+
+    public AccidentEIncidentMenu clickAccidentEIncidentButton() {
+        CommonEvents.clickButton(accidentIncidentMenu);
+        return new AccidentEIncidentMenu();
     }
 }
