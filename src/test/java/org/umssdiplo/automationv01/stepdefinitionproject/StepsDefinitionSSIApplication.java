@@ -8,6 +8,8 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.accident.ModificarAccident;
 import org.umssdiplo.automationv01.core.managepage.accidenteincidentmenu.AccidentEIncidentMenu;
+import org.umssdiplo.automationv01.core.managepage.addItem.AddItem;
+import org.umssdiplo.automationv01.core.managepage.addItemType.AddItemType;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.editItemType.EditItemType;
 import org.umssdiplo.automationv01.core.managepage.reports.AvailableItemsReport;
@@ -76,6 +78,8 @@ public class StepsDefinitionSSIApplication {
     private ActivosMenu activosMenu;
     private ListItemType listItemType;
     private EditItemType editItemType;
+    private AddItemType addItemType;
+    private AddItem addItem;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -647,22 +651,30 @@ public class StepsDefinitionSSIApplication {
 
     @And("^Click 'Login' button on Page Header$")
     public void clickLoginButtonOnPageHeader() throws Throwable {
-        login.clickLoginButton();
+        if (navigationBar == null) {
+            login.clickLoginButton();
+        }
     }
 
     @And("^Enter Username$")
     public void enterUsername() throws Throwable {
-        login.enterUsername();
+        if (navigationBar == null) {
+            login.enterUsername();
+        }
     }
 
     @And("^Enter Password$")
     public void enterPassword() throws Throwable {
-        login.enterPassword();
+        if (navigationBar == null) {
+            login.enterPassword();
+        }
     }
 
     @And("^Click 'Login' button to accept credentials$")
     public void clickLoginButtonToAcceptCredentials() throws Throwable {
-        navigationBar = login.clickLoginAcceptButton();
+        if (navigationBar == null) {
+            navigationBar = login.clickLoginAcceptButton();
+        }
     }
 
     @And("^Click 'Activos' menu in Navigation bar$")
@@ -696,5 +708,81 @@ public class StepsDefinitionSSIApplication {
         int index = Integer.parseInt(indexParam) - 1;
         String actualItemTypeName = listItemType.getItemTypeNameInTableRow(index);
         Assert.assertEquals(actualItemTypeName, expectedItemTypeName);
+    }
+
+    @And("^Click 'Anadir Tipo de Item' button$")
+    public void clickAnadirTipoDeItemButton() throws Throwable {
+        editItemType = listItemType.clickAddItemTypeBtn();
+    }
+
+    @And("^Enter \"([^\"]*)\" in Name input field$")
+    public void enterInNameInputField(String itemTypeName) throws Throwable {
+        editItemType.enterNewItemTypeName(itemTypeName);
+    }
+
+    @And("^Verify \"([^\"]*)\" is in the list$")
+    public void verifyIsInTheList(String expectedItemTypeName) throws Throwable {
+        boolean expectedResult = listItemType.existItemTypeByName(expectedItemTypeName);
+        Assert.assertTrue(expectedResult);
+    }
+
+    @When("^Click 'Delete' button of \"([^\"]*)\" row$")
+    public void clickDeleteButtonOfRow(String itemTypeName) throws Throwable {
+        listItemType = listItemType.clickDeleteBtnByItemTypeName(itemTypeName);
+    }
+
+    @Then("^Verify that \"([^\"]*)\" does not exist in the list$")
+    public void verifyThatDoesNotExistInTheList(String itemTypeName) throws Throwable {
+        boolean actualResult = listItemType.existItemTypeByName(itemTypeName);
+        Assert.assertEquals(actualResult, false);
+    }
+
+    @Then("^Verify that \"([^\"]*)\" is the title of the loaded page$")
+    public void verifyThatIsTheTitleOfTheLoadedPage(String expectedTitle) throws Throwable {
+        String actualTitle = listItemType.getPageTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @And("^Click 'Edit' button of \"([^\"]*)\" row$")
+    public void clickEditButtonOfRow(String itemTypeName) throws Throwable {
+        editItemType = listItemType.clickEditBtnByItemTypeName(itemTypeName);
+    }
+
+    @When("^Click 'Cancel' button in Edit Item Type page$")
+    public void clickCancelButtonInEditItemTypePage() throws Throwable {
+        listItemType = editItemType.clickCancelEditItemTypeBtn();
+    }
+
+    @When("^Click 'Anadir Tipo' submenu option$")
+    public void clickAnadirTipoSubmenuOption() throws Throwable {
+        addItemType = activosMenu.clickAnadirTypeSubmenu();
+    }
+
+    @Then("^Verify 'Save' button status is \"([^\"]*)\"$")
+    public void verifySaveButtonStatusIs(String expecedBtnStatus) throws Throwable {
+        String actualStatus = addItemType.getSaveBtnStatus();
+        Assert.assertEquals(actualStatus, expecedBtnStatus);
+    }
+
+    @When("^Click 'Anadir Item' submenu option$")
+    public void clickAnadirItemSubmenuOption() throws Throwable {
+        addItem = activosMenu.clickAnadirItemSubmenu();
+    }
+
+    @Then("^Verify \"([^\"]*)\" is the title of the Page$")
+    public void verifyIsTheTitleOfThePage(String expectedTitle) throws Throwable {
+        String actualPageTitle = addItem.getPageMainTitle();
+        Assert.assertEquals(actualPageTitle, expectedTitle);
+    }
+
+    @And("^Click 'Delete' button of \"([^\"]*)\" name$")
+    public void clickDeleteButtonOfName(String itemTypeName) throws Throwable {
+        listItemType = listItemType.clickDeleteBtnByItemTypeName(itemTypeName);
+    }
+
+    @Then("^Verify 'Save' button status is \"([^\"]*)\" in 'Anadir Item' page$")
+    public void verifySaveButtonStatusIsInAnadirItemPage(String expectedStatus) throws Throwable {
+        String actualsStatus = addItem.getSaveBtnStatus();
+        Assert.assertEquals(actualsStatus, expectedStatus);
     }
 }
