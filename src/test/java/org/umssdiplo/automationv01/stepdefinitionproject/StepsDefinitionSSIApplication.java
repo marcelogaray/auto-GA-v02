@@ -72,9 +72,7 @@ public class StepsDefinitionSSIApplication {
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
-        if (login == null) {
-            login = LoadPage.loginPage();
-        }
+        login = LoadPage.loginPage();
     }
 
     @And("^set Admin credentials on 'Login' page$")
