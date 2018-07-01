@@ -16,6 +16,9 @@ public class Storage extends BasePage {
     @FindBy(css = ".mat-row ng-star-inserted")
     private List<WebElement> storages;
 
+    @FindBy(id = "storage-list-title")
+    private WebElement storageListTitle;
+
     public Storage() {
         CommonEvents.isVisible(addStorageButton);
     }
@@ -26,12 +29,17 @@ public class Storage extends BasePage {
     }
 
     public int countStorages() {
-        CommonEvents.customWait(1000);
+        CommonEvents.customWait(5000);
         return CommonEvents.countElement(storages);
     }
 
     public String getName(int position) {
         WebElement nameColumn = CommonEvents.getWebElementByClassName(storages.get(position), NAME_COLUMN_CLASS);
         return CommonEvents.getTextContent(nameColumn);
+    }
+
+    public String getTitle() {
+        System.out.println(storageListTitle.getText());
+        return storageListTitle.getText();
     }
 }

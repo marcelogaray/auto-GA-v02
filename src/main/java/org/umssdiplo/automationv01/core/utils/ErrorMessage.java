@@ -23,4 +23,5 @@ public class ErrorMessage {
     public static final String ERROR_MESSAGE_COLUMN_DOES_NOT_MATCH = "should be filtered by %s";
     public static final String ERROR_MESSAGE_CREATE_STORAGE = "%s new row should be added";
     public static final String ERROR_MESSAGE_NAME_NEW_STORAGE = "name does not match with new %s";
+    public static final String ERROR_MESSAGE_NAME_ELEMENT_PRESENT = "%s should be present";
 }

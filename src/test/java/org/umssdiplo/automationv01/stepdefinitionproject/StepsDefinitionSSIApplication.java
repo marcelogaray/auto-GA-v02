@@ -24,6 +24,7 @@ import org.umssdiplo.automationv01.core.managepage.positions.EditPosition;
 import org.umssdiplo.automationv01.core.managepage.positions.RegisterPosition;
 import org.umssdiplo.automationv01.core.managepage.positionssubmenu.PositionsSubMenu;
 import org.umssdiplo.automationv01.core.managepage.reports.RefundedItemsReport;
+import org.umssdiplo.automationv01.core.managepage.reports.StorageReport;
 import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu;
 import org.umssdiplo.automationv01.core.managepage.storage.CreateStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.Storage;
@@ -67,6 +68,7 @@ public class StepsDefinitionSSIApplication {
     private Storage storage;
     private CreateStorage createStorage;
     private static final int STORAGE_ROW = 1;
+    private StorageReport storageReport;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -528,24 +530,29 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(refundedItemsReport.getSixthHeaderTable(), sixthColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, sixthColumn));
     }
 
-    @When("^Click 'Almacenes' menu on 'NavigationBar' top menu$")
+    @When("^click 'Almacenes' menu on 'NavigationBar' top menu$")
     public void clickAlmacenesMenuOnNavigationBarTopMenu() throws Throwable {
-        navigationBar = new NavigationBar();
+        //navigationBar = new NavigationBar();
         storage = navigationBar.clickStorageButton();
     }
 
-    @And("^Click 'Agregar Almacen' button on 'Storage' page$")
+    @Then("^the page loaded should contains the \"([^\"]*)\" title main$")
+    public void thePageLoadedShouldContainsTheTitleMain(String title) throws Throwable {
+        Assert.assertEquals(storage.getTitle(), (title), String.format(ErrorMessage.ERROR_MESSAGE_NAME_ELEMENT_PRESENT, title));
+    }
+
+    @And("^click 'Agregar Almacen' button on 'Storage' page$")
     public void clickAgregarAlmacenButtonOnStoragePage() throws Throwable {
         totalStorages = storage.countStorages();
         createStorage = storage.createStorage();
     }
 
-    @And("^Fill 'Storage' form on 'Registro Accidente' page$")
+    @And("^fill 'Storage' form on 'Registro Accidente' page$")
     public void fillStorageFormOnRegistroAccidentePage(Map<String, String> data) throws Throwable {
         storage = createStorage.createStorage(data);
     }
 
-    @Then("^Verify that new storage is added in the list$")
+    @Then("^verify that new storage is added in the list$")
     public void verifyThatNewStorageIsAddedInTheList() throws Throwable {
         Assert.assertEquals(storage.countStorages(), totalStorages + STORAGE_ROW, String.format(ErrorMessage.ERROR_MESSAGE_CREATE_STORAGE, "Storage"));
     }
@@ -553,5 +560,30 @@ public class StepsDefinitionSSIApplication {
     @And("^Verify name for new storage$")
     public void verifyNameForNewStorage(String name) throws Throwable {
         Assert.assertEquals(storage.getName(totalStorages), name, String.format(ErrorMessage.ERROR_MESSAGE_NAME_NEW_STORAGE, "Storage"));
+    }
+
+    @When("^click 'Reporte de Alamacenes' option on 'Reportes' submenu$")
+    public void clickReporteDeAlamacenesOptionOnReportesSubmenu() throws Throwable {
+        storageReport = reportsSubMenu.clickStorageReport();
+    }
+
+    @Then("^the header of the storage report should contain the \"([^\"]*)\" title$")
+    public void theHeaderOfTheStorageReportShouldContainTheTitle(String firstColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getFirstHeaderTable(), firstColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, firstColumn));
+    }
+
+    @And("^\"([^\"]*)\" title as second column$")
+    public void titleAsSecondColumn(String secondColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getSecondHeaderTable(), secondColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, secondColumn));
+    }
+
+    @And("^\"([^\"]*)\" title as third column$")
+    public void titleAsThirdColumn(String thridColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getThirdTable(), thridColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, thridColumn));
+    }
+
+    @And("^\"([^\"]*)\" title as fourth column$")
+    public void titleAsFourthColumn(String fourthColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getFourthTable(), fourthColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, fourthColumn));
     }
 }
