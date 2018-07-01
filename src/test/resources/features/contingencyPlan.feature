@@ -9,7 +9,7 @@ Feature: Plan de Contingencias
     And click 'Crear Plan de continegcia' button on 'Plan de Contigencia' page
     And fill 'plan de contingencia' form on 'Registro Plan de contingencias' page
       | accident     | dolor de espalda                                                               |
-      | standardName | Direccion de obrauso de mallas de proteccion en las contructiones              |
+      | standardName | no uso de mallas de proteccion                                                 |
       | material     | gafas                                                                          |
       | penalties    | 2 semana suspendidio del trabajo                                               |
       | description  | uso de mallas de proteccion para evitar la caide de esconbros fuera de la obra |
@@ -22,10 +22,10 @@ Feature: Plan de Contingencias
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
-    And delete Contingency plan from position 1
+    And delete Contingency plan with 'no uso de mallas de proteccion' description
     And click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
-    Then verify that Contingency Plan was removed in the list
+    Then verify that contingency plan with 'no uso de mallas de proteccion' standard name is not added in the list
 
   Scenario: PC-03 verificar que un plan de contingencia es modificado
     Given 'SSI' page is loaded

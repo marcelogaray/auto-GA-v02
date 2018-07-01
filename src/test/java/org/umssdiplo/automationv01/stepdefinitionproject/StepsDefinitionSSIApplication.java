@@ -208,10 +208,10 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(contingencyPlan.getAccidentColumnAt(totalContingencyPlans), standardName, String.format(ErrorMessage.ERROR_MESSAGE_CONTINGENCY_INFORMATION, "contigency"));
     }
 
-    @When("^delete Contingency plan from position (\\d+)")
-    public void deleteIncidentAt(int position) throws Throwable {
+    @When("^delete Contingency plan with '(.*?)' description")
+    public void deleteIncidentAt(String standardName) throws Throwable {
         totalContingencyPlans = contingencyPlan.countContingencies();
-        contingencyPlan.deleteContingencyPlan(position);
+        contingencyPlan.deleteContingencyPlan(standardName);
     }
 
     @Then("^verify that Contingency Plan was removed in the list")
@@ -250,19 +250,19 @@ public class StepsDefinitionSSIApplication {
         contingencyPlan.clickSearchContingencyButton();
     }
 
-    @When("^verify that Contingency plans are filter by '(.*?)' penalties")
+    @Then("^verify that Contingency plans are filter by '(.*?)' penalties")
     public void verifyThatContingencyIsFilterByPenalties(String penalties) throws Throwable {
-        Assert.assertEquals(contingencyPlan.isPenaltyColumnsMatchWithFilter(penalties), true);
+        Assert.assertTrue(contingencyPlan.isPenaltyColumnsMatchWithFilter(penalties), String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_DOES_NOT_MATCH, "penalties"));
     }
 
-    @When("^verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page")
+    @Then("^verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page")
     public void verifyThatSaveButtonContingencyIsDisabled() throws Throwable {
-        Assert.assertEquals(createContingencyPlan.isSaveButtonEnabled(), false);
+        Assert.assertFalse(createContingencyPlan.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "guardar"));
     }
 
-    @When("^verify that 'mofificar' button is enabled by default on 'modificar plan de contingencia' page")
+    @Then("^verify that 'mofificar' button is enabled by default on 'modificar plan de contingencia' page")
     public void verifyThatEditButtonContingencyIsEnabled() throws Throwable {
-        Assert.assertEquals(editContingencyPlan.isEditButtonEnabled(), true);
+        Assert.assertTrue(editContingencyPlan.isEditButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_ENABLE, "modificar"));
     }
 
     @When("^click standard name field into 'contingency' form on 'registro plan de contingencia' page")
@@ -293,7 +293,17 @@ public class StepsDefinitionSSIApplication {
 
     @When("^fill 'Accident' form on 'Registro Accidente' page$")
     public void fillAccidentForm(Map<String, String> data) throws Throwable {
-        accident = createAccident.createAccident(data);
+        createAccident.fillAccidentForm(data);
+    }
+
+    @When("^click 'guardar' button on 'Registro Accidente' page$")
+    public void clickGuardarButton() throws Throwable {
+        accident = createAccident.clickSaveButton();
+    }
+
+    @When("^click 'atras' button on 'Registro Accidente' page$")
+    public void clickAtrasButton() throws Throwable {
+        accident = createAccident.clickBackButton();
     }
 
     @Then("^verify that new accident is added in the list$")
@@ -306,10 +316,10 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(accident.getDescription(totalAccidents), description, String.format(ErrorMessage.ERROR_MESSAGE_DESCRIPTION_NEW_ACCIDENT, "Accident"));
     }
 
-    @When("^delete accident from position '(\\d+)'")
-    public void deleteAccidentAt(int position) throws Throwable {
+    @When("^delete accident with '(.*?)' description")
+    public void deleteAccidentAt(String description) throws Throwable {
         totalAccidents = accident.countAccidents();
-        accident.deleteAccident(position);
+        accident.deleteAccident(description);
     }
 
     @Then("^verify that one Accident was removed in the list")
@@ -522,5 +532,15 @@ public class StepsDefinitionSSIApplication {
     @And("^the \"([^\"]*)\" title as sixth column of the  'Activos Devueltos' report$")
     public void theTitleAsSixthColumnOfTheActivosDevueltosReport(String sixthColumn) throws Throwable {
         Assert.assertEquals(refundedItemsReport.getSixthHeaderTable(), sixthColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, sixthColumn));
+    }
+
+    @Then("^verify that accident with '(.*?)' description is not added in the list$")
+    public void verifyAccidentWasNotAdded(String description) throws Throwable {
+        Assert.assertFalse(accident.isDescriptionShowOnList(description), String.format(ErrorMessage.ERROR_MESSAGE_NOT_CREATE_ACCIDENT, "Accident"));
+    }
+
+    @Then("^verify that contingency plan with '(.*?)' standard name is not added in the list$")
+    public void verifyContingencyPlaneisNotAdded(String standardName) throws Throwable {
+        Assert.assertFalse(contingencyPlan.isStandardNameShowOnList(standardName), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_ROW, "contigency"));
     }
 }

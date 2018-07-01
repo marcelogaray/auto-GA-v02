@@ -21,4 +21,5 @@ public class ErrorMessage {
     public static final String ERROR_MESSAGE_BUTTON_SHOULD_EXIST_IN_PAGE = "%s button should exist in %s page";
     public static final String ERROR_MESSAGE_INCREASE_ASSIGNED_ITEMS = "the list of %s should increase in one";
     public static final String ERROR_MESSAGE_COLUMN_DOES_NOT_MATCH = "should be filtered by %s";
+    public static final String ERROR_MESSAGE_NOT_CREATE_ACCIDENT = "%s new row should not be added";
 }

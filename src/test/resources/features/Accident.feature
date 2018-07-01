@@ -10,15 +10,16 @@ Feature: Accident
     And fill 'Accident' form on 'Registro Accidente' page
       | enployee    | Reagan Hatfield         |
       | deparment   | Direccion de obra       |
-      | description | dolor de espalda        |
+      | description | dolor de espalda baja   |
       | severity    | accident sev            |
       | state       | accident state          |
       | material    | accident used           |
       | senority    | accident employee       |
       | other       | accident other employee |
       | date        | 04/08/2017              |
+    And click 'guardar' button on 'Registro Accidente' page
     Then verify that new accident is added in the list
-    And verify 'dolor de espalda' description for new accident
+    And verify 'dolor de espalda baja' description for new accident
 
   Scenario: AC-12 verificar que un accidente no es creado cuando presionamos el buton cancel
     Given 'SSI' page is loaded
@@ -26,18 +27,28 @@ Feature: Accident
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Accidente' option on 'Accidente e Incidentes' menu
     And click 'Create Accident' button on 'Accidente' page
-    And click on 'atras' button on 'registrar accidente' page
-    Then verify that accident is not added in the list
+    And fill 'Accident' form on 'Registro Accidente' page
+      | enployee    | Reagan Hatfield         |
+      | deparment   | Direccion de obra       |
+      | description | description value       |
+      | severity    | accident sev            |
+      | state       | accident state          |
+      | material    | accident used           |
+      | senority    | accident employee       |
+      | other       | accident other employee |
+      | date        | 04/08/2017              |
+    And click 'atras' button on 'Registro Accidente' page
+    Then verify that accident with 'description value' description is not added in the list
 
   Scenario: AC-02 Verificar que un accidente es eliminado
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Accidente' option on 'Accidente e Incidentes' menu
-    And delete accident from position '1'
+    And delete accident with 'dolor de espalda baja' description
     And click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
     And click 'Accidente' option on 'Accidente e Incidentes' menu
-    Then verify that one Accident was removed in the list
+    Then verify that accident with 'dolor de espalda baja' description is not added in the list
 
   Scenario: AC-03 verificar que un accidente es modificado
     Given 'SSI' page is loaded
@@ -54,7 +65,7 @@ Feature: Accident
       | state       | accident state ediy    |
       | senority    | accident employee edit |
       | other       | other edit             |
-      | date        | 04/09/2017             |
+      | date        | 04/04/2017             |
     Then verify that '1' Accident is modified
 
   Scenario: AC-14 verificar que un accidente puede ser buscado por su severidad
