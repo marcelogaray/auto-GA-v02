@@ -23,6 +23,7 @@ public class ActivosMenu extends BasePage {
     private WebElement addItemSubMenu;
 
     public ActivosMenu() {
+        CommonEvents.customWait(1000);
         CommonEvents.waitUntilById("sub-menu-list-item");
     }
 

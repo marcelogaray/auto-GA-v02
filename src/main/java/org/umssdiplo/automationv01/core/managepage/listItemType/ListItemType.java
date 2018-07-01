@@ -33,6 +33,7 @@ public class ListItemType extends BasePage {
      */
     public ListItemType() {
         CommonEvents.waitUntilByXPath("//mat-card/mat-card-actions/button");
+        CommonEvents.customWait(1000);
     }
 
     public EditItemType clickFirstRowEditBtn() {
