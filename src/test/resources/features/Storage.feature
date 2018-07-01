@@ -56,7 +56,7 @@ Feature: Storage
     And user is authenticated with administrator credentials
     And click 'Almacenes' menu on 'NavigationBar' top menu
     When click 'Agregar Almacen' button on 'Storage' page
-    Then Verify that the 'Guardar' button is not available if the 'Nombre de Almacen' field is empty
+    Then verify that the 'Guardar' button is not available if the 'Nombre de Almacen' field is empty
 
   Scenario: S-08 Verificar que la lista de reporte de almacenes es cargada
     Given 'SSI' page is loaded

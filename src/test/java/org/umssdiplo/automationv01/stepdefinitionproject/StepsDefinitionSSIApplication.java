@@ -38,13 +38,16 @@ import java.util.Map;
 public class StepsDefinitionSSIApplication {
     private static final int ACCIDENT_ROW = 1;
     private static final int NUMBER_ROW = 1;
+    private static final int STORAGE_ROW = 1;
     private static final int NEW_ITEM_ASSIGNED = 1;
     private int totalAssignedItems;
     private int totalAccidents;
     private int totalContingencyPlans;
     private int totalPositions;
+    private int totalStorages;
     private Map<String, String> contingencyMap;
     private Map<String, String> accidentMap;
+    private Map<String, String> storageMap;
     private static Login login;
     private static NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
@@ -64,14 +67,12 @@ public class StepsDefinitionSSIApplication {
     private ContingencyPlan contingencyPlan;
     private CreateContingencyPlan createContingencyPlan;
     private EditContingencyPlan editContingencyPlan;
-    private StorageMenu storageMenu;
-    private int totalStorages;
     private Storage storage;
     private CreateStorage createStorage;
-    private static final int STORAGE_ROW = 1;
+
+
     private StorageReport storageReport;
     private EditStorage editStorage;
-    private Map<String, String> storageMap;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -631,7 +632,7 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(storage.getStorage(position), storageMap, String.format(ErrorMessage.ERROR_MESSAGE_EDIT_STORAGE, "Storage"));
     }
 
-    @Then("^Verify that the 'Guardar' button is not available if the 'Nombre de Almacen' field is empty$")
+    @Then("^verify that the 'Guardar' button is not available if the 'Nombre de Almacen' field is empty$")
     public void verifyThatTheGuardarButtonIsNotAvailableIfTheNombreDeAlmacenFieldIsEmpty() throws Throwable {
         Assert.assertFalse(createStorage.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
     }
