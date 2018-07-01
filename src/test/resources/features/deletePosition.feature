@@ -1,6 +1,6 @@
 Feature: deletePosition
 #Verificar que una Posicion asignada a un departamento no puede ser eliminada
-  Scenario: EO-12 TC - InesBaina - 03
+  Scenario: EO-12 Verificar que una Posicion asignada a un departamento no puede ser eliminada
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu
