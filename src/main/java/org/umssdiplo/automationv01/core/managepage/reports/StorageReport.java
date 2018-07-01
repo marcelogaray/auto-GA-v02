@@ -7,7 +7,6 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class StorageReport extends BasePage {
-
     @FindBy(id = "first-column-header-storage")
     private WebElement storageColumnTitle;
 
@@ -22,6 +21,9 @@ public class StorageReport extends BasePage {
 
     @FindBy(id = "fifth-column-header-storage")
     private WebElement quantityColumnTitle;
+
+    @FindBy(id = "title-storage-reports")
+    private WebElement titleStorageReports;
 
     public StorageReport() {
         CommonEvents.isVisible(quantityColumnTitle);
@@ -43,7 +45,7 @@ public class StorageReport extends BasePage {
         return typeColumnTitle.getText();
     }
 
-    public String getFifthTable() {
-        return quantityColumnTitle.getText();
+    public String getTitle() {
+        return titleStorageReports.getText();
     }
 }

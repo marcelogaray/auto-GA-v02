@@ -15,6 +15,9 @@ public class CreateStorage extends BasePage {
     @FindBy(id = "saveButton")
     private WebElement saveButton;
 
+    @FindBy(id = "cancelButton")
+    private WebElement cancelButton;
+
     public CreateStorage() {
         CommonEvents.isVisible(saveButton);
     }
@@ -32,5 +35,13 @@ public class CreateStorage extends BasePage {
         setName(data.get("name"));
         clickSaveButton();
         return new Storage();
+    }
+
+    public void clickCancelButton() {
+        CommonEvents.clickButton(cancelButton);
+    }
+
+    public boolean isSaveButtonEnabled() {
+        return CommonEvents.isPresent(saveButton);
     }
 }

@@ -11,7 +11,7 @@ import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class NavigationBar extends BasePage {
-    @FindBy(id = "reportsMenu")
+    @FindBy(id = "menu-reports")
     private WebElement reportsMenu;
 
     @FindBy(id = "menu-organizational")
@@ -20,7 +20,7 @@ public class NavigationBar extends BasePage {
     @FindBy(id = "accident-incident-button")
     private WebElement accidentIncidentMenu;
 
-    @FindBy(id = "storageMenu")
+    @FindBy(id = "menu-storage")
     private WebElement storageMenu;
 
     public NavigationBar() {

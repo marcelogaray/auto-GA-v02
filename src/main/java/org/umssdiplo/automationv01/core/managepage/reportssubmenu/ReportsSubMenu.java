@@ -20,7 +20,7 @@ public class ReportsSubMenu extends BasePage {
     @FindBy(id = "sub-menu-audit-history")
     private WebElement auditHistoryReport;
 
-    @FindBy(id = "report-storage")
+    @FindBy(id = "sub-menu-report-storage")
     private WebElement storageReport;
 
     public ReportsSubMenu() {
