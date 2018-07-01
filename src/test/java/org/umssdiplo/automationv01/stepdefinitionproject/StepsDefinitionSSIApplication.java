@@ -29,7 +29,6 @@ import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu
 import org.umssdiplo.automationv01.core.managepage.storage.CreateStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.EditStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.Storage;
-import org.umssdiplo.automationv01.core.managepage.storagemenu.StorageMenu;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -69,8 +68,6 @@ public class StepsDefinitionSSIApplication {
     private EditContingencyPlan editContingencyPlan;
     private Storage storage;
     private CreateStorage createStorage;
-
-
     private StorageReport storageReport;
     private EditStorage editStorage;
 
@@ -632,7 +629,7 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(storage.getStorage(position), storageMap, String.format(ErrorMessage.ERROR_MESSAGE_EDIT_STORAGE, "Storage"));
     }
 
-    @Then("^verify that the 'Guardar' button is not available if the 'Nombre de Almacen' field is empty$")
+    @Then("^verify that the 'Guardar' button is not available if the 'Nombre de Almacen' text field is empty$")
     public void verifyThatTheGuardarButtonIsNotAvailableIfTheNombreDeAlmacenFieldIsEmpty() throws Throwable {
         Assert.assertFalse(createStorage.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
     }
