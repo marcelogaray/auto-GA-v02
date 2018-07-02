@@ -95,7 +95,7 @@ public class StepsDefinitionSSIApplication {
         }
     }
 
-    @And("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
+    @When("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
     public void clickEstructuraOrganizacionalMenuButton() throws Throwable {
         organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
     }
@@ -434,7 +434,7 @@ public class StepsDefinitionSSIApplication {
         registerPosition = positionsSubMenu.clickAddPosition();
     }
 
-    @When("^click 'Guardar' button without required fields filled on 'Registrar Posicion en la empresa' page$")
+    @And("^click 'Guardar' button without required fields filled on 'Registrar Posicion en la empresa' page$")
     public void clickGuardarButtonWithoutRequiredFieldsFilledOnRegistrarPosicionEnLaEmpresaPage() throws Throwable {
         registerPosition.clickSavePosition();
     }
@@ -444,7 +444,7 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(registerPosition.getTitle(), expected, String.format(ErrorMessage.ERROR_MESSAGE_ITEM_ELEMENT_PRESENT, expected));
     }
 
-    @When("^click 'Eliminar' button on 'Lista de Posiciones' page of element (\\d+)$")
+    @And("^click 'Eliminar' button on 'Lista de Posiciones' page of element (\\d+)$")
     public void clickEliminarButtonOnListaDePosicionesPageOfElement(int element) throws Throwable {
         totalPositions = positionsSubMenu.countPositions();
         positionsSubMenu.deletePosition(element);
@@ -480,12 +480,12 @@ public class StepsDefinitionSSIApplication {
         Assert.assertTrue(employeeDetail.existAssignItemTitleSection(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_ITEM_TITLE, assignSectionTitle));
     }
 
-    @And("^click 'Reportes' menu button on 'Navigation Bar' top menu$")
+    @When("^click 'Reportes' menu button on 'Navigation Bar' top menu$")
     public void clickReportesMenuButtonOnNavigationBarTopMenu() throws Throwable {
         reportsSubMenu = navigationBar.clickReports();
     }
 
-    @When("^click 'Activos Disponibles' option on 'Reportes' submenu$")
+    @And("^click 'Activos Disponibles' option on 'Reportes' submenu$")
     public void clickActivosDisponiblesOptionOnReportesSubmenu() throws Throwable {
         availableItemsReport = reportsSubMenu.clickAvailableItemsReport();
     }
