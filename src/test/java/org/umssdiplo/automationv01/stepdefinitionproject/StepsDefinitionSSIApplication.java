@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.RegisterContract;
 import org.umssdiplo.automationv01.core.managepage.accident.ModificarAccident;
 import org.umssdiplo.automationv01.core.managepage.accidenteincidentmenu.AccidentEIncidentMenu;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
@@ -52,6 +53,7 @@ public class StepsDefinitionSSIApplication {
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
+    private RegisterContract registerContract;
     private AssignEmployeeItemModal assignEmployeeItemModal;
     private PositionsSubMenu positionsSubMenu;
     private RegisterPosition registerPosition;
@@ -657,5 +659,21 @@ public class StepsDefinitionSSIApplication {
     @Then("^the page loaded must contain as title \"([^\"]*)\"$")
     public void hePageLoadedMustContainAsTitle(String title) throws Throwable {
         Assert.assertEquals(storageReport.getTitle(), title, String.format(ErrorMessage.ERROR_MESSAGE_NAME_ELEMENT_PRESENT, title));
+    }
+
+    @And("^click 'Contratos' option on 'Estructura Organizacional' submenu$")
+    public void clickContratosOptionOnEstructuraOrganizacionalSubmenu() throws Throwable {
+        registerContract = organizationalStructureMenu.clickContracts();
+    }
+
+    @When("^'Contracts Form' page is fill with some contract data$")
+    public void contractsFormPageIsFillWithSomeEmployeeData() throws Throwable {
+        registerContract.setInputName();
+        registerContract.setInputDesc();
+    }
+
+    @Then("^'Registrar' button should be HIDE on 'Contracts form' page$")
+    public void registrarButtonShouldBeHIDEOnContractsFormPage() throws Throwable {
+        Assert.assertFalse(registerContract.contractButtonIsEnabled());
     }
 }

@@ -4,6 +4,7 @@ package org.umssdiplo.automationv01.core.managepage.reportssubmenu;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
+import org.umssdiplo.automationv01.core.managepage.RegisterContract;
 import org.umssdiplo.automationv01.core.managepage.reports.AvailableItemsReport;
 import org.umssdiplo.automationv01.core.managepage.reports.RefundedItemsReport;
 import org.umssdiplo.automationv01.core.managepage.reports.StorageReport;
