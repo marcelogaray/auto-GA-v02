@@ -19,11 +19,13 @@ public class OrganizationalStructureMenu extends BasePage {
     }
 
     public EmployeesSubMenu clickEmployees() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(employeeSubMenu);
         return new EmployeesSubMenu();
     }
 
     public PositionsSubMenu clickPositions() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(positionSubMenu);
         return new PositionsSubMenu();
     }

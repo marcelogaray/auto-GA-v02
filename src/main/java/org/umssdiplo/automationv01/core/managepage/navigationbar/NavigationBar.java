@@ -28,21 +28,25 @@ public class NavigationBar extends BasePage {
     }
 
     public OrganizationalStructureMenu clickOrganizationalStructure() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(organizationalMenu);
         return new OrganizationalStructureMenu();
     }
 
     public ReportsSubMenu clickReports() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(reportsMenu);
         return new ReportsSubMenu();
     }
 
     public AccidentEIncidentMenu clickAccidentEIncidentButton() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(accidentIncidentMenu);
         return new AccidentEIncidentMenu();
     }
 
     public Storage clickStorageButton() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(storageMenu);
         return new Storage();
     }

@@ -17,6 +17,7 @@ public class EditStorage extends BasePage {
     private WebElement editNameStorage;
 
     public Storage clickEditButton() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(editSaveButton);
         return new Storage();
     }
@@ -26,6 +27,7 @@ public class EditStorage extends BasePage {
     }
 
     public Storage editStorage(Map<String, String> data) {
+        CommonEvents.customWait(3000);
         setName(data.get("name"));
         clickEditButton();
         return new Storage();

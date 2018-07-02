@@ -27,11 +27,13 @@ public class CreateStorage extends BasePage {
     }
 
     public Storage clickSaveButton() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(saveButton);
         return new Storage();
     }
 
     public Storage createStorage(Map<String, String> data) {
+        CommonEvents.customWait(3000);
         setName(data.get("name"));
         clickSaveButton();
         return new Storage();

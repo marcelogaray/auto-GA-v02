@@ -28,12 +28,13 @@ public class Storage extends BasePage {
     }
 
     public CreateStorage createStorage() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(addStorageButton);
         return new CreateStorage();
     }
 
     public int countStorages() {
-        CommonEvents.customWait(1000);
+        CommonEvents.customWait(3000);
         return CommonEvents.countElement(storages);
     }
 
@@ -53,6 +54,7 @@ public class Storage extends BasePage {
     }
 
     public EditStorage editStorage(int position) {
+        CommonEvents.customWait(3000);
         WebElement webElement = CommonEvents.getWebElementByClassName(storages.get(position), EDIT_BUTTON_CLASS);
         CommonEvents.clickButton(webElement);
         return new EditStorage();
