@@ -3,8 +3,8 @@ Feature: reports
   Scenario:  ROO1 Verificar que el reporte de activos disponibles muestra en la cabecera "Codigo", "Nombre de Material" y "Estado"
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
-    And click 'Reportes' menu button on 'Navigation Bar' top menu
-    When click 'Activos Disponibles' option on 'Reportes' submenu
+    When click 'Reportes' menu button on 'Navigation Bar' top menu
+    And click 'Activos Disponibles' option on 'Reportes' submenu
     Then the header of the report should contain the "Codigo" title
     And the "Nombre de Material" title as second column
     And the "Estado" title as third column
