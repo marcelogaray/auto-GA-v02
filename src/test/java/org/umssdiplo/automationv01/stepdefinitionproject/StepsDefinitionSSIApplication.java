@@ -666,14 +666,14 @@ public class StepsDefinitionSSIApplication {
         registerContract = organizationalStructureMenu.clickContracts();
     }
 
-    @When("^'Contracts Form' page is fill with some contract data$")
+    @When("^'Contracts Form' page is filled with contract data$")
     public void contractsFormPageIsFillWithSomeEmployeeData() throws Throwable {
         registerContract.setInputName();
-        registerContract.setInputDesc();
+        registerContract.setInputDescription();
     }
 
     @Then("^'Registrar' button should be HIDE on 'Contracts form' page$")
     public void registrarButtonShouldBeHIDEOnContractsFormPage() throws Throwable {
-        Assert.assertFalse(registerContract.contractButtonIsEnabled());
+        Assert.assertFalse(registerContract.contractButtonIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ADD_CONTRACT_EMPTY_FIELDS));
     }
 }

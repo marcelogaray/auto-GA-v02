@@ -2,9 +2,7 @@ package org.umssdiplo.automationv01.core.managepage;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.awt.*;
-import java.util.concurrent.ThreadLocalRandom;
+import org.umssdiplo.automationv01.core.utils.RandomContractNameGenerator;
 
 public class RegisterContract extends BasePage {
 
@@ -12,26 +10,23 @@ public class RegisterContract extends BasePage {
     private WebElement inputName;
 
     @FindBy(id = "cdesc")
-    private WebElement inputDesc;
+    private WebElement InputDescription;
 
     @FindBy(id = "add-contract")
-    private WebElement addContractBtn;
+    private WebElement addContractButton;
 
     public void setInputName(){
-        inputName.sendKeys(getRandomContractName());
+        String input_name = RandomContractNameGenerator.getRandomContractName();
+        inputName.sendKeys(input_name);
     }
 
-    public void setInputDesc(){
-        inputDesc.sendKeys("Some Description");
+    public void setInputDescription(){
+        InputDescription.sendKeys("Some Description");
     }
 
-    private String getRandomContractName() {
-        String res = "Contrato-";
-        res += ThreadLocalRandom.current().nextInt(1223, 10000);
-        return res;
-    }
+
 
     public boolean contractButtonIsEnabled(){
-        return addContractBtn.isEnabled();
+        return addContractButton.isEnabled();
     }
 }
