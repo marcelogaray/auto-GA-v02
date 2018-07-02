@@ -24,8 +24,6 @@ public class RegisterContract extends BasePage {
         InputDescription.sendKeys("Some Description");
     }
 
-
-
     public boolean contractButtonIsEnabled(){
         return addContractButton.isEnabled();
     }
