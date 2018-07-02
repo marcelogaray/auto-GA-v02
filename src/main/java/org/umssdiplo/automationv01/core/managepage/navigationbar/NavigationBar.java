@@ -23,6 +23,9 @@ public class NavigationBar extends BasePage {
     @FindBy(id = "menu-storage")
     private WebElement storageMenu;
 
+    @FindBy(id = "menu-active")
+    private WebElement activosMenu;
+
     public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
     }
@@ -45,5 +48,10 @@ public class NavigationBar extends BasePage {
     public Storage clickStorageButton() {
         CommonEvents.clickButton(storageMenu);
         return new Storage();
+    }
+
+    public ActivosMenu clickActivos() {
+        CommonEvents.clickButton(activosMenu);
+        return new ActivosMenu();
     }
 }
