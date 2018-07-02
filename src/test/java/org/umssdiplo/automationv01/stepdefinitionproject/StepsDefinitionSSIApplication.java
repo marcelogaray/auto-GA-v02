@@ -110,7 +110,7 @@ public class StepsDefinitionSSIApplication {
         employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
 
-    @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
+    @And("^click 'Asignar Activo' button on 'Employee Detail' page$")
     public void clickAsignarActivoButton() throws Throwable {
         totalAssignedItems = employeeDetail.countAssignedItems();
         assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
@@ -126,7 +126,7 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(assignEmployeeItemModal.getTitle(), expected, String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_MODAL_TITLE, assignEmployeeItemModal.getTitle()));
     }
 
-    @When("^click 'Cancelar' button on 'Assign Item' modal$")
+    @And("^click 'Cancelar' button on 'Assign Item' modal$")
     public void clickCancelarButtonOnAssignItemModal() throws Throwable {
         employeeDetail = assignEmployeeItemModal.clickCancel();
     }
