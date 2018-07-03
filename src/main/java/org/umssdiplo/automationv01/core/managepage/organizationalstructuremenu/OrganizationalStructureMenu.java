@@ -19,9 +19,6 @@ public class OrganizationalStructureMenu extends BasePage {
     @FindBy(id = "sub-menu-employees")
     private WebElement employeeSubMenu;
 
-    @FindBy(id = "sub-menu-position")
-    private WebElement positionSubMenu;
-
     @FindBy(id = "sub-menu-contracts")
     private WebElement contractButton;
 
@@ -29,13 +26,13 @@ public class OrganizationalStructureMenu extends BasePage {
 
     }
 
-    public EmployeeList clickEmployees() {
+    public EmployeesSubMenu clickEmployees() {
         CommonEvents.isVisible(employeeMenu);
         CommonEvents.clickButton(employeeMenu);
 
         CommonEvents.jsClickElement(employeeSubMenu);
         System.out.println("Return employee list");
-        return new EmployeeList();
+        return new EmployeesSubMenu();
     }
 
     public PositionsSubMenu clickPositions() {
