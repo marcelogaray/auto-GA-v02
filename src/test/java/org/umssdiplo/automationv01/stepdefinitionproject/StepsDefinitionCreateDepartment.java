@@ -10,6 +10,7 @@ import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.C
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.EditDepartmentPage;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.ListDepartmentPage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+import org.umssdiplo.automationv01.core.utils.Messages;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -38,45 +39,40 @@ public class StepsDefinitionCreateDepartment {
         }
     }
 
-    @And("^click on \"([^\"]*)\" menu button de department menu$")
+    @And("^click on 'Estructura Organizacional' menu button de department menu$")
     public void clickOnMenuButtonDeDepartmentMenu(String arg0) throws Throwable {
         navigationBar.clickOnActiveMenuOption();
     }
 
-    @And("^click on \"([^\"]*)\" submenu Button de department submenu$")
+    @And("^click on 'Departamentos' submenu Button de department submenu$")
     public void clickOnSubmenuButtonDeDepartamentSubmenu(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         listDepartmentPages = navigationBar.clickOnSubmenuButton();
     }
 
-    @And("^click on \"([^\"]*)\" Button de department page$")
+    @And("^click on 'Agregar Nuevo Departamento' Button de department page$")
     public void clickOnButtonDeDepartmentPage(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         createDepartmentPage = listDepartmentPages.clickAddDepartment();
     }
 
     @And("^\"([^\"]*)\" es provisto como nombre de departamento$")
     public void esProvistoComoNombreDeDepartamento(String name) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         this.departmentName = name;
         createDepartmentPage.setDepartmentName(name);
     }
 
     @And("^\"([^\"]*)\" es seleccionado como padre$")
     public void esSeleccionadoComoPadre(String parentName) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         createDepartmentPage.setParent(parentName);
     }
 
-    @When("^se realiza click en boton \"([^\"]*)\"$")
+    @When("^se realiza click en boton 'Registrar'$")
     public void seRealizaClickEnBoton(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         createDepartmentPage.clickRegistrar();
     }
 
     @Then("^El \"([^\"]*)\" es registrado en la base de datos y listado en \"([^\"]*)\"$")
     public void elEsRegistradoEnLaBaseDeDatosYListadoEn(String departmentName, String arg1) throws Throwable {
-        assertEquals(listDepartmentPages.getDepartment(this.departmentName),departmentName, "The department name does not match");
+        assertEquals(listDepartmentPages.getDepartment(this.departmentName),departmentName, Messages.MESSAGE_DEPARTMENT_NOT_MATCH);
     }
 
     @When("^El \"([^\"]*)\" Departamento es eliminado de la lista$")
@@ -86,7 +82,7 @@ public class StepsDefinitionCreateDepartment {
 
     @Then("^El \"([^\"]*)\" no se lista en la  lista$")
     public void elNoSeListaEnLaLista(String departmentName) throws Throwable {
-        assertNull(listDepartmentPages.getDepartment(departmentName),"The list still contains the department");
+        assertNull(listDepartmentPages.getDepartment(departmentName),Messages.MESSAGE_LIST_CONTAINS_DEPARTMENT);
     }
 
 
@@ -102,7 +98,7 @@ public class StepsDefinitionCreateDepartment {
 
     @Then("^Notar que la actualizacion \"([^\"]*)\" se registra en la lista de departamentos$")
     public void notarQueLaActualizacionSeRegistraEnLaListaDeDepartamentos(String departmentName) throws Throwable {
-        assertEquals(listDepartmentPages.getDepartment(departmentName),departmentName, "The department name does not match");
+        assertEquals(listDepartmentPages.getDepartment(departmentName),departmentName, Messages.MESSAGE_DEPARTMENT_NOT_MATCH);
     }
 
     @When("^se Actualiza el nombre del  departamento a \"([^\"]*)\", se adiciona \"([^\"]*)\" como child y click \"([^\"]*)\"$")
@@ -112,6 +108,6 @@ public class StepsDefinitionCreateDepartment {
 
     @Then("^Notar que el  child \"([^\"]*)\" tiene como parent \"([^\"]*)\" se registra en la lista de departamentos$")
     public void notarQueElChildTieneComoParentSeRegistraEnLaListaDeDepartamentos(String child, String parent) throws Throwable {
-        assertEquals(listDepartmentPages.getChild(child,parent), child, "nombre del child no  coinside");
+        assertEquals(listDepartmentPages.getChild(child,parent), child, Messages.MESSAGE_CHILD_NOT_MATCH);
     }
 }

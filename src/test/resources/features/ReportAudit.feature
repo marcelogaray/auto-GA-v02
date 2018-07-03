@@ -4,6 +4,6 @@ Feature: reportAudit
     Given 'SSI' loaded
     And User is authenticated in portal
     And "salary" of the "Lavonne" employee is updated to "10000"
-    And click on "Reports" menu button
+    And click on "Reports" menu button on navigation bar tab menu
     When click on "ReporteDeModificacionesDeDatos" submenu Button
     Then The update in "employee" should be displayed in the table

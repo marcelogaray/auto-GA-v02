@@ -24,8 +24,11 @@ public class EditDepartmentPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Atras')]")
     private WebElement backButton;
 
-    public void setDepartmentName(String departmentName) {
+    public EditDepartmentPage(){
         CommonEvents.isVisible(this.departmentName);
+    }
+
+    public void setDepartmentName(String departmentName) {
         CommonEvents.setInputField(this.departmentName, departmentName);
     }
 

@@ -29,9 +29,7 @@ public class ReportAuditHistory extends BasePage {
     public String getSalary(String newSalary){
         WebElement sCellValue;
         try {
-            System.out.println("//mat-row[contains(text(),'" + newSalary + "')]");
             sCellValue = table.findElement(By.xpath("//mat-cell[contains(text(),'" + newSalary + "')]"));
-            System.out.println(sCellValue.toString());
         }catch (Exception e){
             return null;
         }

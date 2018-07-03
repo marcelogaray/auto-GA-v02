@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.umssdiplo.automationv01.core.managepage.login.Login;
+import org.umssdiplo.automationv01.core.managepage.navigationbar.NavigationBar;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
 import org.umssdiplo.automationv01.core.managepage.reports.ReportAuditHistory;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -21,6 +22,7 @@ public class StepsDefinitionReportAudit {
     private OrganizationalStructureMenu organizationalStructureMenu;
     private String newSalary;
     private String employeeName;
+    private static NavigationBar navigationBar;
 
 
     @Given("^'SSI' loaded$")
@@ -31,11 +33,12 @@ public class StepsDefinitionReportAudit {
 
     @And("^User is authenticated in portal$")
     public void userIsAuthenticated() throws Throwable {
-
-        login.setCredentials();
+        if(navigationBar==null){
+            navigationBar = login.setCredentials();
+        }
     }
 
-    @And("^click on \"([^\"]*)\" menu button$")
+    @And("^click on \"([^\"]*)\" menu button on navigation bar tab menu$")
     public void clickOnMenuButton(String arg0) throws Throwable {
         reportAuditHistory.clickOnActiveMenuOption();
     }
@@ -49,18 +52,16 @@ public class StepsDefinitionReportAudit {
 
     @Then("^The update in \"([^\"]*)\" should be displayed in the table$")
     public void theListOfModificationShouldBeDisplayed(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         assertNotNull(reportAuditHistory.getSalary(newSalary));
         ofAnIsUpdatedTo("", employeeName, "450");
     }
 
     @And("^\"([^\"]*)\" of the \"([^\"]*)\" employee is updated to \"([^\"]*)\"$")
-    public void ofAnIsUpdatedTo(String arg0, String arg1, String arg2) throws Throwable {
+    public void ofAnIsUpdatedTo(String arg0, String name, String salary) throws Throwable {
         Random rand = new Random();
-        newSalary = new StringBuffer().append(rand.nextInt(Integer.parseInt(arg2))).toString();
-        employeeName = arg1;
-        organizationalStructureMenu = new OrganizationalStructureMenu();
-        organizationalStructureMenu.clickEmployees().selectEmployee(arg1).setSalary(arg2);
+        newSalary = new StringBuffer().append(rand.nextInt(Integer.parseInt(salary))).toString();
+        employeeName = name;
+        navigationBar.clickEmployees().selectEmployee(name).setSalary(salary);
 
     }
 
