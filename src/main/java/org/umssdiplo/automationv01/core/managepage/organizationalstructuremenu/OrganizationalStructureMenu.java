@@ -25,4 +25,9 @@ public class OrganizationalStructureMenu extends BasePage {
         System.out.println("Return employee list");
         return new EmployeeList();
     }
+
+    public PositionsSubMenu clickPositions() {
+        CommonEvents.clickButton(positionSubMenu);
+        return new PositionsSubMenu();
+    }
 }

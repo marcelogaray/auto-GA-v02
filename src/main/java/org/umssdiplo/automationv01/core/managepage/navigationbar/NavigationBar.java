@@ -17,7 +17,7 @@ public class NavigationBar extends BasePage {
     @FindBy(id = "menu-organizational")
     private WebElement activeMenu;
 
-    @FindBy(id = "sub-menu-departments")
+    @FindBy(xpath = "//span[contains(text(), 'Departamentos')]")
     private WebElement activeSubmenu;
 
     @FindBy(id = "sub-menu-employees")
@@ -34,12 +34,12 @@ public class NavigationBar extends BasePage {
 
     public void clickOnActiveMenuOption() {
         CommonEvents.isVisible(activeMenu);
-        CommonEvents.jsClickElement(activeMenu);
+        CommonEvents.clickButton(activeMenu);
     }
 
     public ListDepartmentPage clickOnSubmenuButton() {
         CommonEvents.isVisible(activeSubmenu);
-        CommonEvents.clickButton(activeSubmenu);
+        CommonEvents.jsClickElement(activeSubmenu);
         return new ListDepartmentPage();
     }
     public EmployeeList clickEmployees() {

@@ -3,6 +3,7 @@ package org.umssdiplo.automationv01.core.utils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -201,5 +202,40 @@ public class CommonEvents {
     public static WebElement findChildFromMatTable(WebElement table, String child, String parent) {
         WebElement cell = table.findElement(By.xpath("//mat-cell[contains(text(),'" + parent + "')]/..//mat-cell[contains(text(),'" + child + "')]"));
         return cell;
+    }
+    /**
+     * This method count all element into the list.
+     *
+     * @param webElements Is the web element list.
+     */
+    public static int countElement(List<WebElement> webElements) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElements.get(0)));
+        return webElements.size();
+    }
+
+    /**
+     * This method select an element by value.
+     *
+     * @param webElement is the WebElement.
+     * @param textvalue  is the value.
+     */
+    public static void selectElementByText(WebElement webElement, String textvalue) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        Select selectElement = new Select(webElement);
+        selectElement.selectByVisibleText(textvalue);
+    }
+
+    public static WebElement getWebElementByClassName(WebElement element, String className) {
+        return element.findElement(By.cssSelector("." + className));
+    }
+
+    /**
+     * This method clear the set input field
+     *
+     * @param webElement Is web element.
+     */
+    public static void clearInputField(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.clear();
     }
 }
