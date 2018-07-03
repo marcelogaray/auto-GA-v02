@@ -39,8 +39,6 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.util.Map;
 
-import static org.umssdiplo.automationv01.core.utils.ErrorMessage.*;
-
 public class StepsDefinitionSSIApplication {
     private static final int ACCIDENT_ROW = 1;
     private static final int NUMBER_ROW = 1;
@@ -131,7 +129,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^'Asignar' button should be disabled in the modal displayed$")
     public void asignarActivoButtonShouldBeDisabled() throws Throwable {
-        Assert.assertFalse(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ERROR_MESSAGE_BUTTON_DISABLE, "Asignar"));
+        Assert.assertFalse(assignEmployeeItemModal.isAssignButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Asignar"));
     }
 
     @Then("^modal title should be \"([^\"]*)\"$")
@@ -146,7 +144,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^the current page title should be \"([^\"]*)\"$")
     public void theCurrentPageTitleShouldBe(String expected) throws Throwable {
-        Assert.assertEquals(expected, employeeDetail.getTitle(), String.format(ERROR_MESSAGE_PAGE_TITLE, employeeDetail.getTitle()));
+        Assert.assertEquals(expected, employeeDetail.getTitle(), String.format(ErrorMessage.ERROR_MESSAGE_PAGE_TITLE, employeeDetail.getTitle()));
     }
 
     @Then("^'Estado del activo' dropdown should exist$")
@@ -280,7 +278,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page")
     public void verifyThatSaveButtonContingencyIsDisabled() throws Throwable {
-        Assert.assertFalse(createContingencyPlan.isSaveButtonEnabled(), String.format(ERROR_MESSAGE_BUTTON_DISABLE, "guardar"));
+        Assert.assertFalse(createContingencyPlan.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "guardar"));
     }
 
     @Then("^verify that 'mofificar' button is enabled by default on 'modificar plan de contingencia' page")
@@ -389,7 +387,7 @@ public class StepsDefinitionSSIApplication {
 
     @When("^verify that 'guardar' button is disabled by default on 'Register Accidente' page")
     public void verifyThatSaveButtonIsDisabled() throws Throwable {
-        Assert.assertFalse(createAccident.isSaveButtonEnabled(), String.format(ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
+        Assert.assertFalse(createAccident.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
     }
 
     @When("^verify that 'mofificar' button is enabled by default on 'modificar Accidente' page")
@@ -664,7 +662,7 @@ public class StepsDefinitionSSIApplication {
 
     @Then("^verify that the 'Guardar' button is not available if the 'Nombre de Almacen' text field is empty$")
     public void verifyThatTheGuardarButtonIsNotAvailableIfTheNombreDeAlmacenFieldIsEmpty() throws Throwable {
-        Assert.assertFalse(createStorage.isSaveButtonEnabled(), String.format(ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
+        Assert.assertFalse(createStorage.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
     }
 
     @Then("^the page loaded must contain as title \"([^\"]*)\"$")
@@ -746,7 +744,7 @@ public class StepsDefinitionSSIApplication {
     public void verifyRowHasAsNameInItemTypeListPage(String indexParam, String expectedItemTypeName) throws Throwable {
         int index = Integer.parseInt(indexParam) - 1;
         String actualItemTypeName = listItemType.getItemTypeNameInTableRow(index);
-        Assert.assertEquals(actualItemTypeName, expectedItemTypeName, String.format(ERROR_MESSAGE_EDIT_ITEMTYPE_COMPLETED, expectedItemTypeName));
+        Assert.assertEquals(actualItemTypeName, expectedItemTypeName, String.format(ErrorMessage.ERROR_MESSAGE_EDIT_ITEMTYPE_COMPLETED, expectedItemTypeName));
     }
 
     @And("^Click 'Anadir Tipo de Item' button$")
@@ -773,13 +771,13 @@ public class StepsDefinitionSSIApplication {
     @Then("^Verify that \"([^\"]*)\" does not exist in the list$")
     public void verifyThatDoesNotExistInTheList(String itemTypeName) throws Throwable {
         boolean actualResult = listItemType.existItemTypeByName(itemTypeName);
-        Assert.assertEquals(actualResult, false, String.format(ERROR_MESSAGE_EDIT_ITEMTYPE_DELETED, itemTypeName));
+        Assert.assertEquals(actualResult, false, String.format(ErrorMessage.ERROR_MESSAGE_EDIT_ITEMTYPE_DELETED, itemTypeName));
     }
 
     @Then("^Verify that \"([^\"]*)\" is the title of the loaded page$")
     public void verifyThatIsTheTitleOfTheLoadedPage(String expectedTitle) throws Throwable {
         String actualTitle = listItemType.getPageTitle();
-        Assert.assertEquals(actualTitle, expectedTitle, String.format(ERROR_MESSAGE_PAGE_TITLE, expectedTitle));
+        Assert.assertEquals(actualTitle, expectedTitle, String.format(ErrorMessage.ERROR_MESSAGE_PAGE_TITLE, expectedTitle));
     }
 
     @And("^Click 'Edit' button of \"([^\"]*)\" row$")
@@ -800,7 +798,7 @@ public class StepsDefinitionSSIApplication {
     @Then("^Verify 'Save' button status is \"([^\"]*)\"$")
     public void verifySaveButtonStatusIs(String expecedBtnStatus) throws Throwable {
         String actualStatus = addItemType.getSaveBtnStatus();
-        Assert.assertEquals(actualStatus, expecedBtnStatus, String.format(ERROR_MESSAGE_BUTTON_DISABLE, "Save"));
+        Assert.assertEquals(actualStatus, expecedBtnStatus, String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Save"));
     }
 
     @When("^Click 'Anadir Item' submenu option$")
@@ -811,7 +809,7 @@ public class StepsDefinitionSSIApplication {
     @Then("^Verify \"([^\"]*)\" is the title of the Page$")
     public void verifyIsTheTitleOfThePage(String expectedTitle) throws Throwable {
         String actualPageTitle = addItem.getPageMainTitle();
-        Assert.assertEquals(actualPageTitle, expectedTitle, String.format(ERROR_MESSAGE_PAGE_TITLE, expectedTitle));
+        Assert.assertEquals(actualPageTitle, expectedTitle, String.format(ErrorMessage.ERROR_MESSAGE_PAGE_TITLE, expectedTitle));
     }
 
     @And("^Click 'Delete' button of \"([^\"]*)\" name$")
@@ -822,6 +820,6 @@ public class StepsDefinitionSSIApplication {
     @Then("^Verify 'Save' button status is \"([^\"]*)\" in 'Anadir Item' page$")
     public void verifySaveButtonStatusIsInAnadirItemPage(String expectedStatus) throws Throwable {
         String actualsStatus = addItem.getSaveBtnStatus();
-        Assert.assertEquals(actualsStatus, expectedStatus, String.format(ERROR_MESSAGE_BUTTON_DISABLE, "Save"));
+        Assert.assertEquals(actualsStatus, expectedStatus, String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Save"));
     }
 }
