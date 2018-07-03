@@ -1,4 +1,3 @@
-# Accident feature review the behavior in this feature
 Feature: Accident
 
   Scenario: AC-01 Verificar que un accidente es creado

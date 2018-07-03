@@ -1,4 +1,3 @@
-# Accident feature review the behavior in this feature
 Feature: Plan de Contingencias
 
   Scenario: PC-01 Verificar que un plan de contingencia es creado
