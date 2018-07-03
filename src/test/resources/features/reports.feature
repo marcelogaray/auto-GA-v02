@@ -1,6 +1,6 @@
 Feature: reports
 #Verificar que el reporte de activos disponibles muestra en la cabecera "Codigo", "Nombre de Material" y "Estado"
-  Scenario:  ROO1 Verificar que el reporte de activos disponibles muestra en la cabecera "Codigo", "Nombre de Material" y "Estado"
+  Scenario:  ROO1 - Ines Baina - Verificar que el reporte de activos disponibles muestra en la cabecera "Codigo", "Nombre de Material" y "Estado"
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Reportes' menu button on 'Navigation Bar' top menu
@@ -11,7 +11,7 @@ Feature: reports
 
 #Verificar que el reporte de activos devueltos muestra en la cabecera "Nombre(s)", "Apellido(s)", "Codigo del Activo",
 #"Nombre del Activo", "Estado Devolucion" y "Fecha devolucion"
-  Scenario:  ROO2 Verificar que el reporte de activos devueltos muestra en la cabecera "Nombre(s)", "Apellido(s)", "Codigo del Activo", "Nombre del Activo", "Estado Devolucion" y "Fecha devolucion"
+  Scenario:  ROO2 - Ines Baina - Verificar que el reporte de activos devueltos muestra en la cabecera "Nombre(s)", "Apellido(s)", "Codigo del Activo", "Nombre del Activo", "Estado Devolucion" y "Fecha devolucion"
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Reportes' menu button on 'Navigation Bar' top menu
