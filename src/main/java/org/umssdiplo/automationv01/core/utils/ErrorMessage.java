@@ -27,4 +27,7 @@ public class ErrorMessage {
     public static final String ERROR_MESSAGE_NAME_ELEMENT_PRESENT = "%s should be present";
     public static final String ERROR_MESSAGE_EDIT_STORAGE = "%s should be modified";
     public static final String ERROR_MESSAGE_ADD_CONTRACT_EMPTY_FIELDS = "Some fields are empty";
+    public static final String ERROR_MESSAGE_EDIT_ITEMTYPE_COMPLETED = "%s Item Type is expected in the list.";
+    public static final String ERROR_MESSAGE_EDIT_ITEMTYPE_DELETED = "%s Item Type is not expected in the list.";
+
 }

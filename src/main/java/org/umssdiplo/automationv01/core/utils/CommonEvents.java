@@ -166,4 +166,20 @@ public class CommonEvents {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
         webElement.clear();
     }
+
+    public static WebElement getWebElementInTableRowByCssSelector(WebElement tableRow, String cssSelector) {
+        return tableRow.findElement(By.cssSelector(cssSelector));
+    }
+
+    public static WebElement getWebElementInTableRowByXPath(WebElement tableRow, String xPath) {
+        return tableRow.findElement(By.xpath(xPath));
+    }
+
+    public static void waitUntilById(String webElementId) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(By.id(webElementId)));
+    }
+
+    public static void waitUntilByXPath(String xPath) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
+    }
 }
