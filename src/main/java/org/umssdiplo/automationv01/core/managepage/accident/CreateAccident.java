@@ -89,7 +89,7 @@ public class CreateAccident extends BasePage {
         return new Accident();
     }
 
-    public Accident createAccident(Map<String, String> data) {
+    public void fillAccidentForm(Map<String, String> data) {
         selectEmployeeByValue(data.get("enployee").toString());
         selectDepartmentByValue(data.get("deparment").toString());
         setDescription(data.get("description"));
@@ -99,8 +99,6 @@ public class CreateAccident extends BasePage {
         setOther("other");
         setSenority(data.get("senority"));
         setDate(data.get("date"));
-        clickSaveButton();
-        return new Accident();
     }
 
     public boolean isSaveButtonEnabled() {
@@ -119,7 +117,8 @@ public class CreateAccident extends BasePage {
         return CommonEvents.getTextContent(severityErrorMessage);
     }
 
-    public void clickBackButton() {
+    public Accident clickBackButton() {
         CommonEvents.clickButton(backButton);
+        return new Accident();
     }
 }

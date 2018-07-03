@@ -87,11 +87,6 @@ public class ContingencyPlan extends BasePage {
         return contingencyMap;
     }
 
-    public void deleteContingencyPlan(int position) {
-        WebElement webElement = CommonEvents.getWebElementByClassName(contingencyList.get(position), DELETE_BUTTON_CLASS);
-        CommonEvents.clickButton(webElement);
-    }
-
     public EditContingencyPlan editContingencyPlan(int position) {
         WebElement webElement = CommonEvents.getWebElementByClassName(contingencyList.get(position), EDIT_BUTTON_CLASS);
         CommonEvents.clickButton(webElement);
@@ -115,12 +110,41 @@ public class ContingencyPlan extends BasePage {
         boolean penaltiesFilter = true;
         int totalContingencyPlans = countContingencies();
         for (int i = 0; i < totalContingencyPlans; i++) {
-            if (getPenaltiesColumnAt(i).equals(penalties)) {
-                penaltiesFilter = true;
-            } else {
+            if (getPenaltiesColumnAt(i).indexOf(penalties) != 0) {
                 penaltiesFilter = false;
+                break;
             }
         }
         return penaltiesFilter;
+    }
+
+    public boolean isStandardNameShowOnList(String standardName) {
+        CommonEvents.customWait(3000);
+        boolean isStandardNameDisplayed = true;
+        int totalContingencies = countContingencies();
+        for (int i = 0; i < totalContingencies; ++i) {
+            if (getStandartNameColumnAt(i).indexOf(standardName) != 0) {
+                isStandardNameDisplayed = false;
+                break;
+            }
+        }
+        return isStandardNameDisplayed;
+    }
+
+    public WebElement getRowByStandardName(String standardName) {
+        int totalRows = countContingencies();
+        WebElement element = null;
+        for (int i = 0; i < totalRows; ++i) {
+            if (getStandartNameColumnAt(i).equals(standardName)) {
+                element = contingencyList.get(i);
+                break;
+            }
+        }
+        return element;
+    }
+
+    public void deleteContingencyPlan(String standardName) {
+        WebElement webElement = CommonEvents.getWebElementByClassName(getRowByStandardName(standardName), DELETE_BUTTON_CLASS);
+        CommonEvents.clickButton(webElement);
     }
 }

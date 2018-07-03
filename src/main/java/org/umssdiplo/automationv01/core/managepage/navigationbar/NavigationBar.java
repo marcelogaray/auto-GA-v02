@@ -6,6 +6,9 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.EmployeeList;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.ListDepartmentPage;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
+import org.umssdiplo.automationv01.core.managepage.storage.Storage;
+import org.umssdiplo.automationv01.core.managepage.storagemenu.StorageMenu;
+import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 import javax.smartcardio.CommandAPDU;
@@ -22,6 +25,9 @@ public class NavigationBar extends BasePage {
 
     @FindBy(id = "sub-menu-employees")
     private WebElement employeeSubMenu;
+
+    @FindBy(id = "menu-storage")
+    private WebElement storageMenu;
 
     public NavigationBar() {
         CommonEvents.customWait(600);
@@ -49,5 +55,10 @@ public class NavigationBar extends BasePage {
         CommonEvents.jsClickElement(employeeSubMenu);
         System.out.println("Return employee list");
         return new EmployeeList();
+    }
+
+    public Storage clickStorageButton() {
+        CommonEvents.clickButton(storageMenu);
+        return new Storage();
     }
 }

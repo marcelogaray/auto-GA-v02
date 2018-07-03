@@ -1,12 +1,10 @@
 package org.umssdiplo.automationv01.core.managepage.accident;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,11 +54,6 @@ public class Accident extends BasePage {
     public String getDescription(int position) {
         WebElement descriptionColumn = CommonEvents.getWebElementByClassName(accidents.get(position), DESCRIPTION_COLUMN_CLASS);
         return CommonEvents.getTextContent(descriptionColumn);
-    }
-
-    public void deleteAccident(int position) {
-        WebElement webElement = CommonEvents.getWebElementByClassName(accidents.get(position), DELETE_BUTTON_CLASS);
-        CommonEvents.clickButton(webElement);
     }
 
     public ModificarAccident editAccident(int position) {
@@ -145,12 +138,41 @@ public class Accident extends BasePage {
         boolean severityFilter = true;
         int totalAccidents = countAccidents();
         for (int i = 0; i < totalAccidents; ++i) {
-            if (getSeverityColumnAt(i).equals(severity)) {
-                severityFilter = true;
-            } else {
+            if (getSeverityColumnAt(i).indexOf(severity) != 0) {
                 severityFilter = false;
+                break;
             }
         }
         return severityFilter;
+    }
+
+    public boolean isDescriptionShowOnList(String description) {
+        CommonEvents.customWait(3000);
+        boolean isDescriptionDisplayed = true;
+        int totalAccidents = countAccidents();
+        for (int i = 0; i < totalAccidents; ++i) {
+            if (getDescriptionColumnAt(i).indexOf(description) != 0) {
+                isDescriptionDisplayed = false;
+                break;
+            }
+        }
+        return isDescriptionDisplayed;
+    }
+
+    public WebElement getRowByDescription(String description) {
+        int totalRows = countAccidents();
+        WebElement element = null;
+        for (int i = 0; i < totalRows; ++i) {
+            if (getDescriptionColumnAt(i).equals(description)) {
+                element = accidents.get(i);
+                break;
+            }
+        }
+        return element;
+    }
+
+    public void deleteAccident(String description) {
+        WebElement webElement = CommonEvents.getWebElementByClassName(getRowByDescription(description), DELETE_BUTTON_CLASS);
+        CommonEvents.clickButton(webElement);
     }
 }

@@ -1,17 +1,17 @@
 Feature: reports
 #Verificar que el reporte de activos disponibles muestra en la cabecera "Codigo", "Nombre de Material" y "Estado"
-  Scenario:  ROO1 TC - InesBaina - 08
+  Scenario:  ROO1 - Ines Baina - Verificar que el reporte de activos disponibles muestra en la cabecera "Codigo", "Nombre de Material" y "Estado"
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
-    And click 'Reportes' menu button on 'Navigation Bar' top menu
-    When click 'Activos Disponibles' option on 'Reportes' submenu
+    When click 'Reportes' menu button on 'Navigation Bar' top menu
+    And click 'Activos Disponibles' option on 'Reportes' submenu
     Then the header of the report should contain the "Codigo" title
     And the "Nombre de Material" title as second column
     And the "Estado" title as third column
 
 #Verificar que el reporte de activos devueltos muestra en la cabecera "Nombre(s)", "Apellido(s)", "Codigo del Activo",
 #"Nombre del Activo", "Estado Devolucion" y "Fecha devolucion"
-  Scenario:  ROO2 TC - InesBaina - 09
+  Scenario:  ROO2 - Ines Baina - Verificar que el reporte de activos devueltos muestra en la cabecera "Nombre(s)", "Apellido(s)", "Codigo del Activo", "Nombre del Activo", "Estado Devolucion" y "Fecha devolucion"
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     And click 'Reportes' menu button on 'Navigation Bar' top menu

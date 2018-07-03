@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.RegisterContract;
 import org.umssdiplo.automationv01.core.managepage.accident.ModificarAccident;
 import org.umssdiplo.automationv01.core.managepage.accidenteincidentmenu.AccidentEIncidentMenu;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
@@ -24,7 +25,11 @@ import org.umssdiplo.automationv01.core.managepage.positions.EditPosition;
 import org.umssdiplo.automationv01.core.managepage.positions.RegisterPosition;
 import org.umssdiplo.automationv01.core.managepage.positionssubmenu.PositionsSubMenu;
 import org.umssdiplo.automationv01.core.managepage.reports.RefundedItemsReport;
+import org.umssdiplo.automationv01.core.managepage.reports.StorageReport;
 import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu;
+import org.umssdiplo.automationv01.core.managepage.storage.CreateStorage;
+import org.umssdiplo.automationv01.core.managepage.storage.EditStorage;
+import org.umssdiplo.automationv01.core.managepage.storage.Storage;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -33,18 +38,22 @@ import java.util.Map;
 public class StepsDefinitionSSIApplication {
     private static final int ACCIDENT_ROW = 1;
     private static final int NUMBER_ROW = 1;
+    private static final int STORAGE_ROW = 1;
     private static final int NEW_ITEM_ASSIGNED = 1;
     private int totalAssignedItems;
     private int totalAccidents;
     private int totalContingencyPlans;
     private int totalPositions;
+    private int totalStorages;
     private Map<String, String> contingencyMap;
     private Map<String, String> accidentMap;
+    private Map<String, String> storageMap;
     private static Login login;
     private static NavigationBar navigationBar;
     private OrganizationalStructureMenu organizationalStructureMenu;
     private EmployeesSubMenu employeesSubMenu;
     private EmployeeDetail employeeDetail;
+    private RegisterContract registerContract;
     private AssignEmployeeItemModal assignEmployeeItemModal;
     private PositionsSubMenu positionsSubMenu;
     private RegisterPosition registerPosition;
@@ -59,6 +68,10 @@ public class StepsDefinitionSSIApplication {
     private ContingencyPlan contingencyPlan;
     private CreateContingencyPlan createContingencyPlan;
     private EditContingencyPlan editContingencyPlan;
+    private Storage storage;
+    private CreateStorage createStorage;
+    private StorageReport storageReport;
+    private EditStorage editStorage;
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -84,7 +97,7 @@ public class StepsDefinitionSSIApplication {
         }
     }
 
-    @And("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
+    @When("^click 'Estructura Organizacional' menu button on 'Navigation Bar' top menu$")
     public void clickEstructuraOrganizacionalMenuButton() throws Throwable {
         organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
     }
@@ -99,7 +112,7 @@ public class StepsDefinitionSSIApplication {
         employeeDetail = employeesSubMenu.clickEmployeeDetail();
     }
 
-    @When("^click 'Asignar Activo' button on 'Employee Detail' page$")
+    @And("^click 'Asignar Activo' button on 'Employee Detail' page$")
     public void clickAsignarActivoButton() throws Throwable {
         totalAssignedItems = employeeDetail.countAssignedItems();
         assignEmployeeItemModal = employeeDetail.clickAssignEmployeeItem();
@@ -115,7 +128,7 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(assignEmployeeItemModal.getTitle(), expected, String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_MODAL_TITLE, assignEmployeeItemModal.getTitle()));
     }
 
-    @When("^click 'Cancelar' button on 'Assign Item' modal$")
+    @And("^click 'Cancelar' button on 'Assign Item' modal$")
     public void clickCancelarButtonOnAssignItemModal() throws Throwable {
         employeeDetail = assignEmployeeItemModal.clickCancel();
     }
@@ -207,10 +220,10 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(contingencyPlan.getAccidentColumnAt(totalContingencyPlans), standardName, String.format(ErrorMessage.ERROR_MESSAGE_CONTINGENCY_INFORMATION, "contigency"));
     }
 
-    @When("^delete Contingency plan from position (\\d+)")
-    public void deleteIncidentAt(int position) throws Throwable {
+    @When("^delete Contingency plan with '(.*?)' description")
+    public void deleteIncidentAt(String standardName) throws Throwable {
         totalContingencyPlans = contingencyPlan.countContingencies();
-        contingencyPlan.deleteContingencyPlan(position);
+        contingencyPlan.deleteContingencyPlan(standardName);
     }
 
     @Then("^verify that Contingency Plan was removed in the list")
@@ -249,19 +262,19 @@ public class StepsDefinitionSSIApplication {
         contingencyPlan.clickSearchContingencyButton();
     }
 
-    @When("^verify that Contingency plans are filter by '(.*?)' penalties")
+    @Then("^verify that Contingency plans are filter by '(.*?)' penalties")
     public void verifyThatContingencyIsFilterByPenalties(String penalties) throws Throwable {
-        Assert.assertEquals(contingencyPlan.isPenaltyColumnsMatchWithFilter(penalties), true);
+        Assert.assertTrue(contingencyPlan.isPenaltyColumnsMatchWithFilter(penalties), String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_DOES_NOT_MATCH, "penalties"));
     }
 
-    @When("^verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page")
+    @Then("^verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page")
     public void verifyThatSaveButtonContingencyIsDisabled() throws Throwable {
-        Assert.assertEquals(createContingencyPlan.isSaveButtonEnabled(), false);
+        Assert.assertFalse(createContingencyPlan.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "guardar"));
     }
 
-    @When("^verify that 'mofificar' button is enabled by default on 'modificar plan de contingencia' page")
+    @Then("^verify that 'mofificar' button is enabled by default on 'modificar plan de contingencia' page")
     public void verifyThatEditButtonContingencyIsEnabled() throws Throwable {
-        Assert.assertEquals(editContingencyPlan.isEditButtonEnabled(), true);
+        Assert.assertTrue(editContingencyPlan.isEditButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_ENABLE, "modificar"));
     }
 
     @When("^click standard name field into 'contingency' form on 'registro plan de contingencia' page")
@@ -292,7 +305,17 @@ public class StepsDefinitionSSIApplication {
 
     @When("^fill 'Accident' form on 'Registro Accidente' page$")
     public void fillAccidentForm(Map<String, String> data) throws Throwable {
-        accident = createAccident.createAccident(data);
+        createAccident.fillAccidentForm(data);
+    }
+
+    @When("^click 'guardar' button on 'Registro Accidente' page$")
+    public void clickGuardarButton() throws Throwable {
+        accident = createAccident.clickSaveButton();
+    }
+
+    @When("^click 'atras' button on 'Registro Accidente' page$")
+    public void clickAtrasButton() throws Throwable {
+        accident = createAccident.clickBackButton();
     }
 
     @Then("^verify that new accident is added in the list$")
@@ -305,10 +328,10 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(accident.getDescription(totalAccidents), description, String.format(ErrorMessage.ERROR_MESSAGE_DESCRIPTION_NEW_ACCIDENT, "Accident"));
     }
 
-    @When("^delete accident from position '(\\d+)'")
-    public void deleteAccidentAt(int position) throws Throwable {
+    @When("^delete accident with '(.*?)' description")
+    public void deleteAccidentAt(String description) throws Throwable {
         totalAccidents = accident.countAccidents();
-        accident.deleteAccident(position);
+        accident.deleteAccident(description);
     }
 
     @Then("^verify that one Accident was removed in the list")
@@ -413,7 +436,7 @@ public class StepsDefinitionSSIApplication {
         registerPosition = positionsSubMenu.clickAddPosition();
     }
 
-    @When("^click 'Guardar' button without required fields filled on 'Registrar Posicion en la empresa' page$")
+    @And("^click 'Guardar' button without required fields filled on 'Registrar Posicion en la empresa' page$")
     public void clickGuardarButtonWithoutRequiredFieldsFilledOnRegistrarPosicionEnLaEmpresaPage() throws Throwable {
         registerPosition.clickSavePosition();
     }
@@ -423,7 +446,7 @@ public class StepsDefinitionSSIApplication {
         Assert.assertEquals(registerPosition.getTitle(), expected, String.format(ErrorMessage.ERROR_MESSAGE_ITEM_ELEMENT_PRESENT, expected));
     }
 
-    @When("^click 'Eliminar' button on 'Lista de Posiciones' page of element (\\d+)$")
+    @And("^click 'Eliminar' button on 'Lista de Posiciones' page of element (\\d+)$")
     public void clickEliminarButtonOnListaDePosicionesPageOfElement(int element) throws Throwable {
         totalPositions = positionsSubMenu.countPositions();
         positionsSubMenu.deletePosition(element);
@@ -459,12 +482,12 @@ public class StepsDefinitionSSIApplication {
         Assert.assertTrue(employeeDetail.existAssignItemTitleSection(), String.format(ErrorMessage.ERROR_MESSAGE_ASSIGN_ITEM_TITLE, assignSectionTitle));
     }
 
-    @And("^click 'Reportes' menu button on 'Navigation Bar' top menu$")
+    @When("^click 'Reportes' menu button on 'Navigation Bar' top menu$")
     public void clickReportesMenuButtonOnNavigationBarTopMenu() throws Throwable {
         reportsSubMenu = navigationBar.clickReports();
     }
 
-    @When("^click 'Activos Disponibles' option on 'Reportes' submenu$")
+    @And("^click 'Activos Disponibles' option on 'Reportes' submenu$")
     public void clickActivosDisponiblesOptionOnReportesSubmenu() throws Throwable {
         availableItemsReport = reportsSubMenu.clickAvailableItemsReport();
     }
@@ -518,5 +541,139 @@ public class StepsDefinitionSSIApplication {
     @And("^the \"([^\"]*)\" title as sixth column of the  'Activos Devueltos' report$")
     public void theTitleAsSixthColumnOfTheActivosDevueltosReport(String sixthColumn) throws Throwable {
         Assert.assertEquals(refundedItemsReport.getSixthHeaderTable(), sixthColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, sixthColumn));
+    }
+
+    @Then("^verify that accident with '(.*?)' description is not added in the list$")
+    public void verifyAccidentWasNotAdded(String description) throws Throwable {
+        Assert.assertFalse(accident.isDescriptionShowOnList(description), String.format(ErrorMessage.ERROR_MESSAGE_NOT_CREATE_ACCIDENT, "Accident"));
+    }
+
+    @Then("^verify that contingency plan with '(.*?)' standard name is not added in the list$")
+    public void verifyContingencyPlaneisNotAdded(String standardName) throws Throwable {
+        Assert.assertFalse(contingencyPlan.isStandardNameShowOnList(standardName), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_ROW, "contigency"));
+    }
+
+    @When("^click 'Almacenes' menu on 'NavigationBar' top menu$")
+    public void clickAlmacenesMenuOnNavigationBarTopMenu() throws Throwable {
+        storage = navigationBar.clickStorageButton();
+    }
+
+    @Then("^the page loaded should contains the \"([^\"]*)\" title main$")
+    public void thePageLoadedShouldContainsTheTitleMain(String title) throws Throwable {
+        Assert.assertEquals(storage.getTitle(), (title), String.format(ErrorMessage.ERROR_MESSAGE_NAME_ELEMENT_PRESENT, title));
+    }
+
+    @And("^click 'Agregar Almacen' button on 'Storage' page$")
+    public void clickAgregarAlmacenButtonOnStoragePage() throws Throwable {
+        totalStorages = storage.countStorages();
+        createStorage = storage.createStorage();
+    }
+
+    @And("^fill 'Storage' form on 'Registro Accidente' page$")
+    public void fillStorageFormOnRegistroAccidentePage(Map<String, String> data) throws Throwable {
+        storage = createStorage.createStorage(data);
+    }
+
+    @Then("^verify that new storage is added in the list$")
+    public void verifyThatNewStorageIsAddedInTheList() throws Throwable {
+        Assert.assertEquals(storage.countStorages(), totalStorages + STORAGE_ROW, String.format(ErrorMessage.ERROR_MESSAGE_CREATE_STORAGE, "Storage"));
+    }
+
+    @And("^verify '(.*?)' name for new storage$")
+    public void verifyEquipoDeReservaNameForNewStorage(String name) throws Throwable {
+        Assert.assertEquals(storage.getName(totalStorages), name, String.format(ErrorMessage.ERROR_MESSAGE_NAME_NEW_STORAGE, "Storage"));
+    }
+
+    @And("^click 'Reportes' menu button on 'Navigation Bar' menu$")
+    public void clickReportesMenuButtonOnNavigationBarMenu() throws Throwable {
+        reportsSubMenu = navigationBar.clickReports();
+    }
+
+    @When("^click 'Reporte de Almacenes' option on 'Reportes' submenu$")
+    public void clickReporteDeAlamacenesOptionOnReportesSubmenu() throws Throwable {
+        storageReport = reportsSubMenu.clickStorageReport();
+    }
+
+    @Then("^the header of the storage report should contain the \"([^\"]*)\" title$")
+    public void theHeaderOfTheStorageReportShouldContainTheTitle(String firstColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getFirstHeaderTable(), firstColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, firstColumn));
+    }
+
+    @And("^\"([^\"]*)\" title as second column$")
+    public void titleAsSecondColumn(String secondColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getSecondHeaderTable(), secondColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, secondColumn));
+    }
+
+    @And("^\"([^\"]*)\" title as third column$")
+    public void titleAsThirdColumn(String thridColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getThirdTable(), thridColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, thridColumn));
+    }
+
+    @And("^\"([^\"]*)\" title as fourth column$")
+    public void titleAsFourthColumn(String fourthColumn) throws Throwable {
+        Assert.assertEquals(storageReport.getFourthTable(), fourthColumn, String.format(ErrorMessage.ERROR_MESSAGE_COLUMN_TEXT, fourthColumn));
+    }
+
+    @And("^click on 'Cancelar' button on 'Agregar Almacen' page$")
+    public void clickOnCancelarButtonOnAgregarAlmacenPage() throws Throwable {
+        createStorage.clickCancelButton();
+    }
+
+    @Then("^verify that almacen is not added in the list$")
+    public void verifyThatAlmacenIsNotAddedInTheList() throws Throwable {
+        Assert.assertEquals(storage.countStorages(), totalStorages, String.format(ErrorMessage.ERROR_MESSAGE_CREATE_STORAGE, "Storage"));
+    }
+
+    @And("^delete storage from position '(\\d+)'$")
+    public void deleteStorageFromPosition(int position) throws Throwable {
+        totalStorages = storage.countStorages();
+        storage.deleteStorage(position);
+    }
+
+    @Then("^verify that Storage was deleted in the list$")
+    public void verifyThatStorageWasDeletedInTheList() throws Throwable {
+        Assert.assertEquals(storage.countStorages(), (totalStorages - STORAGE_ROW), String.format(ErrorMessage.ERROR_MESSAGE_DELETE_ROW, "Storage"));
+    }
+
+    @And("^click on the edit button of the storage location '(\\d+)'$")
+    public void clickOnTheEditButtonOfTheStorageLocation(int position) throws Throwable {
+        editStorage = storage.editStorage(position);
+    }
+
+    @And("^edit 'Storage' form on 'Editar Almacen' page$")
+    public void editStorageFormOnEditarAlmacenPage(Map<String, String> data) throws Throwable {
+        storageMap = data;
+        storage = editStorage.editStorage(data);
+    }
+
+    @Then("^verify that '(\\d+)' Storage is modified$")
+    public void verifyThatStorageIsModified(int position) throws Throwable {
+        Assert.assertEquals(storage.getStorage(position), storageMap, String.format(ErrorMessage.ERROR_MESSAGE_EDIT_STORAGE, "Storage"));
+    }
+
+    @Then("^verify that the 'Guardar' button is not available if the 'Nombre de Almacen' text field is empty$")
+    public void verifyThatTheGuardarButtonIsNotAvailableIfTheNombreDeAlmacenFieldIsEmpty() throws Throwable {
+        Assert.assertFalse(createStorage.isSaveButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Guardar"));
+    }
+
+    @Then("^the page loaded must contain as title \"([^\"]*)\"$")
+    public void hePageLoadedMustContainAsTitle(String title) throws Throwable {
+        Assert.assertEquals(storageReport.getTitle(), title, String.format(ErrorMessage.ERROR_MESSAGE_NAME_ELEMENT_PRESENT, title));
+    }
+
+    @And("^click 'Contratos' option on 'Estructura Organizacional' submenu$")
+    public void clickContratosOptionOnEstructuraOrganizacionalSubmenu() throws Throwable {
+        registerContract = organizationalStructureMenu.clickContracts();
+    }
+
+    @When("^'Contracts Form' page is filled with contract data$")
+    public void contractsFormPageIsFillWithSomeEmployeeData() throws Throwable {
+        registerContract.setInputName();
+        registerContract.setInputDescription();
+    }
+
+    @Then("^'Registrar' button should be HIDE on 'Contracts form' page$")
+    public void registrarButtonShouldBeHIDEOnContractsFormPage() throws Throwable {
+        Assert.assertFalse(registerContract.contractButtonIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ADD_CONTRACT_EMPTY_FIELDS));
     }
 }
