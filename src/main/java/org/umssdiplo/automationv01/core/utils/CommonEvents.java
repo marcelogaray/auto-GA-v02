@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.core.utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
@@ -131,6 +132,77 @@ public class CommonEvents {
         }
     }
 
+    /**
+     * This method allow to put the mouse over a WebElement.
+     *
+     * @param webElement where the mouse will be moved.
+     */
+    public static void mouseOver(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        Actions action = new Actions(ManageDriver.getInstance().getWebDriver());
+        action.moveToElement(webElement);
+    }
+
+    /**
+     * This method allow to search  a WebElement from a Angular Matterial table.
+     *
+     *
+     * @param table Angular Matterial table.
+     * @param departmentName WebElement.
+     * @return
+     */
+    public static WebElement findWebElementFromMatTable(WebElement table, String departmentName) {
+        WebElement sCellValue = table.findElement(By.xpath("//mat-cell[contains(text(),'" + departmentName + "')]"));
+        return sCellValue;
+    }
+
+    /**
+     * This method return an Angular Matterial actionButton from a table that match with a WebElement in the row.
+     *
+     * @param table Angular Matterial table
+     * @param departmentName WebElement in row
+     * @param eliminar Angular Matterial actionButton.
+     * @return
+     */
+    public static WebElement findButtonByCellofMatTable(WebElement table, String departmentName, String eliminar) {
+        WebElement aButton = table.findElement(By.xpath("//mat-cell[not(contains(text(),'-')) and contains(text(),'" + departmentName + "')]/..//button//*[contains(text(),'" + eliminar + "')]"));
+        return aButton;
+    }
+
+    /**
+     * This method return an option from a angular matterial drop down.
+     *
+     * @param matSelect angular matheria  drop down.
+     * @param option drop down option.
+     * @return
+     */
+    public static WebElement selectMatOption(WebElement matSelect, String option) {
+        CommonEvents.customWait(500);
+        WebElement selected = matSelect.findElement(By.xpath("//mat-option//span[contains(text(),'" + option + "')]"));
+        return selected;
+    }
+
+    /**
+     * This method press escape  key in order to close WebElements open.
+     */
+    public static void escape() {
+        CommonEvents.customWait(100);
+        Actions action = new Actions(ManageDriver.getInstance().getWebDriver());
+        action.sendKeys(Keys.ESCAPE).build().perform();
+    }
+
+    /**
+     * This method allow to find a cell that contains a child object and parent object that match with the criteria.
+     *
+     * @param table list of WebElements
+     * @param child child in the same  row
+     * @param parent parent in the same  row
+     * @return
+     */
+    public static WebElement findChildFromMatTable(WebElement table, String child, String parent) {
+        WebElement cell = table.findElement(By.xpath("//mat-cell[contains(text(),'" + parent + "')]/..//mat-cell[contains(text(),'" + child + "')]"));
+        return cell;
+    }
     /**
      * This method count all element into the list.
      *
