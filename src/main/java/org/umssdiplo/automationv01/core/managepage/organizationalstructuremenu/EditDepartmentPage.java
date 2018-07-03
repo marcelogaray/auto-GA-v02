@@ -35,7 +35,7 @@ public class EditDepartmentPage extends BasePage {
     public void editDepartment(String name, String childname, String action) {
         setDepartmentName(name);
         CommonEvents.isVisible(this.matSelect);
-        CommonEvents.jsClickElement(this.matSelect);
+        CommonEvents.clickButton(this.matSelect);
         WebElement selected = CommonEvents.selectMatOption(this.matSelect, childname);
         CommonEvents.jsClickElement(selected);
         CommonEvents.escape();

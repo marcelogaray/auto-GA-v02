@@ -13,6 +13,9 @@ public class OrganizationalStructureMenu extends BasePage {
     @FindBy(id = "sub-menu-employees")
     private WebElement employeeSubMenu;
 
+    @FindBy(id = "sub-menu-position")
+    private WebElement positionSubMenu;
+
     public OrganizationalStructureMenu() {
 
     }

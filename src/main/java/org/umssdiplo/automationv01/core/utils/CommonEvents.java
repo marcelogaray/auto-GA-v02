@@ -176,7 +176,7 @@ public class CommonEvents {
      * @return
      */
     public static WebElement selectMatOption(WebElement matSelect, String option) {
-        CommonEvents.customWait(500);
+        CommonEvents.customWait(700);
         WebElement selected = matSelect.findElement(By.xpath("//mat-option//span[contains(text(),'" + option + "')]"));
         return selected;
     }

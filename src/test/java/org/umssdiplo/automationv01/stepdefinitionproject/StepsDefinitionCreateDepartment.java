@@ -40,17 +40,17 @@ public class StepsDefinitionCreateDepartment {
     }
 
     @And("^click on 'Estructura Organizacional' menu button de department menu$")
-    public void clickOnMenuButtonDeDepartmentMenu(String arg0) throws Throwable {
+    public void clickOnMenuButtonDeDepartmentMenu() throws Throwable {
         navigationBar.clickOnActiveMenuOption();
     }
 
     @And("^click on 'Departamentos' submenu Button de department submenu$")
-    public void clickOnSubmenuButtonDeDepartamentSubmenu(String arg0) throws Throwable {
+    public void clickOnSubmenuButtonDeDepartamentSubmenu() throws Throwable {
         listDepartmentPages = navigationBar.clickOnSubmenuButton();
     }
 
     @And("^click on 'Agregar Nuevo Departamento' Button de department page$")
-    public void clickOnButtonDeDepartmentPage(String arg0) throws Throwable {
+    public void clickOnButtonDeDepartmentPage() throws Throwable {
         createDepartmentPage = listDepartmentPages.clickAddDepartment();
     }
 
@@ -66,7 +66,7 @@ public class StepsDefinitionCreateDepartment {
     }
 
     @When("^se realiza click en boton 'Registrar'$")
-    public void seRealizaClickEnBoton(String arg0) throws Throwable {
+    public void seRealizaClickEnBoton() throws Throwable {
         createDepartmentPage.clickRegistrar();
     }
 

@@ -24,7 +24,7 @@ public class NavigationBar extends BasePage {
     private WebElement employeeSubMenu;
 
     public NavigationBar() {
-        CommonEvents.customWait(600);
+        CommonEvents.customWait(900);
         CommonEvents.isVisible(reportsMenu);
     }
 
