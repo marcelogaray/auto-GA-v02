@@ -4,9 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.accidenteincidentmenu.AccidentEIncidentMenu;
+import org.umssdiplo.automationv01.core.managepage.activosMenu.ActivosMenu;
 import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.OrganizationalStructureMenu;
 import org.umssdiplo.automationv01.core.managepage.storage.Storage;
-import org.umssdiplo.automationv01.core.managepage.storagemenu.StorageMenu;
 import org.umssdiplo.automationv01.core.managepage.reportssubmenu.ReportsSubMenu;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
@@ -22,6 +22,9 @@ public class NavigationBar extends BasePage {
 
     @FindBy(id = "menu-storage")
     private WebElement storageMenu;
+
+    @FindBy(id = "menu-active")
+    private WebElement activosMenu;
 
     public NavigationBar() {
         CommonEvents.isVisible(reportsMenu);
@@ -45,5 +48,10 @@ public class NavigationBar extends BasePage {
     public Storage clickStorageButton() {
         CommonEvents.clickButton(storageMenu);
         return new Storage();
+    }
+
+    public ActivosMenu clickActivos() {
+        CommonEvents.clickButton(activosMenu);
+        return new ActivosMenu();
     }
 }
