@@ -1,6 +1,6 @@
 Feature: Plan de Contingencias
 
-  Scenario: PC-01 Verificar que un plan de contingencia es creado
+  Scenario: PC-01 - Cynthia Terrazas - Verificar que un plan de contingencia es creado
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
@@ -16,7 +16,7 @@ Feature: Plan de Contingencias
     Then verify that new Contingency plan is added in the list
     And verify 'dolor de espalda' accident name for new Contingency Plan
 
-  Scenario: PC-02 Verificar que un plan de contingencia es eliminado
+  Scenario: PC-02 - Cynthia Terrazas - Verificar que un plan de contingencia es eliminado
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
@@ -26,7 +26,7 @@ Feature: Plan de Contingencias
     And click 'Plan de Contingencia' option on 'Accidente e Incidentes' menu
     Then verify that contingency plan with 'no uso de mallas de proteccion' standard name is not added in the list
 
-  Scenario: PC-03 verificar que un plan de contingencia es modificado
+  Scenario: PC-03 - Cynthia Terrazas - verificar que un plan de contingencia es modificado
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
@@ -40,7 +40,7 @@ Feature: Plan de Contingencias
       | description  | uso de mallas updated      |
     Then verify that Contingency at position 1 is modified
 
-  Scenario: PC-13 verificar que plan de contingencia puede ser buscado por su penalidad
+  Scenario: PC-13 - Cynthia Terrazas - verificar que plan de contingencia puede ser buscado por su penalidad
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
@@ -50,7 +50,7 @@ Feature: Plan de Contingencias
     And click on 'buscar' button on 'Plan de Contingencia' page
     Then verify that Contingency plans are filter by '1 semana suspendidio del trabajo' penalties
 
-  Scenario: PC-04 verificar que el boton 'guardar' esta desabilitado por defecto en la vista crear plan de contingencia
+  Scenario: PC-04 - Cynthia Terrazas - verificar que el boton 'guardar' esta desabilitado por defecto en la vista crear plan de contingencia
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
@@ -58,7 +58,7 @@ Feature: Plan de Contingencias
     And click 'Crear Plan de continegcia' button on 'Plan de Contigencia' page
     Then verify that 'guardar' button is disabled by default on 'Registro plan de contingencia' page
 
-  Scenario: PC-05 verificar que el boton modificar esta abilitado por defecto
+  Scenario: PC-05 - Cynthia Terrazas - verificar que el boton modificar esta abilitado por defecto
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
@@ -66,7 +66,7 @@ Feature: Plan de Contingencias
     And edit contigency plan from position 1
     Then verify that 'mofificar' button is enabled by default on 'modificar plan de contingencia' page
 
-  Scenario: PC-09 verificar que un mensaje es mostrado cuando el campo 'nombre plan de contingencia' esta vacio
+  Scenario: PC-09 - Cynthia Terrazas - verificar que un mensaje es mostrado cuando el campo 'nombre plan de contingencia' esta vacio
     Given 'SSI' page is loaded
     And user is authenticated with administrator credentials
     When click 'Accidente e Incidentes' menu on 'NavigationBar' top menu
