@@ -9,6 +9,10 @@ import org.umssdiplo.automationv01.core.managepage.positionssubmenu.PositionsSub
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class OrganizationalStructureMenu extends BasePage {
+
+    @FindBy(id = "menu-organizational")
+    private WebElement employeeMenu;
+
     @FindBy(id = "sub-menu-positions")
     private WebElement positionSubMenu;
 
@@ -19,11 +23,15 @@ public class OrganizationalStructureMenu extends BasePage {
     private WebElement contractButton;
 
     public OrganizationalStructureMenu() {
-        CommonEvents.isVisible(positionSubMenu);
+
     }
 
     public EmployeesSubMenu clickEmployees() {
-        CommonEvents.clickButton(employeeSubMenu);
+        CommonEvents.isVisible(employeeMenu);
+        CommonEvents.clickButton(employeeMenu);
+
+        CommonEvents.jsClickElement(employeeSubMenu);
+        System.out.println("Return employee list");
         return new EmployeesSubMenu();
     }
 
