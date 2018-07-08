@@ -28,16 +28,19 @@ public class ActivosMenu extends BasePage {
     }
 
     public ListItemType clickItemTypeListSubMenu() {
+        CommonEvents.customWait(2500);
         CommonEvents.clickButton(listItemTypeSubMenu);
         return new ListItemType();
     }
 
     public AddItemType clickAnadirTypeSubmenu() {
+        CommonEvents.customWait(2500);
         CommonEvents.clickButton(addItemTypeSubMenu);
         return new AddItemType();
     }
 
     public AddItem clickAnadirItemSubmenu() {
+        CommonEvents.customWait(2500);
         CommonEvents.clickButton(addItemSubMenu);
         return new AddItem();
     }
