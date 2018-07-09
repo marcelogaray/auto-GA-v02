@@ -29,5 +29,8 @@ public class ErrorMessage {
     public static final String ERROR_MESSAGE_ADD_CONTRACT_EMPTY_FIELDS = "Some fields are empty";
     public static final String ERROR_MESSAGE_EDIT_ITEMTYPE_COMPLETED = "%s Item Type is expected in the list.";
     public static final String ERROR_MESSAGE_EDIT_ITEMTYPE_DELETED = "%s Item Type is not expected in the list.";
+    public static final String MESSAGE_CHILD_NOT_MATCH = "nombre del child no  coinside";
+    public static final String MESSAGE_DEPARTMENT_NOT_MATCH= "The department name does not match";
+    public static final String MESSAGE_LIST_CONTAINS_DEPARTMENT="The list still contains the department";
 
 }
