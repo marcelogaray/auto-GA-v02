@@ -834,7 +834,7 @@ public class StepsDefinitionSSIApplication {
 
     @And("^click on 'Estructura Organizacional' menu button de department menu$")
     public void clickOnMenuButtonDeDepartmentMenu() throws Throwable {
-        navigationBar.clickOrganizationalStructure();
+        organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
     }
 
     @And("^click on 'Departamentos' submenu Button de department submenu$")
