@@ -37,6 +37,7 @@ public class ListItemType extends BasePage {
     }
 
     public EditItemType clickFirstRowEditBtn() {
+        CommonEvents.customWait(2500);
         CommonEvents.clickButton(firstItemTypeEditBtn);
         return new EditItemType();
     }
@@ -47,12 +48,14 @@ public class ListItemType extends BasePage {
     }
 
     public EditItemType clickEditBtnInRow(int index) {
+        CommonEvents.customWait(2500);
         WebElement editBtn = getBtnByIndexAndXPath(index, EDIT_BTN_XPATH);
         CommonEvents.clickButton(editBtn);
         return new EditItemType();
     }
 
     public EditItemType clickAddItemTypeBtn() {
+        CommonEvents.customWait(2500);
         CommonEvents.clickButton(addItemTypeBtn);
         return new EditItemType();
     }
@@ -70,6 +73,7 @@ public class ListItemType extends BasePage {
     }
 
     public ListItemType clickDeleteBtnByItemTypeName(String name) {
+        CommonEvents.customWait(2500);
         int index = getIndexOfItemTypeName(name);
         WebElement deleteBtn = getBtnByIndexAndXPath(index, DELETE_BTN_XPATH);
         CommonEvents.clickButton(deleteBtn);
@@ -108,6 +112,7 @@ public class ListItemType extends BasePage {
     }
 
     public EditItemType clickEditBtnByItemTypeName(String name) {
+        CommonEvents.customWait(2500);
         int index = getIndexOfItemTypeName(name);
         WebElement editBtn = getBtnByIndexAndXPath(index, EDIT_BTN_XPATH);
         CommonEvents.clickButton(editBtn);

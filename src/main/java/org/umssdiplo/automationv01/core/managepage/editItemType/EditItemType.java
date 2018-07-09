@@ -26,11 +26,15 @@ public class EditItemType extends BasePage {
     }
 
     public ListItemType clickSaveItemTypeBtn() {
+        CommonEvents.customWait(2500);
+        CommonEvents.mouseOver(saveItemTypeBtn);
         CommonEvents.clickButton(saveItemTypeBtn);
         return new ListItemType();
     }
 
     public ListItemType clickCancelEditItemTypeBtn() {
+        CommonEvents.customWait(2500);
+        CommonEvents.mouseOver(cancelEditItemTypeBtn);
         CommonEvents.clickButton(cancelEditItemTypeBtn);
         return new ListItemType();
     }
