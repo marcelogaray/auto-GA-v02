@@ -28,7 +28,7 @@ public class StepsDefinitionReportAudit {
     @Given("^'SSI' loaded$")
     public void ssiPageIsLoaded() throws Throwable {
         login = LoadPage.loginPage();
-        reportAuditHistory = new ReportAuditHistory();
+//        reportAuditHistory = new ReportAuditHistory();
     }
 
     @And("^User is authenticated in portal$")

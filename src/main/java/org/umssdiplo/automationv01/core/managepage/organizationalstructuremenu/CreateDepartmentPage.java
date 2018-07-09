@@ -20,7 +20,7 @@ public class CreateDepartmentPage extends BasePage {
     private WebElement registrar;
 
     public CreateDepartmentPage(){
-        CommonEvents.isVisible(this.departmentName);
+//        CommonEvents.isVisible(this.departmentName);
     }
 
 

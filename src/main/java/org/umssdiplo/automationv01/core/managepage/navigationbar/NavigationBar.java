@@ -50,7 +50,7 @@ public class NavigationBar extends BasePage {
 
     public ListDepartmentPage clickOnSubmenuButton() {
         CommonEvents.isVisible(activeSubmenu);
-        CommonEvents.clickButton(activeSubmenu);
+        CommonEvents.jsClickElement(activeSubmenu);
         return new ListDepartmentPage();
     }
   

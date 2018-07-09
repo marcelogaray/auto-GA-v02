@@ -12,6 +12,9 @@ import org.umssdiplo.automationv01.core.managepage.addItem.AddItem;
 import org.umssdiplo.automationv01.core.managepage.addItemType.AddItemType;
 import org.umssdiplo.automationv01.core.managepage.assignemployeeitem.AssignEmployeeItemModal;
 import org.umssdiplo.automationv01.core.managepage.editItemType.EditItemType;
+import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.CreateDepartmentPage;
+import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.EditDepartmentPage;
+import org.umssdiplo.automationv01.core.managepage.organizationalstructuremenu.ListDepartmentPage;
 import org.umssdiplo.automationv01.core.managepage.reports.AvailableItemsReport;
 import org.umssdiplo.automationv01.core.managepage.contingencyplan.ContingencyPlan;
 import org.umssdiplo.automationv01.core.managepage.contingencyplan.CreateContingencyPlan;
@@ -36,8 +39,12 @@ import org.umssdiplo.automationv01.core.managepage.storage.EditStorage;
 import org.umssdiplo.automationv01.core.managepage.storage.Storage;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+import org.umssdiplo.automationv01.core.utils.Messages;
 
 import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
 
 public class StepsDefinitionSSIApplication {
     private static final int ACCIDENT_ROW = 1;
@@ -81,6 +88,13 @@ public class StepsDefinitionSSIApplication {
     private EditItemType editItemType;
     private AddItemType addItemType;
     private AddItem addItem;
+
+    private static CreateDepartmentPage createDepartmentPage;
+    private static EditDepartmentPage editDepartmentPage;
+    private static ListDepartmentPage listDepartmentPages;
+    private String departmentName;
+    public static final String BUTTON_EDIT = "Editar";
+    public static final String BUTTON_DELETE = "Eliminar";
 
     @Given("^'SSI Application' page is loaded$")
     public void ssiApplicationPageIsLoaded() throws Throwable {
@@ -821,5 +835,88 @@ public class StepsDefinitionSSIApplication {
     public void verifySaveButtonStatusIsInAnadirItemPage(String expectedStatus) throws Throwable {
         String actualsStatus = addItem.getSaveBtnStatus();
         Assert.assertEquals(actualsStatus, expectedStatus, String.format(ErrorMessage.ERROR_MESSAGE_BUTTON_DISABLE, "Save"));
+    }
+    @Given("^'SSI' loaded for department$")
+    public void ssiLoadedForDepartment() throws Throwable {
+        login = LoadPage.loginPage();
+    }
+
+    @And("^User is authenticated in portal for departments$")
+    public void userIsAuthenticatedInPortalParaDepartamentos() throws Throwable {
+        if(navigationBar==null){
+            navigationBar = login.setCredentials();
+        }
+    }
+
+    @And("^click on 'Estructura Organizacional' menu button de department menu$")
+    public void clickOnMenuButtonDeDepartmentMenu() throws Throwable {
+        organizationalStructureMenu = navigationBar.clickOrganizationalStructure();
+    }
+
+    @And("^click on 'Departamentos' submenu Button de department submenu$")
+    public void clickOnSubmenuButtonDeDepartamentSubmenu() throws Throwable {
+        listDepartmentPages = navigationBar.clickOnSubmenuButton();
+    }
+
+    @And("^click on 'Agregar Nuevo Departamento' Button de department page$")
+    public void clickOnButtonDeDepartmentPage() throws Throwable {
+        createDepartmentPage = listDepartmentPages.clickAddDepartment();
+    }
+
+    @And("^\"([^\"]*)\" es provisto como nombre de departamento$")
+    public void esProvistoComoNombreDeDepartamento(String name) throws Throwable {
+        this.departmentName = name;
+        createDepartmentPage.setDepartmentName(name);
+    }
+
+    @And("^\"([^\"]*)\" es seleccionado como padre$")
+    public void esSeleccionadoComoPadre(String parentName) throws Throwable {
+        createDepartmentPage.setParent(parentName);
+    }
+
+    @When("^se realiza click en boton 'Registrar'$")
+    public void seRealizaClickEnBoton() throws Throwable {
+        createDepartmentPage.clickRegistrar();
+    }
+
+    @Then("^El \"([^\"]*)\" es registrado en la base de datos y listado en \"([^\"]*)\"$")
+    public void elEsRegistradoEnLaBaseDeDatosYListadoEn(String departmentName, String arg1) throws Throwable {
+        assertEquals(listDepartmentPages.getDepartment(this.departmentName),departmentName, Messages.MESSAGE_DEPARTMENT_NOT_MATCH);
+    }
+
+    @When("^El \"([^\"]*)\" Departamento es eliminado de la lista$")
+    public void elDepartamentoEsEliminadoDeLaLista(String name) throws Throwable {
+        listDepartmentPages.actionDepartment(name, BUTTON_DELETE);
+    }
+
+    @Then("^El \"([^\"]*)\" no se lista en la  lista$")
+    public void elNoSeListaEnLaLista(String departmentName) throws Throwable {
+        assertNull(listDepartmentPages.getDepartment(departmentName),Messages.MESSAGE_LIST_CONTAINS_DEPARTMENT);
+    }
+
+
+    @And("^Click boton Edit para el \"([^\"]*)\" a editar$")
+    public void clickBotonEditParaElAEditar(String name) throws Throwable {
+        editDepartmentPage = listDepartmentPages.editDepartment(name, BUTTON_EDIT);
+    }
+
+    @When("^se Actualiza el nombre del  departamento a \"([^\"]*)\", se adiciona \"([^\"]*)\" como padre y click \"([^\"]*)\"$")
+    public void seActualizaElNombreDelDepartamentoASeAdicionaComoPadreYClick(String name, String parentname, String action) throws Throwable {
+        editDepartmentPage.editDepartment(name, parentname, action);
+    }
+
+    @Then("^Notar que la actualizacion \"([^\"]*)\" se registra en la lista de departamentos$")
+    public void notarQueLaActualizacionSeRegistraEnLaListaDeDepartamentos(String departmentName) throws Throwable {
+        assertEquals(listDepartmentPages.getDepartment(departmentName),departmentName, Messages.MESSAGE_DEPARTMENT_NOT_MATCH);
+    }
+
+    @When("^se Actualiza el nombre del  departamento a \"([^\"]*)\", se adiciona \"([^\"]*)\" como child y click \"([^\"]*)\"$")
+    public void seActualizaElNombreDelDepartamentoASeAdicionaComoChildYClick(String name, String childname, String action) throws Throwable {
+        editDepartmentPage.editDepartmentChild(name, childname, action);
+    }
+
+    @Then("^Notar que el  child \"([^\"]*)\" tiene como parent \"([^\"]*)\" se registra en la lista de departamentos$")
+    public void notarQueElChildTieneComoParentSeRegistraEnLaListaDeDepartamentos(String child, String parent) throws Throwable {
+        assertEquals(listDepartmentPages.getChild(child,parent), child, Messages.MESSAGE_CHILD_NOT_MATCH);
     }
 }

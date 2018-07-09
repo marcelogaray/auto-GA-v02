@@ -40,7 +40,7 @@ public class OrganizationalStructureMenu extends BasePage {
 
     public RegisterContract clickContracts() {
         CommonEvents.customWait(2500);
-        CommonEvents.clickButton(contractButton);
+        CommonEvents.jsClickElement(contractButton);
         return new RegisterContract();
     }
 }

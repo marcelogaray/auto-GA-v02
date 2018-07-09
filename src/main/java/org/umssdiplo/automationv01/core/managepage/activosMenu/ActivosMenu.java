@@ -29,7 +29,7 @@ public class ActivosMenu extends BasePage {
 
     public ListItemType clickItemTypeListSubMenu() {
         CommonEvents.customWait(2500);
-        CommonEvents.clickButton(listItemTypeSubMenu);
+        CommonEvents.jsClickElement(listItemTypeSubMenu);
         return new ListItemType();
     }
 
