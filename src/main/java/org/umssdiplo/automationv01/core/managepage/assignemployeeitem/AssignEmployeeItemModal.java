@@ -49,7 +49,6 @@ public class AssignEmployeeItemModal extends BasePage {
     }
 
     public EmployeeDetail clickCancel() {
-        CommonEvents.customWait(3000);
         CommonEvents.clickButton(cancelAssignButton);
         return new EmployeeDetail();
     }
@@ -79,7 +78,6 @@ public class AssignEmployeeItemModal extends BasePage {
     }
 
     public EmployeeDetail clickAssignButton() {
-        CommonEvents.customWait(3000);
         CommonEvents.clickButton(assignButton);
         return new EmployeeDetail();
     }

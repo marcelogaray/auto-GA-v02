@@ -29,19 +29,16 @@ public class ReportsSubMenu extends BasePage {
     }
 
     public AvailableItemsReport clickAvailableItemsReport() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(availableItemsReport);
         return new AvailableItemsReport();
     }
 
     public RefundedItemsReport clickRefundedItemsReport() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(refundedItemsReport);
         return new RefundedItemsReport();
     }
 
     public StorageReport clickStorageReport() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(storageReport);
         return new StorageReport();
     }

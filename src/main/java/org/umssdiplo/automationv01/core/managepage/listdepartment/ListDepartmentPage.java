@@ -15,14 +15,12 @@ public class ListDepartmentPage extends BasePage {
     private WebElement table;
 
     public CreateDepartmentPage clickAddDepartment() {
-        CommonEvents.customWait(2500);
         CommonEvents.isVisible(addDepartment);
         CommonEvents.jsClickElement(addDepartment);
         return new CreateDepartmentPage();
     }
 
     public EditDepartmentPage editDepartment(String departmentName, String action){
-        CommonEvents.customWait(2500);
         actionDepartment(departmentName,action);
         return new EditDepartmentPage();
     }

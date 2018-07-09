@@ -48,7 +48,6 @@ public class AddItemType extends BasePage {
     }
 
     public ListItemType clickSaveNewItemTypeBtn() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(saveBtn);
         return new ListItemType();
     }

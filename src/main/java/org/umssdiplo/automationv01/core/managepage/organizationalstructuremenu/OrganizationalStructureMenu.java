@@ -31,32 +31,27 @@ public class OrganizationalStructureMenu extends BasePage {
     }
 
     public EmployeesSubMenu clickEmployees() {
-        CommonEvents.customWait(3000);
         CommonEvents.clickButton(employeeSubMenu);
         return new EmployeesSubMenu();
     }
 
     public PositionsSubMenu clickPositions() {
-        CommonEvents.customWait(3000);
         CommonEvents.clickButton(positionSubMenu);
         return new PositionsSubMenu();
     }
 
     public RegisterContract clickContracts() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(contractButton);
         return new RegisterContract();
     }
 
     public ListDepartmentPage clickOnSubmenuButton() {
-        CommonEvents.customWait(2500);
         CommonEvents.isVisible(activeSubmenu);
         CommonEvents.clickButton(activeSubmenu);
         return new ListDepartmentPage();
     }
 
     public EmployeeList clickEmployeesList() {
-        CommonEvents.customWait(2500);
         CommonEvents.jsClickElement(employeeSubMenu);
         return new EmployeeList();
     }

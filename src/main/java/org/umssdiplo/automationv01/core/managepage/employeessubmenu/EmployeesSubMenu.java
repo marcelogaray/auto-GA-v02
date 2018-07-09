@@ -18,7 +18,6 @@ public class EmployeesSubMenu extends BasePage {
     }
 
     public EmployeeDetail clickEmployeeDetail() {
-        CommonEvents.customWait(3000);
         CommonEvents.clickButton(employeeDetail);
         return new EmployeeDetail();
     }

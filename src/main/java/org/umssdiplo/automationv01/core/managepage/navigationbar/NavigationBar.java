@@ -31,31 +31,26 @@ public class NavigationBar extends BasePage {
     }
 
     public OrganizationalStructureMenu clickOrganizationalStructure() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(organizationalMenu);
         return new OrganizationalStructureMenu();
     }
 
     public ReportsSubMenu clickReports() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(reportsMenu);
         return new ReportsSubMenu();
     }
 
     public AccidentEIncidentMenu clickAccidentEIncidentButton() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(accidentIncidentMenu);
         return new AccidentEIncidentMenu();
     }
 
     public Storage clickStorageButton() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(storageMenu);
         return new Storage();
     }
 
     public ActivosMenu clickActivos() {
-        CommonEvents.customWait(2500);
         CommonEvents.clickButton(activosMenu);
         return new ActivosMenu();
     }
