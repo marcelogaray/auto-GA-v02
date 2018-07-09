@@ -11,6 +11,7 @@ public class EmployeeList extends BasePage {
     private WebElement listEmployees;
 
     public EmployeePage selectEmployee(String name) {
+        CommonEvents.customWait(3000);
         WebElement sCellValue = listEmployees.findElement(By.xpath("//td[contains(text(),'" + name + "')]"));
         WebElement editButton = sCellValue.findElement(By.xpath("//i[@class='fa fa-pencil-square-o']"));
         CommonEvents.jsClickElement(editButton);

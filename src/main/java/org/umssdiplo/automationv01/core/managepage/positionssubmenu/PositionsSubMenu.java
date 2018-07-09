@@ -32,6 +32,7 @@ public class PositionsSubMenu extends BasePage {
     }
 
     public RegisterPosition clickAddPosition() {
+        CommonEvents.customWait(2500);
         CommonEvents.clickButton(addPositionButton);
         return new RegisterPosition();
     }
@@ -47,6 +48,7 @@ public class PositionsSubMenu extends BasePage {
     }
 
     public EditPosition editPosition(int element) {
+        CommonEvents.customWait(2500);
         WebElement webElement = CommonEvents.getWebElementByClassName(positions.get(element), UPDATE_BUTTON_CLASS);
         CommonEvents.clickButton(webElement);
         return new EditPosition();

@@ -29,6 +29,7 @@ public class EmployeeDetail extends BasePage {
     }
 
     public AssignEmployeeItemModal clickAssignEmployeeItem() {
+        CommonEvents.customWait(3000);
         CommonEvents.clickButton(assignItemButton);
         return new AssignEmployeeItemModal();
     }
@@ -42,7 +43,7 @@ public class EmployeeDetail extends BasePage {
     }
 
     public int countAssignedItems() {
-        CommonEvents.customWait(3000);
+
         return CommonEvents.countElement(assignedItems);
     }
 

@@ -16,6 +16,7 @@ public class StorageMenu extends BasePage{
     }
 
     public CreateStorage clickCreateStorage() {
+        CommonEvents.customWait(2500);
         CommonEvents.clickButton(addStorageButton);
         return new CreateStorage();
     }
