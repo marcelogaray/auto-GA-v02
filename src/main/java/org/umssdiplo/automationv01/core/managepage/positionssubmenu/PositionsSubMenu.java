@@ -37,6 +37,7 @@ public class PositionsSubMenu extends BasePage {
     }
 
     public int countPositions() {
+        CommonEvents.customWait(3000);
         return CommonEvents.countElement(positions);
     }
 

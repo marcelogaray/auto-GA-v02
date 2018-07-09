@@ -8,6 +8,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class EmployeePage extends BasePage {
     @FindBy(name="salary")
     private WebElement salary;
+
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement registryButton;
 

@@ -42,7 +42,7 @@ public class EmployeeDetail extends BasePage {
     }
 
     public int countAssignedItems() {
-
+        CommonEvents.customWait(3000);
         return CommonEvents.countElement(assignedItems);
     }
 

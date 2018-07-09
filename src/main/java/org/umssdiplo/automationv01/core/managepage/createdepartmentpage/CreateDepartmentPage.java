@@ -23,7 +23,6 @@ public class CreateDepartmentPage extends BasePage {
         CommonEvents.isVisible(this.departmentName);
     }
 
-
     public void setDepartmentName(String departmentName) {
         CommonEvents.setInputField(this.departmentName, departmentName);
     }

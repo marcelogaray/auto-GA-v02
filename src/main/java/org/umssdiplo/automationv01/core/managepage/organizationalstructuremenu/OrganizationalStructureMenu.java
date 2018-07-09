@@ -11,8 +11,6 @@ import org.umssdiplo.automationv01.core.managepage.listdepartment.ListDepartment
 import org.umssdiplo.automationv01.core.managepage.positionssubmenu.PositionsSubMenu;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
-
-
 public class OrganizationalStructureMenu extends BasePage {
     @FindBy(id = "sub-menu-positions")
     private WebElement positionSubMenu;
@@ -55,5 +53,4 @@ public class OrganizationalStructureMenu extends BasePage {
         CommonEvents.jsClickElement(employeeSubMenu);
         return new EmployeeList();
     }
-
 }

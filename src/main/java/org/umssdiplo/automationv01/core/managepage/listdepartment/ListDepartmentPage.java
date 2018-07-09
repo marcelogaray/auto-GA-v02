@@ -44,6 +44,7 @@ public class ListDepartmentPage extends BasePage {
         }
         return sCellValue.getText().toString();
     }
+
     public String getChild(String child, String parent) {
         WebElement sCellValue;
         sCellValue = CommonEvents.findChildFromMatTable(table, child, parent);

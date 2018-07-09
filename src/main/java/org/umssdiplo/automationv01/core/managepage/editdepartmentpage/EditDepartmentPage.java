@@ -12,6 +12,7 @@ public class EditDepartmentPage extends BasePage {
 
     @FindBy(tagName = "input")
     private WebElement departmentName;
+
     @FindBy(xpath = "//label[contains(text(),'Departamento Padre')]/../..//mat-select")
     private WebElement editParentSelect;
 
